@@ -38,13 +38,14 @@ body {
 }
 
 /* Logo */
+
 .logo {
   font-size: 60px;
   letter-spacing: 2px;
-  text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+  text-shadow: none; /* remove glow */
   display: flex;
   align-items: center;
-  color: var(--main-yellow);
+  color: #111; /* black */
 }
 
 /* Crane */
@@ -107,3 +108,10 @@ body {
   align-items: center;
 }
 
+.subtitle {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #333;
+}
