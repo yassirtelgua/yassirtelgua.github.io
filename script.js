@@ -4,13 +4,6 @@ const sections = document.querySelectorAll(".section");
 window.addEventListener("scroll", () => {
 
   // MACHINE ANIMATION
- 
-achines.forEach((machine, index) => {
- const machines = document.querySelectorAll(".machine");
-const sections = document.querySelectorAll(".section");
-
-window.addEventListener("scroll", () => {
-
   machines.forEach((machine, index) => {
     const parent = machine.parentElement;
     const rect = parent.getBoundingClientRect();
@@ -23,16 +16,6 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-
-    if (rect.top < window.innerHeight - 100) {
-      section.classList.add("show");
-    }
-  });
-
-});
-
   // SECTION ANIMATION
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
@@ -43,4 +26,3 @@ window.addEventListener("scroll", () => {
   });
 
 });
-``
