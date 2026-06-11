@@ -58,3 +58,14 @@ body {
 .speed3 { transition: transform 2.5s linear; }
 .speed4 { transition: transform 3.5s linear; }
 .speed5 { transition: transform 4s linear; }
+
+.section {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
