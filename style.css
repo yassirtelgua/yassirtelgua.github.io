@@ -49,15 +49,38 @@ body {
 }
 
 /* Crane */
+
 .crane svg {
-  animation: sway 3s infinite ease-in-out;
   transform-origin: center;
+  animation: craneCycle 4s ease-in-out infinite;  
+  animation: craneCycle 5s ease-in-out infinite;
 }
 
-@keyframes sway {
-  0% { transform: rotate(-8deg); }
-  50% { transform: rotate(8deg); }
-  100% { transform: rotate(-8deg); }
+@keyframes craneCycle {
+
+  0% {
+    transform: rotate(-25deg); /* A (left side) */
+  }
+
+  30% {
+    transform: rotate(8deg); /* reaches ELGUA (B) */
+  }
+
+  40% {
+    transform: rotate(0deg); /* fine adjustment */
+  }
+
+  60% {
+    transform: rotate(0deg); /* small pause at delivery */
+  }
+
+  80% {
+    transform: rotate(-25deg); /* back to A */
+  }
+
+  100% {
+    transform: rotate(-25deg); /* reset */
+  }
 }
 
 /* Transitions */
