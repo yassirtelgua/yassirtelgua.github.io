@@ -40,3 +40,9 @@ body {
   transition: transform 2s linear;
   z-index: 10;
 }
+
+.speed1 { transition: transform 2s linear; }
+.speed2 { transition: transform 3s linear; }
+.speed3 { transition: transform 2.5s linear; }
+.speed4 { transition: transform 3.5s linear; }
+.speed5 { transition: transform 4s linear; }
