@@ -94,3 +94,43 @@ body {
 .section {
   background: rgba(255,255,255,0.95);
 }
+
+/* Depth effect */
+
+.hero {
+  background: url('images/construction-bg.jpg') no-repeat center/cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Yellow black brand */ 
+
+:root {
+  --main-yellow: #f4b400;
+  --dark: #222;
+}
+
+body {
+  color: var(--dark);
+}
+
+.logo {
+  color: var(--main-yellow);
+}
+
+.section h2 {
+  border-left: 5px solid var(--main-yellow);
+  padding-left: 10px;
+}
+
+/* MACHINE REALISM BOOST */
+
+@keyframes bounce {
+  0% { top: 20px; }
+  50% { top: 25px; }
+  100% { top: 20px; }
+}
+
+.machine {
+  animation: bounce 0.6s infinite;
+}
