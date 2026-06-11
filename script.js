@@ -9,7 +9,7 @@ window.addEventListener("scroll", () => {
     const rect = parent.getBoundingClientRect();
 
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      machine.style.transition = `transform ${2 + index * 0.5}s linear`;
+      machine.style.transition = `transform ${5}s linear`;
       machine.style.transform = "translateX(120vw)";
     } else {
       machine.style.transform = "translateX(0px)";
