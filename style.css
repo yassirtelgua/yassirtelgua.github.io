@@ -23,10 +23,10 @@ body {
   border-bottom: 2px solid #ddd;
   background: rgba(255,255,255,0.95);
 
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.8s ease;
+  opacity: 1; /* ✅ TEMP FIX */
+  transform: translateY(0);
 }
+
 
 .section.show {
   opacity: 1;
