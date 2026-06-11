@@ -67,8 +67,19 @@ body {
 }
 
 .logo-text.active {
-  transform: translateY(-5px) scale(1.02);
-  letter-spacing: 4px;
+  transform: translateY(-3px) scale(1.01);
+  letter-spacing: 3px;
+}
+
+.logo-text.impact {
+  animation: textImpact 0.3s ease;
+}
+
+@keyframes textImpact {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-3px); }
+  60%  { transform: translateY(1px); }
+  100% { transform: translateY(0); }
 }
 
 /* SUBTITLE */
@@ -91,10 +102,10 @@ body {
 
 .hook {
   position: absolute;
-  top: 30px;
-  left: 50%;
+  top: 28px;
+  left: 65%; /* move toward the "E" */
   width: 2px;
-  height: 20px;
+  height: 18px;
   background: #222;
 
   animation: hookMove 5s ease-in-out infinite;
