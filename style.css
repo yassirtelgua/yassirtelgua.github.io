@@ -49,8 +49,8 @@ body {
 
 /* Crane */
 .crane svg {
-  animation: swing 3s infinite ease-in-out;
-  transform-origin: top center;
+  animation: sway 3s infinite ease-in-out;
+  transform-origin: center;
 }
 
 @keyframes swing {
