@@ -19,9 +19,17 @@ body {
   align-items: center;
 }
 
-.crane {
-  margin-right: 10px;
+.crane svg {
+  animation: swing 3s infinite ease-in-out;
+  transform-origin: top center;
 }
+
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}
+
 
 /* Transitions */
 .transition {
