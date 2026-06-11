@@ -197,3 +197,25 @@ body {
   background: white;
   color: black;
 }
+
+.whatsapp {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.whatsapp:hover {
+  background: #1ebd5a;
+}
+
+body {
+  cursor: default;
+}
+
+.machine {
+  cursor: pointer;
+}
