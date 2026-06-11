@@ -69,3 +69,16 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+@keyframes moveMachine {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+.wheel-machine {
+  animation: moveMachine 4s linear forwards;
+}
