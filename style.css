@@ -9,7 +9,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Rajdhani', Arial, sans-serif;
   background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
   color: var(--dark);
   cursor: default;
