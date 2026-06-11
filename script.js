@@ -25,4 +25,17 @@ window.addEventListener("scroll", () => {
     }
   });
 
+const logo = document.querySelector(".logo-text");
+
+window.addEventListener("scroll", () => {
+
+  const hero = document.querySelector(".hero");
+  const rect = hero.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    logo.classList.add("active");
+  } else {
+    logo.classList.remove("active");
+  }
+
 });
