@@ -134,3 +134,15 @@ body {
 .machine {
   animation: bounce 0.6s infinite;
 }
+
+/* ROAD */
+
+.road {
+  background: repeating-linear-gradient(
+    to right,
+    #555,
+    #555 20px,
+    #777 20px,
+    #777 40px
+  );
+}
