@@ -12,6 +12,7 @@ body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
   color: var(--dark);
+  cursor: default;
 }
 
 /* Sections */
@@ -24,17 +25,16 @@ body {
 
   opacity: 0;
   transform: translateY(60px);
-  transition: all 0.8s ease, transform 0.3s ease;
-}
-
-
-.section:hover {
-  transform: scale(1.01);
+  transition: all 0.8s ease;
 }
 
 .section.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.section:hover {
+  scale: 1.01;
 }
 
 /* Logo */
@@ -47,6 +47,7 @@ body {
   color: var(--main-yellow);
 }
 
+/* Crane */
 .crane svg {
   animation: swing 3s infinite ease-in-out;
   transform-origin: top center;
@@ -63,7 +64,6 @@ body {
   height: 120px;
   position: relative;
   overflow: hidden;
-  background: #f0f0f0;
 }
 
 /* Machines */
@@ -78,14 +78,15 @@ body {
 
   filter: drop-shadow(4px 6px 6px rgba(0,0,0,0.3));
   z-index: 10;
+  cursor: pointer;
 }
 
 /* Speed variations */
-.speed1 { transition: transform 2s linear; }
-.speed2 { transition: transform 3s linear; }
-.speed3 { transition: transform 2.5s linear; }
-.speed4 { transition: transform 3.5s linear; }
-.speed5 { transition: transform 4s linear; }
+.speed1 { transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed2 { transition: transform 3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed3 { transition: transform 2.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed4 { transition: transform 3.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed5 { transition: transform 4s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
 /* Bounce */
 @keyframes bounce {
@@ -106,116 +107,3 @@ body {
   align-items: center;
 }
 
-/* Titles */
-.section h2 {
-  border-left: 5px solid var(--main-yellow);
-  padding-left: 10px;
-}
-
-/* Road */
-.road {
-  background: linear-gradient(#555, #555) center/100% 4px no-repeat,
-              repeating-linear-gradient(
-                to right,
-                #444,
-                #444 30px,
-                #666 30px,
-                #666 60px
-              );
-}
-
-/* WHEEL ROTATION ILLUSION */
-
-.machine::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 10px;
-  width: 70%;
-  height: 8px;
-  background: repeating-linear-gradient(
-    to right,
-    #222 0px,
-    #222 5px,
-    transparent 5px,
-    transparent 10px
-  );
-  animation: wheelMove 0.5s linear infinite;
-}
-
-@keyframes wheelMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(10px); }
-}
-
-.machine::before {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: -20px;
-  width: 30px;
-  height: 10px;
-  background: rgba(150,150,150,0.3);
-  border-radius: 50%;
-  filter: blur(4px);
-  animation: dustMove 1s infinite;
-}
-
-@keyframes dustMove {
-  0% { opacity: 0.6; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(-20px); }
-}
-
-.cta-buttons {
-  margin-top: 20px;
-}
-
-.btn {
-  padding: 12px 25px;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.primary {
-  background: var(--main-yellow);
-  color: black;
-}
-
-.primary:hover {
-  background: #d99c00;
-}
-
-.secondary {
-  border: 2px solid white;
-  color: white;
-}
-
-.secondary:hover {
-  background: white;
-  color: black;
-}
-
-.whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
-}
-
-.whatsapp:hover {
-  background: #1ebd5a;
-}
-
-body {
-  cursor: default;
-}
-
-.machine {
-  cursor: pointer;
-}
