@@ -1,12 +1,14 @@
 const machines = document.querySelectorAll(".machine");
 
-window.addEventListener("scroll", () => {
+function animateMachines() {
   machines.forEach(machine => {
-    const rect = machine.parentElement.getBoundingClientRect();
+    const parent = machine.parentElement;
+    const rect = parent.getBoundingClientRect();
 
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       machine.style.transform = "translateX(120vw)";
-      machine.style.transition = "transform 2s linear";
     }
   });
-});
+}
+
+window.addEventListener("scroll", animateMachines);
