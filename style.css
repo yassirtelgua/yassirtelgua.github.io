@@ -70,6 +70,8 @@ body {
   transform: translateY(0);
 }
 
+/* wheels ROTATION */
+
 @keyframes moveMachine {
   0% {
     transform: translateX(-150px);
@@ -81,4 +83,14 @@ body {
 
 .wheel-machine {
   animation: moveMachine 4s linear forwards;
+}
+
+/* PARALLAX BACKGROUND */
+
+  body {
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+}
+
+.section {
+  background: rgba(255,255,255,0.95);
 }
