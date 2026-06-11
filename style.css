@@ -63,6 +63,12 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   color: #111;
+  transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.logo-text.active {
+  transform: translateY(-5px) scale(1.02);
+  letter-spacing: 4px;
 }
 
 /* SUBTITLE */
