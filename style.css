@@ -77,8 +77,8 @@ body {
 /* CRANE */
 .crane {
   position: absolute;
-  top: -40px;
-  left: -40px;
+  top: -10px;     /* close to text, not too high */
+  left: -30px;    /* right next to E */
   width: 90px;
   z-index: 2;
 }
@@ -87,35 +87,35 @@ body {
   width: 100%;
   height: auto;
 
-  transform-origin: 20% 50%; /* realistic pivot */
-  animation: craneCycle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: 80% 20%;
+  animation: craneArc 4s ease-in-out infinite;
 }
 
 /* CRANE ANIMATION */
-@keyframes craneCycle {
+@keyframes craneArc {
 
   0% {
-    transform: rotate(-25deg);
+    transform: rotate(-20deg); /* resting (next to E) */
   }
 
-  30% {
-    transform: rotate(8deg);
+  35% {
+    transform: rotate(15deg); /* goes OVER the E */
   }
 
-  40% {
-    transform: rotate(0deg);
+  50% {
+    transform: rotate(10deg); /* small adjustment */
   }
 
-  60% {
-    transform: rotate(0deg);
+  65% {
+    transform: rotate(15deg); /* slight hold */
   }
 
-  80% {
-    transform: rotate(-25deg);
+  85% {
+    transform: rotate(-20deg); /* goes back */
   }
 
   100% {
-    transform: rotate(-25deg);
+    transform: rotate(-20deg);
   }
 }
 
