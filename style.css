@@ -111,6 +111,37 @@ body {
   animation: hookMove 5s ease-in-out infinite;
 }
 
+.hook::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -6px;
+  width: 12px;
+  height: 6px;
+
+  background: rgba(0,0,0,0.2);
+  border-radius: 50%;
+
+  animation: hookShadow 5s ease-in-out infinite;
+}
+
+@keyframes hookShadow {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+}
+
 @keyframes hookMove {@key translateY(0);
     opacity: 0;
   }
