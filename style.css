@@ -7,6 +7,7 @@ html {
   --dark: #222;
 }
 
+/* GLOBAL */
 body {
   margin: 0;
   font-family: 'Rajdhani', Arial, sans-serif;
@@ -15,9 +16,9 @@ body {
   cursor: default;
 }
 
-/* Sections */
+/* SECTIONS */
 .section {
-  height: 100vh;
+  min-height: 100vh;
   padding: 50px;
   border-bottom: 2px solid #ddd;
 
@@ -37,89 +38,7 @@ body {
   scale: 1.01;
 }
 
-/* Logo */
-
-.logo {
-  font-size: 60px;
-  letter-spacing: 2px;
-  text-shadow: none; /* remove glow */
-  display: flex;
-  align-items: center;
-  color: #111; /* black */
-}
-
-/* Crane */
-
-.crane svg {
-  transform-origin: center;
-  animation: craneCycle 4s ease-in-out infinite;  
-  animation: craneCycle 5s ease-in-out infinite;
-}
-
-@keyframes craneCycle {
-
-  0% {
-    transform: rotate(-25deg); /* A (left side) */
-  }
-
-  30% {
-    transform: rotate(8deg); /* reaches ELGUA (B) */
-  }
-
-  40% {
-    transform: rotate(0deg); /* fine adjustment */
-  }
-
-  60% {
-    transform: rotate(0deg); /* small pause at delivery */
-  }
-
-  80% {
-    transform: rotate(-25deg); /* back to A */
-  }
-
-  100% {
-    transform: rotate(-25deg); /* reset */
-  }
-}
-
-/* Transitions */
-.transition {
-  height: 120px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Machines */
-.machine {
-  position: absolute;
-  left: -150px;
-  top: 20px;
-  width: 100px;
-
-  transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  animation: bounce 0.6s infinite;
-
-  filter: drop-shadow(4px 6px 6px rgba(0,0,0,0.3));
-  z-index: 10;
-  cursor: pointer;
-}
-
-/* Speed variations */
-.speed1 { transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.speed2 { transition: transform 3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.speed3 { transition: transform 2.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.speed4 { transition: transform 3.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.speed5 { transition: transform 4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-
-/* Bounce */
-@keyframes bounce {
-  0% { top: 20px; }
-  50% { top: 25px; }
-  100% { top: 20px; }
-}
-
-/* Hero */
+/* HERO */
 .hero {
   background: url('images/construction-bg.jpg') no-repeat center/cover;
   background-attachment: fixed;
@@ -131,10 +50,221 @@ body {
   align-items: center;
 }
 
+/* LOGO WRAPPER */
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-left: 40px;
+}
+
+/* TEXT LOGO */
+.logo-text {
+  font-size: 70px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #111;
+}
+
+/* SUBTITLE */
 .subtitle {
   font-size: 22px;
   margin-top: 10px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #333;
+  color: rgba(255,255,255,0.85);
+}
+
+/* CRANE */
+.crane {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 90px;
+  z-index: 2;
+}
+
+.crane svg {
+  width: 100%;
+  height: auto;
+
+  transform-origin: 20% 50%; /* realistic pivot */
+  animation: craneCycle 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* CRANE ANIMATION */
+@keyframes craneCycle {
+
+  0% {
+    transform: rotate(-25deg);
+  }
+
+  30% {
+    transform: rotate(8deg);
+  }
+
+  40% {
+    transform: rotate(0deg);
+  }
+
+  60% {
+    transform: rotate(0deg);
+  }
+
+  80% {
+    transform: rotate(-25deg);
+  }
+
+  100% {
+    transform: rotate(-25deg);
+  }
+}
+
+/* TRANSITIONS (Machines area) */
+.transition {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MACHINE */
+.machine {
+  position: absolute;
+  left: -150px;
+  top: 20px;
+  width: 100px;
+
+  transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: bounce 0.6s infinite;
+
+  filter: drop-shadow(4px 6px 6px rgba(0,0,0,0.3));
+  z-index: 10;
+
+  cursor: pointer;
+}
+
+/* SPEED VARIATIONS */
+.speed1 { transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed2 { transition: transform 3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed3 { transition: transform 2.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed4 { transition: transform 3.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.speed5 { transition: transform 4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+
+/* MACHINE BOUNCE */
+@keyframes bounce {
+  0% { top: 20px; }
+  50% { top: 25px; }
+  100% { top: 20px; }
+}
+
+/* ROAD EFFECT */
+.road {
+  background: linear-gradient(#555, #555) center/100% 4px no-repeat,
+              repeating-linear-gradient(
+                to right,
+                #444 0px,
+                #444 30px,
+                #666 30px,
+                #666 60px
+              );
+}
+
+/* WHEEL EFFECT */
+.machine::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 10px;
+  width: 70%;
+  height: 8px;
+
+  background: repeating-linear-gradient(
+    to right,
+    #222 0px,
+    #222 5px,
+    transparent 5px,
+    transparent 10px
+  );
+
+  animation: wheelMove 0.5s linear infinite;
+}
+
+@keyframes wheelMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(10px); }
+}
+
+/* DUST EFFECT */
+.machine::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: -20px;
+  width: 30px;
+  height: 10px;
+
+  background: rgba(150,150,150,0.3);
+  border-radius: 50%;
+  filter: blur(4px);
+
+  animation: dustMove 1s infinite;
+}
+
+@keyframes dustMove {
+  0% {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+/* CTA */
+.cta-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.primary {
+  background: var(--main-yellow);
+  color: black;
+}
+
+.primary:hover {
+  background: #d99c00;
+}
+
+.secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.secondary:hover {
+  background: white;
+  color: black;
+}
+
+/* CONTACT BUTTON */
+.whatsapp {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.whatsapp:hover {
+  background: #1ebd5a;
 }
