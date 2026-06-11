@@ -21,7 +21,6 @@ body {
   min-height: 100vh;
   padding: 50px;
   border-bottom: 2px solid #ddd;
-
   background: rgba(255,255,255,0.95);
 
   opacity: 0;
@@ -63,6 +62,7 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   color: #111;
+
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -94,78 +94,11 @@ body {
 /* CRANE */
 .crane {
   position: absolute;
-  top: -10px;     /* close to text, not too high */
-  left: -30px;    /* right next to E */
+  top: -10px;
+  left: -30px;
   width: 90px;
   z-index: 2;
 }
-
-.hook {
-  position: absolute;
-  top: 28px;
-  left: 65%; /* move toward the "E" */
-  width: 2px;
-  height: 18px;
-  background: #222;
-
-  animation: hookMove 5s ease-in-out infinite;
-}
-
-.hook::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: -6px;
-  width: 12px;
-  height: 6px;
-
-  background: rgba(0,0,0,0.2);
-  border-radius: 50%;
-
-  animation: hookShadow 5s ease-in-out infinite;
-}
-
-@keyframes hookShadow {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(0.6);
-    opacity: 0.3;
-  }
-}
-
-@keyframes hookMove {@key translateY(0);
-    opacity: 0;
-  }
-
-  30% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(15px); /* drop */
-  }
-
-  70% {
-    transform: translateY(0); /* lift */
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-}
-
-  0% {
 
 .crane svg {
   width: 100%;
@@ -177,33 +110,77 @@ body {
 
 /* CRANE ANIMATION */
 @keyframes craneArc {
+  0% { transform: rotate(-20deg); }
+  35% { transform: rotate(15deg); }
+  50% { transform: rotate(10deg); }
+  65% { transform: rotate(15deg); }
+  85% { transform: rotate(-20deg); }
+  100% { transform: rotate(-20deg); }
+}
 
+/* HOOK */
+.hook {
+  position: absolute;
+  top: 28px;
+  left: 65%;
+  width: 2px;
+  height: 18px;
+  background: #222;
+
+  animation: hookMove 5s ease-in-out infinite;
+}
+
+/* HOOK SHADOW */
+.hook::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -6px;
+  width: 12px;
+  height: 6px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 50%;
+
+  animation: hookShadow 5s ease-in-out infinite;
+}
+
+@keyframes hookMove {
   0% {
-    transform: rotate(-20deg); /* resting (next to E) */
+    transform: translateY(0);
+    opacity: 0;
   }
-
-  35% {
-    transform: rotate(15deg); /* goes OVER the E */
+  30% {
+    transform: translateY(0);
+    opacity: 1;
   }
-
   50% {
-    transform: rotate(10deg); /* small adjustment */
+    transform: translateY(15px);
   }
-
-  65% {
-    transform: rotate(15deg); /* slight hold */
+  70% {
+    transform: translateY(0);
   }
-
-  85% {
-    transform: rotate(-20deg); /* goes back */
-  }
-
   100% {
-    transform: rotate(-20deg);
+    transform: translateY(0);
+    opacity: 0;
   }
 }
 
-/* TRANSITIONS (Machines area) */
+@keyframes hookShadow {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+}
+
+/* TRANSITIONS */
 .transition {
   height: 120px;
   position: relative;
@@ -226,33 +203,26 @@ body {
   cursor: pointer;
 }
 
-/* SPEED VARIATIONS */
+/* SPEEDS */
 .speed1 { transition: transform 2s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .speed2 { transition: transform 3s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .speed3 { transition: transform 2.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .speed4 { transition: transform 3.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
 .speed5 { transition: transform 4s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-/* MACHINE BOUNCE */
 @keyframes bounce {
   0% { top: 20px; }
   50% { top: 25px; }
   100% { top: 20px; }
 }
 
-/* ROAD EFFECT */
+/* ROAD */
 .road {
   background: linear-gradient(#555, #555) center/100% 4px no-repeat,
-              repeating-linear-gradient(
-                to right,
-                #444 0px,
-                #444 30px,
-                #666 30px,
-                #666 60px
-              );
+              repeating-linear-gradient(to right, #444 0px, #444 30px, #666 30px, #666 60px);
 }
 
-/* WHEEL EFFECT */
+/* WHEELS */
 .machine::after {
   content: "";
   position: absolute;
@@ -260,15 +230,7 @@ body {
   left: 10px;
   width: 70%;
   height: 8px;
-
-  background: repeating-linear-gradient(
-    to right,
-    #222 0px,
-    #222 5px,
-    transparent 5px,
-    transparent 10px
-  );
-
+  background: repeating-linear-gradient(to right, #222 0px, #222 5px, transparent 5px, transparent 10px);
   animation: wheelMove 0.5s linear infinite;
 }
 
@@ -277,78 +239,7 @@ body {
   to { transform: translateX(10px); }
 }
 
-/* DUST EFFECT */
+/* DUST */
 .machine::before {
   content: "";
   position: absolute;
-  bottom: -5px;
-  left: -20px;
-  width: 30px;
-  height: 10px;
-
-  background: rgba(150,150,150,0.3);
-  border-radius: 50%;
-  filter: blur(4px);
-
-  animation: dustMove 1s infinite;
-}
-
-@keyframes dustMove {
-  0% {
-    opacity: 0.6;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-}
-
-/* CTA */
-.cta-buttons {
-  margin-top: 20px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.primary {
-  background: var(--main-yellow);
-  color: black;
-}
-
-.primary:hover {
-  background: #d99c00;
-}
-
-.secondary {
-  border: 2px solid white;
-  color: white;
-}
-
-.secondary:hover {
-  background: white;
-  color: black;
-}
-
-/* CONTACT BUTTON */
-.whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
-}
-
-.whatsapp:hover {
-  background: #1ebd5a;
-}
