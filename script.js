@@ -14,6 +14,14 @@ window.addEventListener("scroll", () => {
     } else {
       machine.style.transform = "translateX(0px)";
     }
+    setInterval(() => {
+  const logo = document.querySelector(".logo-text");
+  logo.classList.add("impact");
+  setTimeout(() => {
+    logo.classList.remove("impact");
+  }, 300);
+
+}, 5000);
   });
 
   // SECTION ANIMATION
