@@ -89,6 +89,42 @@ body {
   z-index: 2;
 }
 
+.hook {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #222;
+
+  animation: hookMove 5s ease-in-out infinite;
+}
+
+@keyframes hookMove {@key translateY(0);
+    opacity: 0;
+  }
+
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(15px); /* drop */
+  }
+
+  70% {
+    transform: translateY(0); /* lift */
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+  0% {
+
 .crane svg {
   width: 100%;
   height: auto;
