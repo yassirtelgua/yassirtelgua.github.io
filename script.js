@@ -1,30 +1,24 @@
 const machines = document.querySelectorAll(".machine");
 const sections = document.querySelectorAll(".section");
+const logo = document.querySelector(".logo-text");
+const hero = document.querySelector(".hero");
 
+/* SCROLL EVENT */
 window.addEventListener("scroll", () => {
 
-  // MACHINE ANIMATION
-  machines.forEach((machine, index) => {
+  /* MACHINE ANIMATION */
+  machines.forEach((machine) => {
     const parent = machine.parentElement;
     const rect = parent.getBoundingClientRect();
 
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      machine.style.transition = `transform ${5}s linear`;
       machine.style.transform = "translateX(120vw)";
     } else {
-      machine.style.transform = "translateX(0px)";
+      machine.style.transform = "translateX(0)";
     }
-    setInterval(() => {
-  const logo = document.querySelector(".logo-text");
-  logo.classList.add("impact");
-  setTimeout(() => {
-    logo.classList.remove("impact");
-  }, 300);
-
-}, 5000);
   });
 
-  // SECTION ANIMATION
+  /* SECTION APPEAR */
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
 
@@ -33,17 +27,24 @@ window.addEventListener("scroll", () => {
     }
   });
 
-const logo = document.querySelector(".logo-text");
+  /* LOGO ACTIVE STATE */
+  const heroRect = hero.getBoundingClientRect();
 
-window.addEventListener("scroll", () => {
-
-  const hero = document.querySelector(".hero");
-  const rect = hero.getBoundingClientRect();
-
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
+  if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
     logo.classList.add("active");
   } else {
     logo.classList.remove("active");
   }
 
 });
+
+
+/* IMPACT EFFECT (HOOK TIMING SYNC) */
+setInterval(() => {
+  logo.classList.add("impact");
+
+  setTimeout(() => {
+    logo.classList.remove("impact");
+  }, 300);
+
+}, 5000);
