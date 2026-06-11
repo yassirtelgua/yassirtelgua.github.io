@@ -6,16 +6,31 @@ window.addEventListener("scroll", () => {
   // MACHINE ANIMATION
  
 achines.forEach((machine, index) => {
-  const parent = machine.parentElement;
-  const rect = parent.getBoundingClientRect();
+ const machines = document.querySelectorAll(".machine");
+const sections = document.querySelectorAll(".section");
 
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    setTimeout(() => {
+window.addEventListener("scroll", () => {
+
+  machines.forEach((machine, index) => {
+    const parent = machine.parentElement;
+    const rect = parent.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      machine.style.transition = `transform ${2 + index * 0.5}s linear`;
       machine.style.transform = "translateX(120vw)";
-    }, index * 200);
-  } else {
-    machine.style.transform = "translateX(0px)";
-  }
+    } else {
+      machine.style.transform = "translateX(0px)";
+    }
+  });
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight - 100) {
+      section.classList.add("show");
+    }
+  });
+
 });
 
   // SECTION ANIMATION
