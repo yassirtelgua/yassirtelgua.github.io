@@ -3,13 +3,12 @@ const sections = document.querySelectorAll(".section");
 const logo = document.querySelector(".logo-text");
 const hero = document.querySelector(".hero");
 
-/* SCROLL EVENT */
+/* SCROLL */
 window.addEventListener("scroll", () => {
 
-  /* MACHINE ANIMATION */
-  machines.forEach((machine) => {
-    const parent = machine.parentElement;
-    const rect = parent.getBoundingClientRect();
+  // Machines
+  machines.forEach(machine => {
+    const rect = machine.parentElement.getBoundingClientRect();
 
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       machine.style.transform = "translateX(120vw)";
@@ -18,7 +17,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  /* SECTION APPEAR */
+  // Sections
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
 
@@ -27,7 +26,7 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  /* LOGO ACTIVE STATE */
+  // Logo activation
   const heroRect = hero.getBoundingClientRect();
 
   if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
@@ -38,8 +37,7 @@ window.addEventListener("scroll", () => {
 
 });
 
-
-/* IMPACT EFFECT (HOOK TIMING SYNC) */
+/* IMPACT (crane sync) */
 setInterval(() => {
   logo.classList.add("impact");
 
