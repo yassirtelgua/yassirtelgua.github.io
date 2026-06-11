@@ -28,7 +28,7 @@ body {
   height: 120px;
   position: relative;
   overflow: hidden;
-  background: #eee;
+  background: #f0f0f0;
 }
 
 .machine {
@@ -36,4 +36,6 @@ body {
   left: -150px;
   top: 20px;
   width: 100px;
+  transition: transform 2s linear;
+  z-index: 10;
 }
