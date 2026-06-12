@@ -1,48 +1,57 @@
-const machines = document.querySelectorAll(".machine");
-const sections = document.querySelectorAll(".section");
-const logo = document.querySelector(".logo-text");
-const hero = document.querySelector(".hero");
+document.addEventListener("DOMContentLoaded", () => {
+  const machines = document.querySelectorAll(".machine");
+  const sections = document.querySelectorAll(".section");
+  const logo = document.querySelector(".logo-text");
+  const hero = document.querySelector(".hero");
 
-/* SCROLL */
-window.addEventListener("scroll", () => {
+  function handleScroll() {
+    // MACHINE ANIMATION
+    machines.forEach((machine) => {
+      const parent = machine.parentElement;
+      const rect = parent.getBoundingClientRect();
 
-  // Machines
-  machines.forEach(machine => {
-    const rect = machine.parentElement.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        machine.style.transform = "translateX(120vw)";
+      } else {
+        machine.style.transform = "translateX(0)";
+      }
+    });
 
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      machine.style.transform = "translateX(120vw)";
-    } else {
-      machine.style.transform = "translateX(0)";
+    // SECTION VISIBILITY
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight - 100) {
+        section.classList.add("show");
+      }
+    });
+
+    // LOGO ACTIVE STATE
+    if (logo && hero) {
+      const heroRect = hero.getBoundingClientRect();
+
+      if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
+        logo.classList.add("active");
+      } else {
+        logo.classList.remove("active");
+      }
     }
-  });
-
-  // Sections
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-
-    if (rect.top < window.innerHeight - 100) {
-      section.classList.add("show");
-    }
-  });
-
-  // Logo activation
-  const heroRect = hero.getBoundingClientRect();
-
-  if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
-    logo.classList.add("active");
-  } else {
-    logo.classList.remove("active");
   }
 
+  // Run once when page loads
+  handleScroll();
+
+  // Run on scroll
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // IMPACT EFFECT SYNCED WITH CRANE
+  if (logo) {
+    setInterval(() => {
+      logo.classList.add("impact");
+
+      setTimeout(() => {
+        logo.classList.remove("impact");
+      }, 300);
+    }, 5000);
+  }
 });
-
-/* IMPACT (crane sync) */
-setInterval(() => {
-  logo.classList.add("impact");
-
-  setTimeout(() => {
-    logo.classList.remove("impact");
-  }, 300);
-
-}, 5000);
