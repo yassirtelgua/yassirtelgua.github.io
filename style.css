@@ -50,7 +50,7 @@ body {
   align-items: center;
 }
 
-/* LOGO WRAPPER */
+/* LOGO */
 .logo-wrapper {
   position: relative;
   display: flex;
@@ -58,7 +58,6 @@ body {
   gap: 0;
 }
 
-/* CRANE LOGO SHAPE */
 .crane-logo {
   position: relative;
   width: 120px;
@@ -67,7 +66,6 @@ body {
   transform: translateY(-6px);
 }
 
-/* LONG HORIZONTAL ARM */
 .crane-arm {
   position: absolute;
   top: 28px;
@@ -80,7 +78,6 @@ body {
   animation: craneLogoMove 5s ease-in-out infinite;
 }
 
-/* VERTICAL TOWER */
 .crane-tower {
   position: absolute;
   top: 0;
@@ -91,7 +88,6 @@ body {
   border-radius: 4px;
 }
 
-/* TEXT LOGO */
 .logo-text {
   font-size: 78px;
   font-weight: 500;
@@ -129,7 +125,6 @@ body {
   }
 }
 
-/* CONTROLLED CRANE ARM MOTION */
 @keyframes craneLogoMove {
   0% {
     transform: rotate(0deg);
@@ -152,7 +147,6 @@ body {
   }
 }
 
-/* SUBTITLE */
 .subtitle {
   font-size: 22px;
   margin-top: 16px;
@@ -161,14 +155,14 @@ body {
   color: #333;
 }
 
-/* MACHINE TRANSITION AREA */
+/* MACHINE ROAD AREA */
 .transition {
   height: 255px;
   position: relative;
   overflow: hidden;
 }
 
-/* CLEAN ROAD / BANNER BACKGROUND */
+/* ROAD BACKGROUND WITHOUT BLACK LINE */
 .road {
   background:
     linear-gradient(
@@ -181,7 +175,7 @@ body {
     );
 }
 
-/* SOFT TOP EDGE */
+/* SOFT TOP EDGE ONLY */
 .road::before {
   content: "";
   position: absolute;
@@ -192,12 +186,11 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* IMPORTANT: BLACK LINE REMOVED */
+/* BLACK LINE REMOVED */
 .road::after {
   display: none;
 }
 
-/* MACHINE AREA */
 .machine-zone {
   position: relative;
 }
@@ -206,7 +199,6 @@ body {
 .machine-track {
   position: absolute;
   left: 0;
-  bottom: 0;
   z-index: 10;
   pointer-events: none;
 
@@ -215,7 +207,7 @@ body {
   animation-iteration-count: infinite;
 }
 
-/* GENERAL MACHINE IMAGE */
+/* MACHINE IMAGE */
 .machine {
   display: block;
   height: auto;
@@ -223,7 +215,7 @@ body {
   filter: drop-shadow(7px 10px 8px rgba(0, 0, 0, 0.45));
 }
 
-/* INDIVIDUAL MACHINE SIZES */
+/* MACHINE SIZES */
 .jcb-machine {
   width: 520px;
   animation: jcbRealMove 1.1s ease-in-out infinite;
@@ -249,28 +241,34 @@ body {
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* MACHINE LOOP SPEEDS */
+/* MACHINE POSITION + SPEED */
+/* Negative bottom pulls PNG down to reduce transparent-space floating */
 .jcb-drive {
+  bottom: -34px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
+  bottom: -30px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
 
 .loader-drive {
+  bottom: -28px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
+  bottom: -32px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
+  bottom: -24px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
@@ -286,7 +284,7 @@ body {
   }
 }
 
-/* REAL MACHINE FEEL */
+/* REALISTIC SMALL MACHINE MOTION */
 @keyframes jcbRealMove {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -438,10 +436,6 @@ body {
     top: 22px;
   }
 
-  .machine-track {
-    bottom: 0;
-  }
-
   .jcb-machine {
     width: 330px;
   }
@@ -463,22 +457,27 @@ body {
   }
 
   .jcb-drive {
+    bottom: -22px;
     animation-duration: 9s;
   }
 
   .excavator-drive {
+    bottom: -18px;
     animation-duration: 11s;
   }
 
   .loader-drive {
+    bottom: -18px;
     animation-duration: 10s;
   }
 
   .grader-drive {
+    bottom: -20px;
     animation-duration: 12s;
   }
 
   .roller-drive {
+    bottom: -16px;
     animation-duration: 13s;
   }
 
