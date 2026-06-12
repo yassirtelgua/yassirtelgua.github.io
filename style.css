@@ -244,13 +244,13 @@ body {
 /* MACHINE POSITION + SPEED */
 /* Negative bottom pulls PNG down to reduce transparent-space floating */
 .jcb-drive {
-  bottom: -34px;
+  bottom: -50px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  bottom: -30px;
+  bottom: -40px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
@@ -262,13 +262,13 @@ body {
 }
 
 .grader-drive {
-  bottom: -32px;
+  bottom: -50px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
-  bottom: -24px;
+  bottom: -50px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
