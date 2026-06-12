@@ -56,28 +56,31 @@ body {
   position: relative;
   display: flex;
   align-items: flex-end;
-  gap: 20px;
+  gap: 8px;
 }
 
 /* CRANE LOGO SHAPE */
 .crane-logo {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 125px;
   flex-shrink: 0;
+
+  /* visually align crane bottom with ELGUA */
+  transform: translateY(-10px);
 }
 
 /* LONG HORIZONTAL ARM */
 .crane-arm {
   position: absolute;
-  top: 30px;
+  top: 28px;
   left: 0;
-  width: 360px;
-  height: 24px;
+  width: 330px;
+  height: 22px;
   background: var(--main-yellow);
   border-radius: 4px;
 
-  transform-origin: 35% 50%;
+  transform-origin: 32% 50%;
   animation: craneLogoMove 5s ease-in-out infinite;
 }
 
@@ -85,22 +88,23 @@ body {
 .crane-tower {
   position: absolute;
   top: 0;
-  left: 85px;
-  width: 28px;
-  height: 150px;
+  left: 72px;
+  width: 26px;
+  height: 125px;
   background: var(--main-yellow);
   border-radius: 4px;
 }
 
 /* TEXT LOGO */
 .logo-text {
-  font-size: 76px;
+  font-size: 78px;
   font-weight: 500;
   letter-spacing: 4px;
   color: #111;
   margin: 0;
-  line-height: 1;
+  line-height: 0.85;
 
+  transform: translateY(0);
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -113,24 +117,6 @@ body {
   animation: textImpact 0.3s ease;
 }
 
-@keyframes textImpact {
-  0% {
-    transform: translateY(0);
-  }
-
-  30% {
-    transform: translateY(-3px);
-  }
-
-  60% {
-    transform: translateY(1px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
 /* CONTROLLED CRANE ARM MOTION */
 @keyframes craneLogoMove {
   0% {
@@ -138,15 +124,15 @@ body {
   }
 
   35% {
-    transform: rotate(4deg);
+    transform: rotate(3deg);
   }
 
   50% {
-    transform: rotate(2deg);
+    transform: rotate(1.5deg);
   }
 
   65% {
-    transform: rotate(4deg);
+    transform: rotate(3deg);
   }
 
   100% {
