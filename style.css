@@ -26,6 +26,7 @@ body {
   padding: 50px;
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
+
   opacity: 1;
   transform: translateY(0);
 }
@@ -64,6 +65,7 @@ body {
   width: 120px;
   height: 125px;
   flex-shrink: 0;
+
   transform: translateY(-6px);
 }
 
@@ -100,6 +102,7 @@ body {
   color: #111;
   margin: 0;
   line-height: 0.85;
+
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -162,24 +165,46 @@ body {
   color: #333;
 }
 
-/* TRANSITIONS */
+/* MACHINE TRANSITION AREA */
 .transition {
-  height: 210px;
+  height: 240px;
   position: relative;
   overflow: hidden;
 }
 
-/* ROAD */
+/* REALISTIC ROAD BACKGROUND */
 .road {
   background:
-    linear-gradient(#555, #555) center calc(100% - 25px) / 100% 6px no-repeat,
-    repeating-linear-gradient(
-      to right,
-      #444 0px,
-      #444 35px,
-      #666 35px,
-      #666 70px
+    linear-gradient(
+      to bottom,
+      #f7f7f7 0%,
+      #f7f7f7 15%,
+      #4a4a4a 15%,
+      #383838 78%,
+      #2b2b2b 100%
     );
+}
+
+/* ROAD TOP EDGE */
+.road::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 38px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* GROUND SHADOW LINE */
+.road::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 38px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.28);
 }
 
 /* MACHINE AREA */
@@ -192,11 +217,11 @@ body {
 .machine {
   position: absolute;
   left: 0;
-  bottom: 34px;
+  bottom: 42px;
   height: auto;
   object-fit: contain;
 
-  filter: drop-shadow(5px 8px 8px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(6px 9px 8px rgba(0, 0, 0, 0.45));
   z-index: 10;
   pointer-events: none;
 
@@ -207,31 +232,31 @@ body {
 
 /* INDIVIDUAL MACHINE SIZES + SPEEDS */
 .jcb-machine {
-  width: 360px;
-  animation-duration: 28s;
+  width: 370px;
+  animation-duration: 19s;
   animation-delay: 0s;
 }
 
 .excavator-machine {
   width: 390px;
-  animation-duration: 34s;
-  animation-delay: -6s;
+  animation-duration: 21s;
+  animation-delay: -5s;
 }
 
 .grader-machine {
   width: 420px;
-  animation-duration: 38s;
-  animation-delay: -12s;
+  animation-duration: 22s;
+  animation-delay: -8s;
 }
 
-/* REALISTIC SLOW LOOP */
+/* REALISTIC LOOP MOVEMENT */
 @keyframes machineDriveLoop {
   0% {
-    transform: translateX(-450px);
+    transform: translateX(-520px);
   }
 
   100% {
-    transform: translateX(calc(100vw + 450px));
+    transform: translateX(calc(100vw + 520px));
   }
 }
 
@@ -309,28 +334,43 @@ body {
   }
 
   .transition {
-    height: 170px;
+    height: 190px;
+  }
+
+  .road::before {
+    top: 30px;
+  }
+
+  .road::after {
+    bottom: 30px;
+  }
+
+  .machine {
+    bottom: 34px;
   }
 
   .jcb-machine {
-    width: 260px;
+    width: 270px;
+    animation-duration: 16s;
   }
 
   .excavator-machine {
-    width: 280px;
+    width: 285px;
+    animation-duration: 18s;
   }
 
   .grader-machine {
     width: 310px;
+    animation-duration: 19s;
   }
 
   @keyframes machineDriveLoop {
     0% {
-      transform: translateX(-350px);
+      transform: translateX(-380px);
     }
 
     100% {
-      transform: translateX(calc(100vw + 350px));
+      transform: translateX(calc(100vw + 380px));
     }
   }
 }
