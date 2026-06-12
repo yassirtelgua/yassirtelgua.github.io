@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = parent.getBoundingClientRect();
 
       if (rect.top < window.innerHeight && rect.bottom > 0) {
-        machine.style.transform = "translateX(120vw)";
+        machine.style.transform = "translateX(130vw)";
       } else {
         machine.style.transform = "translateX(0)";
       }
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Run on scroll
   window.addEventListener("scroll", handleScroll, { passive: true });
 
-  // IMPACT EFFECT SYNCED WITH CRANE
+  // Small impact effect synced with crane movement
   if (logo) {
     setInterval(() => {
       logo.classList.add("impact");
