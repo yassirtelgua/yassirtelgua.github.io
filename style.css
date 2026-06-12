@@ -43,7 +43,6 @@ body {
 .hero {
   background: #ffffff url('images/construction-bg.jpg') no-repeat center / cover;
   color: var(--dark);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +75,6 @@ body {
   height: 22px;
   background: var(--main-yellow);
   border-radius: 4px;
-
   transform-origin: 32% 50%;
   animation: craneLogoMove 5s ease-in-out infinite;
 }
@@ -100,7 +98,6 @@ body {
   color: #111;
   margin: 0;
   line-height: 0.85;
-
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -217,7 +214,6 @@ body {
   bottom: 42px;
   z-index: 10;
   pointer-events: none;
-
   animation-name: machineDriveLoop;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -259,28 +255,28 @@ body {
 
 /* FASTER LOOP SPEEDS */
 .jcb-drive {
-  animation-duration: 13s;
+  animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  animation-duration: 15s;
-  animation-delay: -4s;
+  animation-duration: 13s;
+  animation-delay: -3s;
 }
 
 .loader-drive {
-  animation-duration: 14s;
-  animation-delay: -7s;
+  animation-duration: 12s;
+  animation-delay: -6s;
 }
 
 .grader-drive {
-  animation-duration: 16s;
-  animation-delay: -9s;
+  animation-duration: 14s;
+  animation-delay: -8s;
 }
 
 .roller-drive {
-  animation-duration: 17s;
-  animation-delay: -11s;
+  animation-duration: 15s;
+  animation-delay: -10s;
 }
 
 /* LEFT TO RIGHT LOOP */
@@ -475,23 +471,23 @@ body {
   }
 
   .jcb-drive {
-    animation-duration: 11s;
+    animation-duration: 9s;
   }
 
   .excavator-drive {
-    animation-duration: 13s;
+    animation-duration: 11s;
   }
 
   .loader-drive {
-    animation-duration: 12s;
+    animation-duration: 10s;
   }
 
   .grader-drive {
-    animation-duration: 14s;
+    animation-duration: 12s;
   }
 
   .roller-drive {
-    animation-duration: 15s;
+    animation-duration: 13s;
   }
 
   @keyframes machineDriveLoop {
