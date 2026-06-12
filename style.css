@@ -105,117 +105,79 @@ body {
   color: #333;
 }
 
-/* CRANE */
-.crane {
+/* LOGO WRAPPER */
+.logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 35px;
+}
+
+/* CRANE LOGO SHAPE */
+.crane-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+}
+
+/* LONG HORIZONTAL ARM */
+.crane-arm {
   position: absolute;
-  top: -10px;
-  left: -30px;
-  width: 90px;
-  z-index: 2;
+  top: 30px;
+  left: 0;
+  width: 360px;
+  height: 24px;
+  background: var(--main-yellow);
+  border-radius: 4px;
+
+  transform-origin: 35% 50%;
+  animation: craneLogoMove 5s ease-in-out infinite;
 }
 
-.crane svg {
-  width: 100%;
-  height: auto;
-
-  transform-origin: 80% 20%;
-  animation: craneArc 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+/* VERTICAL TOWER */
+.crane-tower {
+  position: absolute;
+  top: 0;
+  left: 85px;
+  width: 28px;
+  height: 150px;
+  background: var(--main-yellow);
+  border-radius: 4px;
 }
 
-/* CRANE ANIMATION */
-@keyframes craneArc {
+/* TEXT LOGO */
+.logo-text {
+  font-size: 76px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #111;
+  margin: 0;
+  line-height: 1;
+
+  transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+/* CONTROLLED CRANE ARM MOTION */
+@keyframes craneLogoMove {
   0% {
-    transform: rotate(-20deg);
+    transform: rotate(0deg);
   }
 
   35% {
-    transform: rotate(15deg);
+    transform: rotate(4deg);
   }
 
   50% {
-    transform: rotate(10deg);
+    transform: rotate(2deg);
   }
 
   65% {
-    transform: rotate(15deg);
-  }
-
-  85% {
-    transform: rotate(-20deg);
+    transform: rotate(4deg);
   }
 
   100% {
-    transform: rotate(-20deg);
-  }
-}
-
-/* HOOK */
-.hook {
-  position: absolute;
-  top: 28px;
-  left: 65%;
-  width: 2px;
-  height: 18px;
-  background: #222;
-
-  animation: hookMove 5s ease-in-out infinite;
-}
-
-/* HOOK SHADOW */
-.hook::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: -6px;
-  width: 12px;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-
-  animation: hookShadow 5s ease-in-out infinite;
-}
-
-@keyframes hookMove {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-
-  30% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(15px);
-    opacity: 1;
-  }
-
-  70% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-}
-
-@keyframes hookShadow {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(0.6);
-    opacity: 0.3;
+    transform: rotate(0deg);
   }
 }
 
