@@ -1,6 +1,29 @@
 html {
   scroll-behavior: smooth;
-: 50px;}
+}
+
+:root {
+  --main-yellow: #f4b400;
+  --dark: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  color: var(--dark);
+  cursor: default;
+}
+
+/* SECTIONS */
+.section {
+  min-height: 100vh;
+  padding: 50px;
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
   opacity: 1;
@@ -53,7 +76,6 @@ html {
   height: 22px;
   background: var(--main-yellow);
   border-radius: 4px;
-
   transform-origin: 32% 50%;
   animation: craneLogoMove 5s ease-in-out infinite;
 }
@@ -77,7 +99,6 @@ html {
   color: #111;
   margin: 0;
   line-height: 0.85;
-
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -145,45 +166,35 @@ html {
   height: 255px;
   position: relative;
   overflow: hidden;
-
-  /* black contact line position */
-  --wheel-line-bottom: 34px;
 }
 
-/* REALISTIC ROAD BACKGROUND */
+/* CLEAN ROAD / BANNER BACKGROUND */
 .road {
   background:
     linear-gradient(
       to bottom,
-      #f7f7f7 0%,
-      #f7f7f7 12%,
-      #4c4c4c 12%,
-      #3a3a3a 74%,
-      #2b2b2b 100%
+      #f6f6f6 0%,
+      #f6f6f6 10%,
+      #4a4a4a 10%,
+      #3a3a3a 75%,
+      #292929 100%
     );
 }
 
-/* ROAD TOP EDGE */
+/* SOFT TOP EDGE */
 .road::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 30px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.28);
+  top: 26px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* BLACK WHEEL CONTACT LINE */
+/* IMPORTANT: BLACK LINE REMOVED */
 .road::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: var(--wheel-line-bottom);
-  height: 6px;
-  background: rgba(0, 0, 0, 0.42);
-  z-index: 1;
+  display: none;
 }
 
 /* MACHINE AREA */
@@ -195,6 +206,7 @@ html {
 .machine-track {
   position: absolute;
   left: 0;
+  bottom: 0;
   z-index: 10;
   pointer-events: none;
 
@@ -237,37 +249,28 @@ html {
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* MACHINE SPEED + VERTICAL ALIGNMENT */
-
-/* Lower number = machine goes lower */
-/* Higher number = machine goes higher */
-
+/* MACHINE LOOP SPEEDS */
 .jcb-drive {
-  bottom: 4px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  bottom: 2px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
 
 .loader-drive {
-  bottom: 5px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
-  bottom: 6px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
-  bottom: 5px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
@@ -429,11 +432,14 @@ html {
 
   .transition {
     height: 190px;
-    --wheel-line-bottom: 26px;
   }
 
   .road::before {
-    top: 24px;
+    top: 22px;
+  }
+
+  .machine-track {
+    bottom: 0;
   }
 
   .jcb-machine {
@@ -457,27 +463,22 @@ html {
   }
 
   .jcb-drive {
-    bottom: 2px;
     animation-duration: 9s;
   }
 
   .excavator-drive {
-    bottom: 0;
     animation-duration: 11s;
   }
 
   .loader-drive {
-    bottom: 2px;
     animation-duration: 10s;
   }
 
   .grader-drive {
-    bottom: 3px;
     animation-duration: 12s;
   }
 
   .roller-drive {
-    bottom: 2px;
     animation-duration: 13s;
   }
 
@@ -491,25 +492,3 @@ html {
     }
   }
 }
-
-:root {
-  --main-yellow: #f4b400;
-  --dark: #222;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* GLOBAL */
-body {
-  margin: 0;
-  font-family: 'Rajdhani', Arial, sans-serif;
-  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
-  color: var(--dark);
-  cursor: default;
-}
-
-/* SECTIONS */
-.section {
-  min-height: 100vh;
