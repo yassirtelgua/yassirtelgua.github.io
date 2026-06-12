@@ -26,7 +26,6 @@ body {
   padding: 50px;
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
-
   opacity: 1;
   transform: translateY(0);
 }
@@ -65,7 +64,6 @@ body {
   width: 120px;
   height: 125px;
   flex-shrink: 0;
-
   transform: translateY(-6px);
 }
 
@@ -102,7 +100,6 @@ body {
   color: #111;
   margin: 0;
   line-height: 0.85;
-
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -167,7 +164,7 @@ body {
 
 /* TRANSITIONS */
 .transition {
-  height: 140px;
+  height: 210px;
   position: relative;
   overflow: hidden;
 }
@@ -175,49 +172,67 @@ body {
 /* ROAD */
 .road {
   background:
-    linear-gradient(#555, #555) center / 100% 5px no-repeat,
+    linear-gradient(#555, #555) center calc(100% - 25px) / 100% 6px no-repeat,
     repeating-linear-gradient(
       to right,
       #444 0px,
-      #444 30px,
-      #666 30px,
-      #666 60px
+      #444 35px,
+      #666 35px,
+      #666 70px
     );
 }
 
-/* MACHINE */
+/* MACHINE AREA */
+.machine-zone {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* GENERAL MACHINE */
 .machine {
   position: absolute;
-  left: -190px;
-  bottom: 22px;
-  width: 160px;
+  left: 0;
+  bottom: 34px;
+  height: auto;
+  object-fit: contain;
 
-  transition: transform 4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  filter: drop-shadow(4px 6px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(5px 8px 8px rgba(0, 0, 0, 0.35));
   z-index: 10;
+  pointer-events: none;
 
-  cursor: pointer;
+  animation-name: machineDriveLoop;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-/* SPEEDS */
-.speed1 {
-  transition-duration: 3.5s;
+/* INDIVIDUAL MACHINE SIZES + SPEEDS */
+.jcb-machine {
+  width: 360px;
+  animation-duration: 28s;
+  animation-delay: 0s;
 }
 
-.speed2 {
-  transition-duration: 4s;
+.excavator-machine {
+  width: 390px;
+  animation-duration: 34s;
+  animation-delay: -6s;
 }
 
-.speed3 {
-  transition-duration: 3.8s;
+.grader-machine {
+  width: 420px;
+  animation-duration: 38s;
+  animation-delay: -12s;
 }
 
-.speed4 {
-  transition-duration: 4.5s;
-}
+/* REALISTIC SLOW LOOP */
+@keyframes machineDriveLoop {
+  0% {
+    transform: translateX(-450px);
+  }
 
-.speed5 {
-  transition-duration: 5s;
+  100% {
+    transform: translateX(calc(100vw + 450px));
+  }
 }
 
 /* CTA */
@@ -293,8 +308,29 @@ body {
     margin-top: 5px;
   }
 
-  .machine {
-    width: 130px;
-    left: -150px;
+  .transition {
+    height: 170px;
+  }
+
+  .jcb-machine {
+    width: 260px;
+  }
+
+  .excavator-machine {
+    width: 280px;
+  }
+
+  .grader-machine {
+    width: 310px;
+  }
+
+  @keyframes machineDriveLoop {
+    0% {
+      transform: translateX(-350px);
+    }
+
+    100% {
+      transform: translateX(calc(100vw + 350px));
+    }
   }
 }
