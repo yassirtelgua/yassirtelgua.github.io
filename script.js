@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
 
   function handleScroll() {
-    // SECTION VISIBILITY
     sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
 
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // LOGO ACTIVE STATE
     if (logo && hero) {
       const heroRect = hero.getBoundingClientRect();
 
@@ -39,4 +37,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
   }
 });
-``
