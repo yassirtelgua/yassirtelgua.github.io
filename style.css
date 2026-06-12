@@ -1,29 +1,6 @@
 html {
   scroll-behavior: smooth;
-}
-
-:root {
-  --main-yellow: #f4b400;
-  --dark: #222;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* GLOBAL */
-body {
-  margin: 0;
-  font-family: 'Rajdhani', Arial, sans-serif;
-  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
-  color: var(--dark);
-  cursor: default;
-}
-
-/* SECTIONS */
-.section {
-  min-height: 100vh;
-  padding: 50px;
+: 50px;}
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
   opacity: 1;
@@ -169,8 +146,8 @@ body {
   position: relative;
   overflow: hidden;
 
-  /* This controls the wheel/contact line position */
-  --wheel-line-bottom: 30px;
+  /* black contact line position */
+  --wheel-line-bottom: 34px;
 }
 
 /* REALISTIC ROAD BACKGROUND */
@@ -197,7 +174,7 @@ body {
   background: rgba(255, 255, 255, 0.28);
 }
 
-/* WHEEL CONTACT LINE */
+/* BLACK WHEEL CONTACT LINE */
 .road::after {
   content: "";
   position: absolute;
@@ -205,7 +182,7 @@ body {
   right: 0;
   bottom: var(--wheel-line-bottom);
   height: 6px;
-  background: rgba(0, 0, 0, 0.38);
+  background: rgba(0, 0, 0, 0.42);
   z-index: 1;
 }
 
@@ -218,10 +195,6 @@ body {
 .machine-track {
   position: absolute;
   left: 0;
-
-  /* This aligns the wheels closer to the black contact line */
-  bottom: calc(var(--wheel-line-bottom) - 8px);
-
   z-index: 10;
   pointer-events: none;
 
@@ -264,28 +237,37 @@ body {
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* MACHINE LOOP SPEEDS */
+/* MACHINE SPEED + VERTICAL ALIGNMENT */
+
+/* Lower number = machine goes lower */
+/* Higher number = machine goes higher */
+
 .jcb-drive {
+  bottom: 4px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
+  bottom: 2px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
 
 .loader-drive {
+  bottom: 5px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
+  bottom: 6px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
+  bottom: 5px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
@@ -447,15 +429,11 @@ body {
 
   .transition {
     height: 190px;
-    --wheel-line-bottom: 24px;
+    --wheel-line-bottom: 26px;
   }
 
   .road::before {
     top: 24px;
-  }
-
-  .machine-track {
-    bottom: calc(var(--wheel-line-bottom) - 6px);
   }
 
   .jcb-machine {
@@ -479,22 +457,27 @@ body {
   }
 
   .jcb-drive {
+    bottom: 2px;
     animation-duration: 9s;
   }
 
   .excavator-drive {
+    bottom: 0;
     animation-duration: 11s;
   }
 
   .loader-drive {
+    bottom: 2px;
     animation-duration: 10s;
   }
 
   .grader-drive {
+    bottom: 3px;
     animation-duration: 12s;
   }
 
   .roller-drive {
+    bottom: 2px;
     animation-duration: 13s;
   }
 
@@ -508,3 +491,25 @@ body {
     }
   }
 }
+
+:root {
+  --main-yellow: #f4b400;
+  --dark: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  color: var(--dark);
+  cursor: default;
+}
+
+/* SECTIONS */
+.section {
+  min-height: 100vh;
