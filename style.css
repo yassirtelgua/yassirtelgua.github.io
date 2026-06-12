@@ -43,6 +43,7 @@ body {
 .hero {
   background: #ffffff url('images/construction-bg.jpg') no-repeat center / cover;
   color: var(--dark);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,6 +76,7 @@ body {
   height: 22px;
   background: var(--main-yellow);
   border-radius: 4px;
+
   transform-origin: 32% 50%;
   animation: craneLogoMove 5s ease-in-out infinite;
 }
@@ -98,6 +100,7 @@ body {
   color: #111;
   margin: 0;
   line-height: 0.85;
+
   transition: transform 0.3s ease, letter-spacing 0.3s ease;
 }
 
@@ -165,6 +168,9 @@ body {
   height: 255px;
   position: relative;
   overflow: hidden;
+
+  /* This controls the wheel/contact line position */
+  --wheel-line-bottom: 30px;
 }
 
 /* REALISTIC ROAD BACKGROUND */
@@ -191,15 +197,16 @@ body {
   background: rgba(255, 255, 255, 0.28);
 }
 
-/* GROUND CONTACT SHADOW */
+/* WHEEL CONTACT LINE */
 .road::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 42px;
-  height: 7px;
-  background: rgba(0, 0, 0, 0.28);
+  bottom: var(--wheel-line-bottom);
+  height: 6px;
+  background: rgba(0, 0, 0, 0.38);
+  z-index: 1;
 }
 
 /* MACHINE AREA */
@@ -211,9 +218,13 @@ body {
 .machine-track {
   position: absolute;
   left: 0;
-  bottom: 42px;
+
+  /* This aligns the wheels closer to the black contact line */
+  bottom: calc(var(--wheel-line-bottom) - 8px);
+
   z-index: 10;
   pointer-events: none;
+
   animation-name: machineDriveLoop;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -253,7 +264,7 @@ body {
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* FASTER LOOP SPEEDS */
+/* MACHINE LOOP SPEEDS */
 .jcb-drive {
   animation-duration: 11s;
   animation-delay: 0s;
@@ -436,18 +447,15 @@ body {
 
   .transition {
     height: 190px;
+    --wheel-line-bottom: 24px;
   }
 
   .road::before {
     top: 24px;
   }
 
-  .road::after {
-    bottom: 32px;
-  }
-
   .machine-track {
-    bottom: 32px;
+    bottom: calc(var(--wheel-line-bottom) - 6px);
   }
 
   .jcb-machine {
