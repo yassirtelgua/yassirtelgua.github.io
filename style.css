@@ -255,13 +255,13 @@ body {
 }
 
 .loader-drive {
-  bottom: -20px;
+  bottom: 0px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
-  bottom: -20px;
+  bottom: -40px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
