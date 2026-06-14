@@ -157,7 +157,7 @@ body {
 
 /* MACHINE ROAD AREA */
 .transition {
-  height: 1200px; /* Shrunk further for an extra sleek banner height */
+  height: 100px; /* Shrunk further for an extra sleek banner height */
   position: relative;
   overflow: hidden;
 }
