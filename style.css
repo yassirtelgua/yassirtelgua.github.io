@@ -155,9 +155,9 @@ body {
   color: #333;
 }
 
-/* MACHINE ROAD AREA */
+/* MACHINE ROAD AREA - ALL 5 BANNERS */
 .transition {
-  height: 255px;
+  height: 140px; /* Shrunk from 255px to make all 5 banners sleeker */
   position: relative;
   overflow: hidden;
 }
@@ -181,7 +181,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 26px;
+  top: 14px; /* Balanced for the new 140px height */
   height: 3px;
   background: rgba(255, 255, 255, 0.25);
 }
@@ -207,7 +207,7 @@ body {
   animation-iteration-count: infinite;
 }
 
-/* MACHINE IMAGE */
+/* MACHINE IMAGE GLOBAL */
 .machine {
   display: block;
   height: auto;
@@ -215,60 +215,59 @@ body {
   filter: drop-shadow(7px 10px 8px rgba(0, 0, 0, 0.45));
 }
 
-/* MACHINE SIZES */
+/* MACHINE SIZES - ALL 5 MACHINES RESIZED */
 .jcb-machine {
-  width: 520px;
+  width: 240px; /* Reduced from 520px */
   animation: jcbRealMove 1.1s ease-in-out infinite;
 }
 
 .excavator-machine {
-  width: 430px;
+  width: 200px; /* Reduced from 430px */
   animation: excavatorRealMove 1.6s ease-in-out infinite;
 }
 
 .loader-machine {
-  width: 390px;
+  width: 180px; /* Reduced from 390px */
   animation: loaderRealMove 1.2s ease-in-out infinite;
 }
 
 .grader-machine {
-  width: 450px;
+  width: 210px; /* Reduced from 450px */
   animation: graderRealMove 1.8s ease-in-out infinite;
 }
 
 .roller-machine {
-  width: 350px;
+  width: 160px; /* Reduced from 350px */
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* MACHINE POSITION + SPEED */
-/* Negative bottom pulls PNG down to reduce transparent-space floating */
+/* MACHINE POSITIONING (Pulls images down to align wheels to the road) */
 .jcb-drive {
-  bottom: -50px;
+  bottom: -20px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  bottom: -40px;
+  bottom: -15px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
 
 .loader-drive {
-  bottom: -28px;
+  bottom: -10px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
-  bottom: -50px;
+  bottom: -20px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
-  bottom: -45px;
+  bottom: -18px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
@@ -276,11 +275,10 @@ body {
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
   0% {
-    transform: translateX(-620px);
+    transform: translateX(-300px); /* Adjusted for smaller asset footprints */
   }
-
   100% {
-    transform: translateX(calc(100vw + 620px));
+    transform: translateX(calc(100vw + 300px));
   }
 }
 
@@ -429,65 +427,33 @@ body {
   }
 
   .transition {
-    height: 190px;
+    height: 90px; /* Compact road height for mobile */
   }
 
   .road::before {
-    top: 22px;
+    top: 9px;
   }
 
-  .jcb-machine {
-    width: 330px;
-  }
+  /* Mobile sizes for all 5 assets */
+  .jcb-machine { width: 140px; }
+  .excavator-machine { width: 120px; }
+  .loader-machine { width: 110px; }
+  .grader-machine { width: 125px; }
+  .roller-machine { width: 100px; }
 
-  .excavator-machine {
-    width: 300px;
-  }
-
-  .loader-machine {
-    width: 290px;
-  }
-
-  .grader-machine {
-    width: 320px;
-  }
-
-  .roller-machine {
-    width: 260px;
-  }
-
-  .jcb-drive {
-    bottom: -22px;
-    animation-duration: 9s;
-  }
-
-  .excavator-drive {
-    bottom: -18px;
-    animation-duration: 11s;
-  }
-
-  .loader-drive {
-    bottom: -18px;
-    animation-duration: 10s;
-  }
-
-  .grader-drive {
-    bottom: -20px;
-    animation-duration: 12s;
-  }
-
-  .roller-drive {
-    bottom: -16px;
-    animation-duration: 13s;
-  }
+  /* Mobile ground alignment offsets */
+  .jcb-drive { bottom: -10px; animation-duration: 9s; }
+  .excavator-drive { bottom: -8px; animation-duration: 11s; }
+  .loader-drive { bottom: -6px; animation-duration: 10s; }
+  .grader-drive { bottom: -10px; animation-duration: 12s; }
+  .roller-drive { bottom: -9px; animation-duration: 13s; }
 
   @keyframes machineDriveLoop {
     0% {
-      transform: translateX(-420px);
+      transform: translateX(-160px);
     }
-
     100% {
-      transform: translateX(calc(100vw + 420px));
+      transform: translateX(calc(100vw + 160px));
     }
   }
 }
