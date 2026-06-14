@@ -157,33 +157,31 @@ body {
 
 /* MACHINE ROAD AREA */
 .transition {
-  height: 110px;
+  height: 110px; /* Shrunk further for an extra sleek banner height */
   position: relative;
   overflow: hidden;
 }
 
-/* ROAD BACKGROUND - FORCED TO FILL 100% HEIGHT TO ELIMINATE THE GAP */
+/* ROAD BACKGROUND WITH PERFECT EDGE ALIGNMENT */
 .road {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    #f6f6f6 0%,
-    #f6f6f6 12px,   /* Clean top border line edge */
-    #4a4a4a 12px,   /* Dark asphalt starts immediately here and covers to the bottom */
-    #3a3a3a 75%,
-    #292929 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      #f6f6f6 0%,
+      #f6f6f6 10%,   /* The light top strip ends exactly at 10% (11px) */
+      #4a4a4a 10%,   /* The dark gray road starts exactly at 10% */
+      #3a3a3a 75%,
+      #292929 100%
+    );
 }
 
-/* SOFT TOP EDGE LINE - LOCKS PERFECTLY TO THE ROAD GRADIENT EDGE */
+/* SOFT TOP EDGE LINE - PERFECTLY ALIGNED TO THE GRAY ROAD EDGE */
 .road::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  top: 12px; 
+  top: 11px; /* Locked precisely to the 10% gradient split line */
   height: 3px;
   background: rgba(255, 255, 255, 0.25);
 }
@@ -217,7 +215,7 @@ body {
   filter: drop-shadow(7px 10px 8px rgba(0, 0, 0, 0.45));
 }
 
-/* MACHINE SIZES - PRESERVED EXACTLY */
+/* MACHINE SIZES - KEPT EXACTLY AS REQUESTED */
 .jcb-machine {
   width: 240px;
   animation: jcbRealMove 1.1s ease-in-out infinite;
@@ -243,33 +241,33 @@ body {
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
-/* MACHINE POSITIONING - REALIGNED TO SIT COMFORTABLY ON THE CORRECTED ROAD */
+/* MACHINE POSITIONING - ADJUSTED FOR THE SLIMMER 110PX ROAD */
 .jcb-drive {
-  bottom: -10px;
+  bottom: -32px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  bottom: -6px;
+  bottom: -26px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
 
 .loader-drive {
-  bottom: -4px;
+  bottom: -20px;
   animation-duration: 12s;
   animation-delay: -6s;
 }
 
 .grader-drive {
-  bottom: -10px;
+  bottom: -32px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
-  bottom: -8px;
+  bottom: -28px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
@@ -389,37 +387,26 @@ body {
   }
 
   .transition {
-    height: 75px; 
-  }
-
-  .road {
-    background: linear-gradient(
-      to bottom,
-      #f6f6f6 0%,
-      #f6f6f6 8px,
-      #4a4a4a 8px,
-      #3a3a3a 75%,
-      #292929 100%
-    );
+    height: 75px; /* Extra compact mobile road banner */
   }
 
   .road::before {
-    top: 8px; 
+    top: 7.5px; /* Formatted to align with mobile 10% gradient threshold */
   }
 
-  /* Mobile machine sizes remain locked */
+  /* Mobile sizes for all 5 assets remain locked */
   .jcb-machine { width: 140px; }
   .excavator-machine { width: 120px; }
   .loader-machine { width: 110px; }
   .grader-machine { width: 125px; }
   .roller-machine { width: 100px; }
 
-  /* Mobile ground alignment offsets optimized for gapless road */
-  .jcb-drive { bottom: -6px; animation-duration: 9s; }
-  .excavator-drive { bottom: -4px; animation-duration: 11s; }
-  .loader-drive { bottom: -3px; animation-duration: 10s; }
-  .grader-drive { bottom: -6px; animation-duration: 12s; }
-  .roller-drive { bottom: -5px; animation-duration: 13s; }
+  /* Mobile ground alignment offsets optimized for 75px height */
+  .jcb-drive { bottom: -18px; animation-duration: 9s; }
+  .excavator-drive { bottom: -15px; animation-duration: 11s; }
+  .loader-drive { bottom: -12px; animation-duration: 10s; }
+  .grader-drive { bottom: -18px; animation-duration: 12s; }
+  .roller-drive { bottom: -16px; animation-duration: 13s; }
 
   @keyframes machineDriveLoop {
     0% {
