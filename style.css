@@ -232,12 +232,12 @@ body {
 }
 
 .grader-machine {
-  width: 200px;
+  width: 220px;
   animation: graderRealMove 1.8s ease-in-out infinite;
 }
 
 .roller-machine {
-  width: 150px;
+  width: 170px;
   animation: rollerRealMove 1.5s ease-in-out infinite;
 }
 
