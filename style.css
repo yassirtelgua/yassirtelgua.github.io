@@ -243,13 +243,13 @@ body {
 
 /* MACHINE POSITIONING - ADJUSTED FOR THE SLIMMER 110PX ROAD */
 .jcb-drive {
-  bottom: -32px;
+  bottom: -20px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
 
 .excavator-drive {
-  bottom: -26px;
+  bottom: -15px;
   animation-duration: 13s;
   animation-delay: -3s;
 }
@@ -261,13 +261,13 @@ body {
 }
 
 .grader-drive {
-  bottom: -32px;
+  bottom: -20px;
   animation-duration: 14s;
   animation-delay: -8s;
 }
 
 .roller-drive {
-  bottom: -28px;
+  bottom: -20px;
   animation-duration: 15s;
   animation-delay: -10s;
 }
