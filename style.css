@@ -222,7 +222,7 @@ body {
 }
 
 .excavator-machine {
-  width: 190px;
+  width: 220px;
   animation: excavatorRealMove 1.6s ease-in-out infinite;
 }
 
