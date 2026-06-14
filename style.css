@@ -227,7 +227,7 @@ body {
 }
 
 .loader-machine {
-  width: 170px;
+  width: 190px;
   animation: loaderRealMove 1.2s ease-in-out infinite;
 }
 
