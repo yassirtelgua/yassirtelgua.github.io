@@ -181,7 +181,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 11px; /* Locked precisely to the 10% gradient split line */
+  top: 0px; /* Locked precisely to the 10% gradient split line */
   height: 3px;
   background: rgba(255, 255, 255, 0.25);
 }
