@@ -157,7 +157,7 @@ body {
 
 /* MACHINE ROAD AREA */
 .transition {
-  height: 100px; /* Shrunk further for an extra sleek banner height */
+  height: 110px; /* Shrunk further for an extra sleek banner height */
   position: relative;
   overflow: hidden;
 }
@@ -168,8 +168,8 @@ body {
     linear-gradient(
       to bottom,
       #f6f6f6 0%,
-      #f6f6f6 10%,   /* The light top strip ends exactly at 10% (11px) */
-      #4a4a4a 10%,   /* The dark gray road starts exactly at 10% */
+      #f6f6f6 0%,   /* The light top strip ends exactly at 10% (11px) */
+      #4a4a4a 0%,   /* The dark gray road starts exactly at 10% */
       #3a3a3a 75%,
       #292929 100%
     );
