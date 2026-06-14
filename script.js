@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         logo.classList.remove("impact");
-      }, 300);
+      } , 300);
     }, 5000);
   }
 });
