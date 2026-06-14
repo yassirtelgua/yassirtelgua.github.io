@@ -194,11 +194,11 @@ body {
 .roller-machine { width: 170px; animation: rollerRealMove 1.5s ease-in-out infinite; }
 
 /* MACHINE BASELINE POSITIONING - SITS PERFECTLY ABOVE THE 32PX BOTTOM TAPE */
-.jcb-drive { bottom: 18px; animation-duration: 11s; animation-delay: 0s; }
+.jcb-drive { bottom: 20px; animation-duration: 11s; animation-delay: 0s; }
 .excavator-drive { bottom: 20px; animation-duration: 13s; animation-delay: -3s; }
-.loader-drive { bottom: 30px; animation-duration: 12s; animation-delay: -6s; }
-.grader-drive { bottom: -2px; animation-duration: 14s; animation-delay: -8s; }
-.roller-drive { bottom: 14px; animation-duration: 15s; animation-delay: -10s; }
+.loader-drive { bottom: 33px; animation-duration: 12s; animation-delay: -6s; }
+.grader-drive { bottom: -4px; animation-duration: 14s; animation-delay: -8s; }
+.roller-drive { bottom: 13px; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
