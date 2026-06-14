@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Strict lock against horizontal scrollbars */
 }
 
 :root {
@@ -18,6 +19,7 @@ body {
   background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
   color: var(--dark);
   cursor: default;
+  overflow-x: hidden; /* Safety lock to keep elements constrained to the screen */
 }
 
 /* SECTIONS */
@@ -35,9 +37,7 @@ body {
   transform: translateY(0);
 }
 
-.section:hover {
-  scale: 1.01;
-}
+/* REMOVED .section:hover scale rule to completely stop the horizontal page stretching */
 
 /* HERO */
 .hero {
@@ -108,43 +108,18 @@ body {
 }
 
 @keyframes textImpact {
-  0% {
-    transform: translateY(0);
-  }
-
-  30% {
-    transform: translateY(-3px);
-  }
-
-  60% {
-    transform: translateY(1px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-3px); }
+  60% { transform: translateY(1px); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes craneLogoMove {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  35% {
-    transform: rotate(3deg);
-  }
-
-  50% {
-    transform: rotate(1.5deg);
-  }
-
-  65% {
-    transform: rotate(3deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
+  0% { transform: rotate(0deg); }
+  35% { transform: rotate(3deg); }
+  50% { transform: rotate(1.5deg); }
+  65% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .subtitle {
@@ -164,15 +139,17 @@ body {
 
 /* ROAD BACKGROUND WITH PERFECT EDGE ALIGNMENT */
 .road {
-  background:
-    linear-gradient(
-      to bottom,
-      #f6f6f6 0%,
-      #f6f6f6 0%,   /* The light top strip ends exactly at 10% (11px) */
-      #4a4a4a 0%,   /* The dark gray road starts exactly at 10% */
-      #3a3a3a 75%,
-      #292929 100%
-    );
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #f6f6f6 0%,
+    #f6f6f6 11px,   /* Light top strip ends cleanly at 11px */
+    #4a4a4a 11px,   /* Dark gray asphalt starts exactly at 11px */
+    #3a3a3a 75%,
+    #292929 100%
+  );
 }
 
 /* SOFT TOP EDGE LINE - PERFECTLY ALIGNED TO THE GRAY ROAD EDGE */
@@ -181,7 +158,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0px; /* Locked precisely to the 10% gradient split line */
+  top: 11px; /* Locked precisely to the gradient split line */
   height: 3px;
   background: rgba(255, 255, 255, 0.25);
 }
@@ -199,9 +176,8 @@ body {
 .machine-track {
   position: absolute;
   left: 0;
-  z-index: 0;
+  z-index: 10;
   pointer-events: none;
-
   animation-name: machineDriveLoop;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -242,44 +218,16 @@ body {
 }
 
 /* MACHINE POSITIONING - ADJUSTED FOR THE SLIMMER 110PX ROAD */
-.jcb-drive {
-  bottom: -20px;
-  animation-duration: 11s;
-  animation-delay: 0s;
-}
-
-.excavator-drive {
-  bottom: -15px;
-  animation-duration: 13s;
-  animation-delay: -3s;
-}
-
-.loader-drive {
-  bottom: -20px;
-  animation-duration: 12s;
-  animation-delay: -6s;
-}
-
-.grader-drive {
-  bottom: -20px;
-  animation-duration: 14s;
-  animation-delay: -8s;
-}
-
-.roller-drive {
-  bottom: -20px;
-  animation-duration: 15s;
-  animation-delay: -10s;
-}
+.jcb-drive { bottom: -20px; animation-duration: 11s; animation-delay: 0s; }
+.excavator-drive { bottom: -15px; animation-duration: 13s; animation-delay: -3s; }
+.loader-drive { bottom: -20px; animation-duration: 12s; animation-delay: -6s; }
+.grader-drive { bottom: -20px; animation-duration: 14s; animation-delay: -8s; }
+.roller-drive { bottom: -20px; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
-  0% {
-    transform: translateX(-300px);
-  }
-  100% {
-    transform: translateX(calc(100vw + 300px));
-  }
+  0% { transform: translateX(-300px); }
+  100% { transform: translateX(calc(100vw + 300px)); }
 }
 
 /* REALISTIC SMALL MACHINE MOTION */
@@ -390,6 +338,17 @@ body {
     height: 75px; /* Extra compact mobile road banner */
   }
 
+  .road {
+    background: linear-gradient(
+      to bottom,
+      #f6f6f6 0%,
+      #f6f6f6 7.5px,
+      #4a4a4a 7.5px,
+      #3a3a3a 75%,
+      #292929 100%
+    );
+  }
+
   .road::before {
     top: 7.5px; /* Formatted to align with mobile 10% gradient threshold */
   }
@@ -409,11 +368,7 @@ body {
   .roller-drive { bottom: -16px; animation-duration: 13s; }
 
   @keyframes machineDriveLoop {
-    0% {
-      transform: translateX(-160px);
-    }
-    100% {
-      transform: translateX(calc(100vw + 160px));
-    }
+    0% { transform: translateX(-160px); }
+    100% { transform: translateX(calc(100vw + 160px)); }
   }
 }
