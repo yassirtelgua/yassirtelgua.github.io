@@ -217,7 +217,7 @@ body {
 
 /* MACHINE SIZES - KEPT EXACTLY AS REQUESTED */
 .jcb-machine {
-  width: 230px;
+  width: 220px;
   animation: jcbRealMove 1.1s ease-in-out infinite;
 }
 
