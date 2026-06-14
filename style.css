@@ -23,7 +23,7 @@ body {
 /* SECTIONS */
 .section {
   min-height: 100vh;
-  /* Nutzt Viewport-Einheiten, damit Polsterungen beim Zoomen mitskalieren */
+  /* Nutzt Viewport-Einheiten, damit Abstände beim Zoomen sauber mitskalieren */
   padding: 8vh 6vw; 
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
@@ -209,11 +209,11 @@ body {
 .roller-machine { width: 170px; animation: rollerRealMove 1.5s ease-in-out infinite; }
 
 /* MACHINE BASELINE POSITIONING - PROPORTIONAL OFFSETS */
-.jcb-drive { bottom: 1.3rem; animation-duration: 11s; animation-delay: 0s; }
-.excavator-drive { bottom: 1.3rem; animation-duration: 13s; animation-delay: -3s; }
-.loader-drive { bottom: 2.0rem; animation-duration: 12s; animation-delay: -6s; }
-.grader-drive { bottom: -0.1rem; animation-duration: 14s; animation-delay: -8s; }
-.roller-drive { bottom: 0.9rem; animation-duration: 15s; animation-delay: -10s; }
+.jcb-drive { bottom: 1.5rem; animation-duration: 11s; animation-delay: 0s; }
+.excavator-drive { bottom: 1.5rem; animation-duration: 13s; animation-delay: -3s; }
+.loader-drive { bottom: 2.2rem; animation-duration: 12s; animation-delay: -6s; }
+.grader-drive { bottom: -0.2rem; animation-duration: 14s; animation-delay: -8s; }
+.roller-drive { bottom: 1rem; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
@@ -264,17 +264,6 @@ body {
 .secondary { border: 2px solid #333; color: #333; }
 .secondary:hover { background: #333; color: white; }
 
-/* WHATSAPP */
-.whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
-}
-.whatsapp:hover { background: #1ebd5a; }
 
 /* CERTIFICATES SECTION WITH HAZARD TAPES */
 .certificates-section {
@@ -389,6 +378,67 @@ body {
   color: var(--dark);
 }
 
+
+/* NEW CONTACT BUTTONS CONTAINER */
+.contact-buttons-container {
+  display: flex;
+  flex-wrap: wrap;         /* Verhindert Layout-Bruch bei extremem Zoom-In */
+  justify-content: center; /* Hält die Buttons zentriert */
+  gap: 1.2rem;             /* Skalierbarer Abstand */
+  margin-top: 25px;
+  width: 100%;
+  max-width: 800px;        /* Symmetrisch zur Text-Breite */
+}
+
+/* BASE STYLE FOR ALL ACTION BUTTONS */
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;       /* Skaliert sauber mit Browser-Textzoom */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  min-width: 170px;        /* Einheitliche Optik der Kacheln */
+  box-sizing: border-box;
+}
+
+.btn-contact:hover {
+  transform: translateY(-2px);
+}
+
+/* WHATSAPP BUTTON */
+.btn-contact.whatsapp {
+  background: #25D366;
+  color: white;
+}
+.btn-contact.whatsapp:hover {
+  background: #1ebd5a;
+}
+
+/* EMAIL BUTTON */
+.btn-contact.email {
+  background: #0078d4;
+  color: white;
+}
+.btn-contact.email:hover {
+  background: #005a9e;
+}
+
+/* CALL BUTTON */
+.btn-contact.call {
+  background: var(--dark);
+  color: white;
+  border: 2px solid #333;
+}
+.btn-contact.call:hover {
+  background: #444;
+}
+
+
 /* MARQUEE ANIMATIONS */
 @keyframes marqueeMove {
   0% { transform: translateX(0); }
@@ -432,4 +482,14 @@ body {
   }
 
   .certificates-container { padding: 4vh 4vw; }
+
+  /* Mobil-Optimierung für die Kontaktleiste */
+  .contact-buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .btn-contact {
+    width: 85%;
+  }
 }
