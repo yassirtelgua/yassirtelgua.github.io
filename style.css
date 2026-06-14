@@ -23,20 +23,31 @@ body {
 /* SECTIONS */
 .section {
   min-height: 100vh;
-  padding: 50px;
+  /* Nutzt Viewport-Einheiten, damit Polsterungen beim Zoomen mitskalieren */
+  padding: 8vh 6vw; 
   border-bottom: 2px solid #ddd;
   background: rgba(255, 255, 255, 0.95);
-  opacity: 1;
-  transform: translateY(0);
+  
+  /* Flexbox-Zentrierung sichert die Inhaltsstruktur bei extremen Zoom-Stufen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Kontrolliert Textblöcke und Listen bei starkem Herauszoomen (Zoom Out) */
+.section p, .section ul {
+  width: 100%;
+  max-width: 800px; /* Verhindert, dass Textzeilen unleserlich lang gestreckt werden */
+  margin: 20px auto 0 auto;
+  font-size: 1.2rem; /* Relative Schriftgröße skaliert sauber mit */
+  line-height: 1.6;
 }
 
-.section:hover {
-  scale: 1.00;
+.section ul {
+  text-align: left;
+  display: inline-block;
 }
 
 /* HERO */
@@ -47,6 +58,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Verhindert Inhalts-Kollisionen bei extremem Zoom-In */
+  padding: 12vh 5vw; 
 }
 
 /* LOGO */
@@ -131,12 +144,14 @@ body {
 
 /* MACHINE ROAD AREA */
 .transition {
-  height: 160px; /* Erhöht für ein sauberes Einbetten der oberen und unteren Bänder */
+  /* Verwaltet die Straßenhöhe dynamisch passend zum Zoomfaktor */
+  height: 11rem; 
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
-/* ROAD BACKGROUND WITH GRADIENT ASING */
+/* ROAD BACKGROUND WITH GRADIENT EASING */
 .road {
   background: linear-gradient(
     to bottom,
@@ -193,12 +208,12 @@ body {
 .grader-machine { width: 220px; animation: graderRealMove 1.8s ease-in-out infinite; }
 .roller-machine { width: 170px; animation: rollerRealMove 1.5s ease-in-out infinite; }
 
-/* MACHINE BASELINE POSITIONING - SITS PERFECTLY ABOVE THE 32PX BOTTOM TAPE */
-.jcb-drive { bottom: 20px; animation-duration: 11s; animation-delay: 0s; }
-.excavator-drive { bottom: 20px; animation-duration: 13s; animation-delay: -3s; }
-.loader-drive { bottom: 33px; animation-duration: 12s; animation-delay: -6s; }
-.grader-drive { bottom: -4px; animation-duration: 14s; animation-delay: -8s; }
-.roller-drive { bottom: 13px; animation-duration: 15s; animation-delay: -10s; }
+/* MACHINE BASELINE POSITIONING - PROPORTIONAL OFFSETS */
+.jcb-drive { bottom: 1.5rem; animation-duration: 11s; animation-delay: 0s; }
+.excavator-drive { bottom: 1.5rem; animation-duration: 13s; animation-delay: -3s; }
+.loader-drive { bottom: 2.2rem; animation-duration: 12s; animation-delay: -6s; }
+.grader-drive { bottom: -0.2rem; animation-duration: 14s; animation-delay: -8s; }
+.roller-drive { bottom: 1rem; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
@@ -270,7 +285,7 @@ body {
 }
 
 .certificates-container {
-  padding: 60px 50px;
+  padding: 8vh 6vw;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -318,7 +333,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   text-shadow: 
-    -2px -2px 0 #000,  
+    -2px -2px 0 #000,   
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
@@ -384,16 +399,16 @@ body {
   100% { transform: translateX(0); }
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE & COMPACT SCALING */
 @media (max-width: 768px) {
-  .section { padding: 30px; }
+  .section { padding: 6vh 4vw; }
   .logo-wrapper { transform: scale(0.75); }
   .crane-arm { width: 290px; }
   .logo-text { font-size: 58px; }
   .subtitle { font-size: 18px; margin-top: 5px; }
 
   /* Compact Mobile Height for Roads */
-  .transition { height: 110px; }
+  .transition { height: 8rem; }
   .hazard-tape { height: 24px; }
   .marquee-track span { font-size: 12px; }
 
@@ -404,17 +419,17 @@ body {
   .grader-machine { width: 125px; }
   .roller-machine { width: 100px; }
 
-  /* Re-aligned Mobile Offsets for 24px Bottom Tape */
-  .jcb-drive { bottom: 16px; animation-duration: 9s; }
-  .excavator-drive { bottom: 18px; animation-duration: 11s; }
-  .loader-drive { bottom: 20px; animation-duration: 10s; }
-  .grader-drive { bottom: 8px; animation-duration: 12s; }
-  .roller-drive { bottom: 16px; animation-duration: 13s; }
+  /* Re-aligned Mobile Offsets */
+  .jcb-drive { bottom: 1.1rem; animation-duration: 9s; }
+  .excavator-drive { bottom: 1.2rem; animation-duration: 11s; }
+  .loader-drive { bottom: 1.4rem; animation-duration: 10s; }
+  .grader-drive { bottom: 0.4rem; animation-duration: 12s; }
+  .roller-drive { bottom: 1.1rem; animation-duration: 13s; }
 
   @keyframes machineDriveLoop {
     0% { transform: translateX(-160px); }
     100% { transform: translateX(calc(100vw + 160px)); }
   }
 
-  .certificates-container { padding: 40px 20px; }
+  .certificates-container { padding: 4vh 4vw; }
 }
