@@ -197,7 +197,7 @@ body {
 .jcb-drive { bottom: 18px; animation-duration: 11s; animation-delay: 0s; }
 .excavator-drive { bottom: 20px; animation-duration: 13s; animation-delay: -3s; }
 .loader-drive { bottom: 30px; animation-duration: 12s; animation-delay: -6s; }
-.grader-drive { bottom: 2px; animation-duration: 14s; animation-delay: -8s; }
+.grader-drive { bottom: -2px; animation-duration: 14s; animation-delay: -8s; }
 .roller-drive { bottom: 14px; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
