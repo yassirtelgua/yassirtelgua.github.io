@@ -209,11 +209,11 @@ body {
 .roller-machine { width: 170px; animation: rollerRealMove 1.5s ease-in-out infinite; }
 
 /* MACHINE BASELINE POSITIONING - PROPORTIONAL OFFSETS */
-.jcb-drive { bottom: 1.5rem; animation-duration: 11s; animation-delay: 0s; }
-.excavator-drive { bottom: 1.5rem; animation-duration: 13s; animation-delay: -3s; }
-.loader-drive { bottom: 2.2rem; animation-duration: 12s; animation-delay: -6s; }
-.grader-drive { bottom: -0.2rem; animation-duration: 14s; animation-delay: -8s; }
-.roller-drive { bottom: 1rem; animation-duration: 15s; animation-delay: -10s; }
+.jcb-drive { bottom: 1.3rem; animation-duration: 11s; animation-delay: 0s; }
+.excavator-drive { bottom: 1.3rem; animation-duration: 13s; animation-delay: -3s; }
+.loader-drive { bottom: 2.0rem; animation-duration: 12s; animation-delay: -6s; }
+.grader-drive { bottom: -0.1rem; animation-duration: 14s; animation-delay: -8s; }
+.roller-drive { bottom: 0.9rem; animation-duration: 15s; animation-delay: -10s; }
 
 /* LEFT TO RIGHT LOOP */
 @keyframes machineDriveLoop {
