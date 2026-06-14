@@ -243,7 +243,7 @@ body {
 
 /* MACHINE POSITIONING - ADJUSTED FOR THE SLIMMER 110PX ROAD */
 .jcb-drive {
-  bottom: -32px;
+  bottom: -20px;
   animation-duration: 11s;
   animation-delay: 0s;
 }
