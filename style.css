@@ -264,17 +264,66 @@ body {
 .secondary { border: 2px solid #333; color: #333; }
 .secondary:hover { background: #333; color: white; }
 
-/* WHATSAPP */
-.whatsapp {
-  display: inline-block;
+
+/* NEW CONTACT BUTTONS CONTAINER & LAYOUT */
+.contact-buttons-container {
+  display: flex;
+  flex-wrap: wrap;         /* Verhindert Layout-Bruch auf kleinen Displays */
+  justify-content: center; /* Hält die Buttons zentriert */
+  gap: 1.2rem;             /* Gleichmäßiger, skalierbarer Abstand */
+  margin-top: 25px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* GEMEINSAME BASIS-STYLES FÜR ALLE DREI BUTTONS */
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  min-width: 180px;        /* Sichert eine einheitliche Kachelbreite */
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-contact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* FARBVARIANTEN FÜR DIE JEWEILIGEN KANÄLE */
+.btn-contact.whatsapp {
   background: #25D366;
   color: white;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
 }
-.whatsapp:hover { background: #1ebd5a; }
+.btn-contact.whatsapp:hover {
+  background: #1ebd5a;
+}
+
+.btn-contact.email {
+  background: #0078d4;
+  color: white;
+}
+.btn-contact.email:hover {
+  background: #005a9e;
+}
+
+.btn-contact.call {
+  background: var(--dark);
+  color: white;
+  border: 2px solid #333;
+}
+.btn-contact.call:hover {
+  background: #444;
+}
+
 
 /* CERTIFICATES SECTION WITH HAZARD TAPES */
 .certificates-section {
@@ -432,4 +481,14 @@ body {
   }
 
   .certificates-container { padding: 4vh 4vw; }
+
+  /* Mobil-Optimierung für die neue Kontaktleiste */
+  .contact-buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .btn-contact {
+    width: 85%;
+  }
 }
