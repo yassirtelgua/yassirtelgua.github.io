@@ -1,256 +1,664 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yassir Telgua | Bauleiter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassir Telgua | Professionelles Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #007bff;
+            --accent-hover: #0056b3;
+            --border-color: #dee2e6;
+            --card-bg: #ffffff;
+            --btn-gold: #f1b400;
+            --btn-gold-hover: #d9a200;
+        }
 
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #f8f9fa;
+            --text-secondary: #a8a8a8;
+            --accent: #375a7f;
+            --accent-hover: #2b4764;
+            --border-color: #2a2a2a;
+            --card-bg: #1d1d1d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 6rem 2rem 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Split Hero Layout */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 85vh;
+            gap: 3rem;
+            padding: 8rem 2rem 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text h2 {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            max-width: 650px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-image-container {
+            flex: 1;
+            width: 100%;
+            max-width: 480px;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .card h4 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Visuelle Erfahrungskarte */
+        .experience-card-visual {
+            padding: 0 !important;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-banner-img {
+            width: 100%;
+            height: 180px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-banner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Projekt-Bildergalerie */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 240px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Dokumenten-Grid */
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .document-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: #eaeaea;
+            border: 2px dashed #b3b3b3;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .document-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 0 0 1.5rem 0;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .btn-preview {
+            flex: 1;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid #cccccc;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.65rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-preview:hover {
+            background: var(--bg-secondary);
+        }
+
+        .btn-download {
+            flex: 1;
+            background: var(--btn-gold);
+            color: #000000;
+            border: 1px solid var(--btn-gold);
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.65rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-download:hover {
+            background: var(--btn-gold-hover);
+            border-color: var(--btn-gold-hover);
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Skills-Liste */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skills-list li {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Kontaktformular */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin-top: 1.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-split {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 8rem;
+                gap: 2rem;
+            }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text h2 { font-size: 1.3rem; }
+            .hero-image-container { height: 300px; }
+            nav ul { gap: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <section class="section hero">
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">YT</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#experience">Erfahrung</a></li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#documents">Nachweise</a></li>
+                    <li><a href="#skills">Kompetenzen</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li><button class="theme-toggle" id="themeBtn" aria-label="Theme umschalten"><i class="fas fa-moon"></i></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="logo-wrapper">
-      <div class="crane-logo">
-        <div class="crane-arm"></div>
-        <div class="crane-tower"></div>
-      </div>
-      <h1 class="logo-text">ELGUA</h1>
-    </div>
+    <main>
+        <section id="hero" class="hero-split">
+            <div class="hero-text">
+                <h1>Hallo, ich bin <br><span>Yassir Telgua</span></h1>
+                <h2>Bauleiter im Bereich Öffentliche Arbeiten & IT-Support-Spezialist</h2>
+                <p>Zuverlässige Koordination von Infrastrukturprojekten, fundierte Expertise im Tief- und Straßenbau sowie professionelle IT-Systemlösungen und technische Projektunterstützung.</p>
+                <a href="#contact" class="btn">Kontakt aufnehmen</a>
+            </div>
+            <div class="hero-image-container">
+                <img src="construction-hero.jpg" alt="Yassir Telgua - Baustellenkoordination">
+            </div>
+        </section>
 
-    <p class="subtitle">Bauleiter / Tiefbau</p>
+        <section id="about">
+            <h2>Über mich</h2>
+            <div class="card" style="margin-top: 1.5rem;">
+                <p>Ich bin ein analytischer und detailorientierter Fachmann mit einem vielseitigen Profil. Mein Fundament liegt im Bauwesen, untermauert durch ein staatliches Diplom als <strong>Fachtechniker – Bauleiter im Bereich Öffentliche Arbeiten</strong> (Conducteur de travaux publics) sowie praktische Erfahrung in der operativen Bauleitung und der Überwachung von Infrastrukturmaßnahmen. Parallel dazu verfüge ich über fundierte Erfahrung im IT-Support-Umfeld, wo ich komplexe technische Systeme analysiere, Störungen behebe und Projekte unterstütze.</p>
+                <br>
+                <p>Mit erfolgreich absolviertem Sprachzertifikat auf <strong>B2-Niveau (TELC B2)</strong> bereite ich mich aktiv auf meinen nächsten Karriereschritt vor: eine langfristige berufliche Integration und Festanstellung im deutschen Bauwesen oder dem IT-Infrastruktursektor.</p>
+            </div>
+        </section>
 
-    <div class="cta-buttons">
-      <a href="#contact" class="btn primary">Kontakt aufnehmen</a>
-      <a href="cv.pdf" class="btn secondary" download>Lebenslauf herunterladen</a>
-    </div>
+        <section id="experience">
+            <h2>Berufserfahrung</h2>
+            <div class="grid">
+                <div class="card experience-card-visual">
+                    <div class="card-banner-img">
+                        <img src="site-management.jpg" alt="Bauleitung und Tiefbau">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bauleiter / Fachtechniker (Öffentliche Arbeiten)</h3>
+                        <h4>Bau- und Infrastrukturindustrie</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Baustellenkoordination & Projektüberwachung</p>
+                        <p>Steuerung von täglichen Arbeitsabläufen vor Ort, Überwachung von Bauvorgaben im Erdbau und Straßenbau, Prüfung technischer Pläne und Sicherstellung der Qualitätsstandards.</p>
+                    </div>
+                </div>
 
-  </section>
+                <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+                    <div style="padding: 0 0rem;">
+                        <h3>Spezialist für technischen Support</h3>
+                        <h4>Foundever — Lexmark Projekt</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">IT-Infrastruktur & Systemdiagnose</p>
+                        <p>Bereitstellung von fortgeschrittenem technischem Support, Systemdiagnosen, Software- und Hardware-Fehlerbehebung sowie optimierte Koordination von Kundenprojekten.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="transition road machine-zone">
-    <div class="hazard-tape road-tape-top">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-    <div class="machine-track jcb-drive">
-      <img src="images/jcb.png" class="machine jcb-machine" alt="JCB">
-    </div>
-    <div class="hazard-tape road-tape-bottom">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-  </div>
+        <section id="field-gallery">
+            <h2>Einblicke aus der Praxis: Projektgalerie</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Visuelle Übersicht meiner Tätigkeiten auf der Baustelle, der Planprüfung und der Infrastrukturmaßnahmen.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="project-site-1.jpg" alt="Bauüberwachung und Teamkoordination vor Ort">
+                    <div class="gallery-caption">Bauüberwachung vor Ort</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="project-site-2.jpg" alt="Infrastrukturausführung und Erdbau">
+                    <div class="gallery-caption">Infrastrukturausführung</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="project-site-3.jpg" alt="Prüfung von technischen Bauzeichnungen">
+                    <div class="gallery-caption">Planprüfung & Dokumentation</div>
+                </div>
+            </div>
+        </section>
 
-  <section class="section">
-    <h2>Über mich</h2>
-    <p>
-      Motivierter Bauleiter mit einem Diplom als Fachtechniker im Bereich Öffentliche Arbeiten und Tiefbau (OFPPT).
-      Erfahrung in der Organisation von Baustellen, Teamführung und Maschinenbedienung.
-      Ich suche eine Stelle in Deutschland, um meine Kenntnisse weiterzuentwickeln.
-    </p>
-  </section>
+        <section id="documents">
+            <h2>Nachweise & Zertifikate</h2>
+            <p style="color: var(--text-secondary);">Hier finden Sie meine offiziellen Dokumente und zertifizierten Übersetzungen zum Einsehen und Herunterladen.</p>
+            
+            <div class="document-grid">
+                <div class="document-card">
+                    <div class="image-placeholder">
+                        <img src="ofppt-diplom.png" alt="OFPPT Diplom Bauleiter">
+                    </div>
+                    <h3 class="document-title">Bauleiter (Öffentliche Arbeiten)</h3>
+                    <div class="button-group">
+                        <a href="ofppt-diplom.png" target="_blank" class="btn-preview">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg> Vorschau
+                        </a>
+                        <a href="ofppt-diplom.png" download class="btn-download">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg> Download
+                        </a>
+                    </div>
+                </div>
 
-  <div class="transition road machine-zone">
-    <div class="hazard-tape road-tape-top">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-    <div class="machine-track excavator-drive">
-      <img src="images/excavator.png" class="machine excavator-machine" alt="Excavator">
-    </div>
-    <div class="hazard-tape road-tape-bottom">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-  </div>
+                <div class="document-card">
+                    <div class="image-placeholder">
+                        <img src="abiturzeugnis.png" alt="Abiturzeugnis">
+                    </div>
+                    <h3 class="document-title">Abitur (Schwerpunkt Physik)</h3>
+                    <div class="button-group">
+                        <a href="abiturzeugnis.png" target="_blank" class="btn-preview">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg> Vorschau
+                        </a>
+                        <a href="abiturzeugnis.png" download class="btn-download">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg> Download
+                        </a>
+                    </div>
+                </div>
 
-  <section class="section">
-    <h2>Erfahrung</h2>
-    <ul>
-      <li>Organisation von Baustellenabläufen</li>
-      <li>Koordination von Arbeitsteams</li>
-      <li>Überwachung von Baufortschritt und Qualität</li>
-      <li>Zusammenarbeit mit Ingenieuren</li>
-      <li>Praktische Erfahrung mit Baumaschinen</li>
-    </ul>
-  </section>
+                <div class="document-card">
+                    <div class="image-placeholder">
+                        <img src="deutsch-b2.png" alt="Zertifikat Deutsch B2">
+                    </div>
+                    <h3 class="document-title">Deutsch B2 (TELC)</h3>
+                    <div class="button-group">
+                        <a href="deutsch-b2.png" target="_blank" class="btn-preview">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg> Vorschau
+                        </a>
+                        <a href="deutsch-b2.png" download class="btn-download">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="transition road machine-zone">
-    <div class="hazard-tape road-tape-top">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-    <div class="machine-track loader-drive">
-      <img src="images/loader.png" class="machine loader-machine" alt="Loader">
-    </div>
-    <div class="hazard-tape road-tape-bottom">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-  </div>
+        <section id="skills">
+            <h2>Fähigkeiten & Qualifikationen</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Bauwesen & Projektunterstützung</h3>
+                    <ul class="skills-list">
+                        <li>Bauleitung & Bauüberwachung</li>
+                        <li>Tief- und Straßenbau</li>
+                        <li>Planprüfung & Dokumentation</li>
+                        <li>Infrastrukturmaßnahmen</li>
+                        <li>Technische Systemanalyse</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Sprachen & Core Capabilities</h3>
+                    <ul class="skills-list">
+                        <li>Deutsch (B2 — Zertifiziert)</li>
+                        <li>Englisch (Fließend)</li>
+                        <li>Französisch / Arabisch</li>
+                        <li>Interkulturelle Kompetenz</li>
+                        <li>Zielstrebigkeit & Flexibilität</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-  <section class="section">
-    <h2>Projekte</h2>
-    <p>
-      Straßenbauprojekt in Marokko – Leitung eines Teams und Sicherstellung der termingerechten Fertigstellung.
-    </p>
-  </section>
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <p style="color: var(--text-secondary);">Ich freue mich über Ihre Nachricht bezüglich beruflicher Möglichkeiten und Projekte.</p>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht!');">
+                <input type="text" placeholder="Ihr Name" required>
+                <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+                <textarea rows="6" placeholder="Ihre Nachricht" required></textarea>
+                <button type="submit" class="btn">Nachricht senden</button>
+            </form>
+        </section>
+    </main>
 
-  <div class="transition road machine-zone">
-    <div class="hazard-tape road-tape-top">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-    <div class="machine-track grader-drive">
-      <img src="images/grader.png" class="machine grader-machine" alt="Grader">
-    </div>
-    <div class="hazard-tape road-tape-bottom">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-  </div>
+    <footer>
+        <p>&copy; 2026 Yassir Telgua. Alle Rechte vorbehalten.</p>
+    </footer>
 
-  <section class="section">
-    <h2>Fähigkeiten</h2>
-    <ul>
-      <li>Baustellenorganisation</li>
-      <li>Teamleitung</li>
-      <li>Zeitmanagement</li>
-      <li>Maschinenbedienung</li>
-      <li>Tiefbau und Straßenbau</li>
-    </ul>
-  </section>
-
-  <div class="transition road machine-zone">
-    <div class="hazard-tape road-tape-top">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-    <div class="machine-track roller-drive">
-      <img src="images/roller.png" class="machine roller-machine" alt="Road Roller">
-    </div>
-    <div class="hazard-tape road-tape-bottom">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-  </div>
-
-  <section class="certificates-section">
-    
-    <div class="hazard-tape">
-      <div class="marquee-track">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-
-    <div class="certificates-container">
-      <h2>Nachweise & Zertifikate</h2>
-      <p class="certificates-intro">
-        Hier finden Sie meine offiziellen Qualifikationen, Diplome und Impressionen von meinen Baustellen.
-      </p>
-
-      <div class="certificates-grid">
+    <script>
+        const themeBtn = document.getElementById('themeBtn');
+        const icon = themeBtn.querySelector('i');
         
-        <div class="certificate-card">
-          <div class="image-placeholder">
-            <img src="ofppt-diplom.png" alt="OFPPT Diplom">
-          </div>
-          <h3>Bauleiter (Öffentliche Arbeiten)</h3>
-          <div class="cert-actions">
-            <a href="diplom_fachtechniker.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-            <a href="diplom_fachtechniker.pdf" download class="btn-cert download">📥 Download</a>
-          </div>
-        </div>
+        const currentSavedTheme = localStorage.getItem('portfolio-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', currentSavedTheme);
+        setThemeIcon(currentSavedTheme);
 
-        <div class="certificate-card">
-          <div class="image-placeholder">
-            <img src="abiturzeugnis.png" alt="Abiturzeugnis">
-          </div>
-          <h3>Abitur (Schwerpunkt Physik)</h3>
-          <div class="cert-actions">
-            <a href="abiturzeugnis.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-            <a href="abiturzeugnis.pdf" download class="btn-cert download">📥 Download</a>
-          </div>
-        </div>
+        themeBtn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            const targetTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('portfolio-theme', targetTheme);
+            setThemeIcon(targetTheme);
+        });
 
-        <div class="certificate-card">
-          <div class="doc-placeholder">
-            <span>Sprachzertifikat</span>
-          </div>
-          <h3>Deutsch B2</h3>
-          <div class="cert-actions">
-            <a href="deutsch_b2.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-            <a href="deutsch_b2.pdf" download class="btn-cert download">📥 Download</a>
-          </div>
-        </div>
-
-        <div class="certificate-card">
-          <div class="doc-placeholder">
-            <span>Projektbilder</span>
-          </div>
-          <h3>Baustellenimpressionen</h3>
-          <div class="cert-actions">
-            <a href="images/baustellen_galerie.jpg" target="_blank" class="btn-cert preview" style="width: 100%;">📸 Galerie öffnen</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="hazard-tape">
-      <div class="marquee-track reverse">
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="section" id="contact">
-    <h2>Kontakt</h2>
-    <p>Haben Sie Fragen oder ein neues Projekt? Kontaktieren Sie mich direkt über einen der folgenden Kanäle:</p>
-
-    <div class="contact-buttons-container">
-      
-      <a href="https://wa.me/212602927707" class="btn-contact whatsapp" target="_blank" rel="noopener noreferrer">
-        💬 WhatsApp
-      </a>
-      
-      <a href="mailto:yassir.telgua@lexmark.com" class="btn-contact email">
-        ✉️ E-Mail senden
-      </a>
-      
-      <a href="tel:+212602927707" class="btn-contact call">
-        📞 Anrufen
-      </a>
-      
-    </div>
-  </section>
-
-  <script src="script.js"></script>
-
+        function setThemeIcon(theme) {
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
 </body>
 </html>
