@@ -434,25 +434,39 @@ body.dark-mode .btn-contact.call { background: #333; color: white; border-color:
   padding: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease, border 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.certificate-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
-
-.doc-placeholder {
+/* CONTAINER FÜR BILDER UND DIALOG-PLATZHALTER */
+.image-placeholder, .doc-placeholder {
   width: 100%;
   height: 200px;
   background: var(--bg-placeholder);
-  border: 2px dashed #ccc;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.image-placeholder {
+  border: 1px solid var(--border-card);
+}
+
+.doc-placeholder {
+  border: 2px dashed #ccc;
   color: var(--text-placeholder);
   font-weight: 600;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 body.dark-mode .doc-placeholder {
@@ -467,10 +481,70 @@ body.dark-mode .doc-placeholder {
 
 .certificate-card h3 {
   margin-top: 15px;
+  margin-bottom: auto; /* Schiebt die Buttons nach ganz unten */
   font-size: 20px;
   font-weight: 600;
   color: var(--text-main);
   transition: color 0.4s ease;
+}
+
+/* FIX: ZERTIFIKAT BUTTONS LAYOUT & STYLING */
+.cert-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-cert {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  font-family: 'Rajdhani', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.btn-cert:hover {
+  transform: translateY(-2px);
+}
+
+/* VORSCHAU BUTTON STYLE */
+.btn-cert.preview {
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+body.dark-mode .btn-cert.preview {
+  background: #2d2d2d;
+  color: #ffffff;
+  border-color: #555555;
+}
+.btn-cert.preview:hover {
+  background: #f5f5f5;
+}
+body.dark-mode .btn-cert.preview:hover {
+  background: #3d3d3d;
+}
+
+/* DOWNLOAD BUTTON STYLE */
+.btn-cert.download {
+  background: var(--main-yellow);
+  color: #000000;
+  border: 1px solid #222222;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.btn-cert.download:hover {
+  background: #d99c00;
 }
 
 /* MARQUEE ANIMATIONS */
