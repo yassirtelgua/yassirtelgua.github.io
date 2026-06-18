@@ -1,317 +1,279 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yassir Telgua | Portfolio</title>
-    <style>
-        /* Modernes & Responsives Design */
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #2ecc71;
-            --light: #f8f9fa;
-            --dark: #333333;
-            --gray: #666666;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yassir Telgua | Bauleiter</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: var(--dark);
-            background-color: #f4f6f7;
-        }
-
-        header {
-            background: var(--primary);
-            color: #ffffff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        /* Hero-Bereich */
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #ffffff;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            margin: 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Sektionen */
-        section {
-            background: #ffffff;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-
-        .job-title {
-            font-weight: bold;
-            color: var(--secondary);
-            margin-bottom: 0.2rem;
-        }
-
-        .company-time {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        /* Zertifikate-Raster */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .certificate-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .certificate-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-        }
-
-        .image-placeholder {
-            background: #eaedf0;
-            height: 180px;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .certificate-card h3 {
-            margin: 0.5rem 0 1rem 0;
-            font-size: 1.15rem;
-            color: var(--primary);
-        }
-
-        .cert-actions {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        .btn-cert {
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: opacity 0.2s;
-        }
-
-        .btn-cert:hover {
-            opacity: 0.85;
-        }
-
-        .preview {
-            background-color: #e1f5fe;
-            color: #0288d1;
-        }
-
-        .download {
-            background-color: #e8f5e9;
-            color: #388e3c;
-        }
-
-        /* Listen für Interessen & Projekte */
-        .list-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            padding: 0;
-            list-style: none;
-        }
-
-        .list-items li {
-            background: var(--light);
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        @media (max-width: 768px) {
-            nav { gap: 1rem; }
-            section { padding: 1.5rem; }
-            .hero h1 { font-size: 2rem; }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#about">Über mich</a>
-            <a href="#experience">Erfahrung</a>
-            <a href="#certificates">Zertifikate</a>
-            <a href="#projects">Projekte & Hobbys</a>
-        </nav>
-    </header>
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Farbschema umschalten">
+    <span id="theme-icon">🌙</span>
+  </button>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1>Yassir Telgua</h1> <!-- -->
-            <p>Technical Support Professional & Spezialisierter Techniker für öffentliche Arbeiten</p> <!-- -->
-        </div>
-
-        <!-- About Section -->
-        <section id="about">
-            <h2>Über mich</h2>
-            <p>Willkommen auf meinem Portfolio! Ich bin ein vielseitig aufgestellter Fachmann mit fundierter Erfahrung sowohl in der technischen Kundenbetreuung als auch im Bauwesen. Ich verbinde analytisches Denken aus dem IT-Support mit dem lösungsorientierten Projektmanagement eines Bauleiters.</p> <!-- -->
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2>Berufserfahrung</h2>
-            
-            <div>
-                <div class="job-title">Technischer Support-Mitarbeiter (Lexmark-Projekt)</div> <!-- -->
-                <div class="company-time">Foundever</div> <!-- -->
-                <p>Professionelle und spezialisierte IT-Unterstützung im technischen Support-Umfeld zur Behebung komplexer System- und Hardwareprobleme.</p> <!-- -->
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid var(--light); margin: 1.5rem 0;">
-
-            <div>
-                <div class="job-title">Bauleiter / Conducteur de travaux publics</div> <!-- -->
-                <div class="company-time">Bauwesen (2020 – 2021)</div> <!-- -->
-                <p>Verantwortlich für die Koordination, Überwachung und operative Leitung von Baustellen im Bereich des öffentlichen Tief- und Straßenbaus.</p> <!-- -->
-            </div>
-        </section>
-
-        <!-- Certificates Section -->
-        <section id="certificates">
-            <h2>Zertifikate & Qualifikationen</h2>
-            <div class="certificates-grid">
-                
-                <!-- 1. OFPPT Diplom -->
-                <div class="certificate-card">
-                    <div class="image-placeholder">
-                        <img src="ofppt-diplom.png" alt="OFPPT Spezialisiertes Diplom">
-                    </div>
-                    <h3>Technicien Spécialisé (Conducteur de travaux publics)</h3> <!-- -->
-                    <div class="cert-actions">
-                        <a href="diplom_fachtechniker.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-                        <a href="diplom_fachtechniker.pdf" download="Yassir_Telgua_Diplom.pdf" class="btn-cert download">📥 Download</a>
-                    </div>
-                </div>
-
-                <!-- 2. Abiturzeugnis -->
-                <div class="certificate-card">
-                    <div class="image-placeholder">
-                        <img src="abiturzeugnis.png" alt="Abiturzeugnis">
-                    </div>
-                    <h3>Abitur (Schwerpunkt Physik)</h3>
-                    <div class="cert-actions">
-                        <a href="abiturzeugnis.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-                        <a href="abiturzeugnis.pdf" download="Yassir_Telgua_Abiturzeugnis.pdf" class="btn-cert download">📥 Download</a>
-                    </div>
-                </div>
-
-                <!-- 3. Deutsch B2 -->
-                <div class="certificate-card">
-                    <div class="image-placeholder">
-                        <img src="deutsch_b2.png" alt="Deutsch B2 Zertifikat">
-                    </div>
-                    <h3>Deutsch B2 Zertifikat</h3> <!-- -->
-                    <div class="cert-actions">
-                        <a href="deutsch_b2.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
-                        <a href="deutsch_b2.pdf" download="Yassir_Telgua_Deutsch_B2.pdf" class="btn-cert download">📥 Download</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Projects & Interests Section -->
-        <section id="projects">
-            <h2>Projekte & Interessen</h2>
-            
-            <h3>Kreative Projekte</h3>
-            <p><strong>Acoustic Rains:</strong> Gründer eines YouTube-Kanals, der sich auf hochwertige Ambient- und Naturgeräusche zur Entspannung und Konzentrationsförderung spezialisiert.</p> <!-- -->
-
-            <h3 style="margin-top: 1.5rem;">Hobbys & persönliche Schwerpunkte</h3>
-            <ul class="list-items">
-                <li>🥋 Aikido (Aktiv im Training für den 5. Kyu)</li> <!-- -->
-                <li>⚽ Fußball (Wöchentliche Praxis & Taktikanalysen)</li> <!-- -->
-                <li>📈 Finanzmarkthandel (Smart Money Concepts & Price Action)</li> <!-- -->
-                <li>🏍️ Motorradreisen & Langstreckenfahrten</li> <!-- -->
-            </ul>
-        </section>
+  <section class="section hero">
+    <div class="logo-wrapper">
+      <div class="crane-logo">
+        <div class="crane-arm"></div>
+        <div class="crane-tower"></div>
+      </div>
+      <h1 class="logo-text">ELGUA</h1>
     </div>
 
+    <p class="subtitle">Bauleiter / Tiefbau</p>
+
+    <div class="cta-buttons">
+      <a href="#contact" class="btn primary">Kontakt aufnehmen</a>
+      <a href="cv.pdf" class="btn secondary" download>Lebenslauf herunterladen</a>
+    </div>
+  </section>
+
+  <div class="transition road machine-zone">
+    <div class="hazard-tape road-tape-top">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+    <div class="machine-track jcb-drive">
+      <img src="images/jcb.png" class="machine jcb-machine" alt="JCB">
+    </div>
+    <div class="hazard-tape road-tape-bottom">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Über mich</h2>
+    <p>
+      Motivierter Bauleiter mit einem Diplom als Fachtechniker im Bereich Öffentliche Arbeiten und Tiefbau (OFPPT).
+      Erfahrung in der Organisation von Baustellen, Teamführung und Maschinenbedienung.
+      Ich suche eine Stelle in Deutschland, um meine Kenntnisse weiterzuentwickeln.
+    </p>
+  </section>
+
+  <div class="transition road machine-zone">
+    <div class="hazard-tape road-tape-top">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+    <div class="machine-track excavator-drive">
+      <img src="images/excavator.png" class="machine excavator-machine" alt="Excavator">
+    </div>
+    <div class="hazard-tape road-tape-bottom">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Erfahrung</h2>
+    <ul>
+      <li>Organisation von Baustellenabläufen</li>
+      <li>Koordination von Arbeitsteams</li>
+      <li>Überwachung von Baufortschritt und Qualität</li>
+      <li>Zusammenarbeit mit Ingenieuren</li>
+      <li>Praktische Erfahrung mit Baumaschinen</li>
+    </ul>
+  </section>
+
+  <div class="transition road machine-zone">
+    <div class="hazard-tape road-tape-top">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+    <div class="machine-track loader-drive">
+      <img src="images/loader.png" class="machine loader-machine" alt="Loader">
+    </div>
+    <div class="hazard-tape road-tape-bottom">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Projekte</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <div class="project-image-placeholder">
+          <i class="fa-solid fa-tree"></i>
+        </div>
+        <h3>Modernisierung & Umgestaltung des Jugendparks</h3>
+        <p>
+          Komplette Neugestaltung und funktionale Aufwertung der urbanen Parkanlage im Viertel Moulay Ismail (Avenue Zarbia). Koordination der Erdarbeiten und der neuen Wegegestaltung.
+        </p>
+        <a href="images/baustellen_galerie.jpg" target="_blank" class="gallery-link">
+          <i class="fa-solid fa-camera"></i> Bilder ansehen
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder">
+          <i class="fa-solid fa-stairs"></i>
+        </div>
+        <h3>Infrastrukturbau im Parc Hay Salam</h3>
+        <p>
+          Planung und bauliche Umsetzung von Fußgängertreppen zur Verbesserung der Zugänglichkeit innerhalb der Parkanlage. Verantwortung für Schalung, Materialauswahl und Betonierung.
+        </p>
+        <a href="images/baustellen_galerie.jpg" target="_blank" class="gallery-link">
+          <i class="fa-solid fa-camera"></i> Bilder ansehen
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder">
+          <i class="fa-solid fa-faucet-drip"></i>
+        </div>
+        <h3>Tiefbau & Verlegung von Abwasserleitungen</h3>
+        <p>
+          Durchführung von Tiefbauarbeiten zur Verlegung einer Hauptabwasserleitung an der Avenue Zarbia nahe der Winxo-Tankstelle. Überwachung des präzisen Erdaushubs und der Rohrverlegung.
+        </p>
+        <a href="images/baustellen_galerie.jpg" target="_blank" class="gallery-link">
+          <i class="fa-solid fa-camera"></i> Bilder ansehen
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="transition road machine-zone">
+    <div class="hazard-tape road-tape-top">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+    <div class="machine-track grader-drive">
+      <img src="images/grader.png" class="machine grader-machine" alt="Grader">
+    </div>
+    <div class="hazard-tape road-tape-bottom">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Fähigkeiten</h2>
+    <ul>
+      <li>Baustellenorganisation</li>
+      <li>Teamleitung</li>
+      <li>Zeitmanagement</li>
+      <li>Maschinenbedienung</li>
+      <li>Tiefbau und Straßenbau</li>
+    </ul>
+  </section>
+
+  <div class="transition road machine-zone">
+    <div class="hazard-tape road-tape-top">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+    <div class="machine-track roller-drive">
+      <img src="images/roller.png" class="machine roller-machine" alt="Road Roller">
+    </div>
+    <div class="hazard-tape road-tape-bottom">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="certificates-section">
+    <div class="hazard-tape">
+      <div class="marquee-track">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+
+    <div class="certificates-container">
+      <h2>Zertifikate & Qualifikationen</h2>
+      <p class="certificates-intro">
+        Hier finden Sie meine offiziellen Qualifikationen und Diplome.
+      </p>
+
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="image-placeholder">
+            <img src="ofppt-diplom.png" alt="OFPPT Diplom">
+          </div>
+          <h3>Bauleiter (Öffentliche Arbeiten)</h3>
+          <div class="cert-actions">
+            <a href="diplom_fachtechniker.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
+            <a href="diplom_fachtechniker.pdf" download class="btn-cert download">📥 Download</a>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="image-placeholder">
+            <img src="abiturzeugnis.png" alt="Abiturzeugnis">
+          </div>
+          <h3>Abitur (Schwerpunkt Physik)</h3>
+          <div class="cert-actions">
+            <a href="abiturzeugnis.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
+            <a href="abiturzeugnis.pdf" download class="btn-cert download">📥 Download</a>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="doc-placeholder">
+            <img src="deutsch_b2.png" alt="Deutsch B2 Zertifikat">
+          </div>
+          <h3>Deutsch B2</h3>
+          <div class="cert-actions">
+            <a href="deutsch_b2.pdf" target="_blank" class="btn-cert preview">📄 Vorschau</a>
+            <a href="deutsch_b2.pdf" download="Yassir_Telgua_Deutsch_B2.pdf" class="btn-cert download">📥 Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hazard-tape">
+      <div class="marquee-track reverse">
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+        <span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span><span>Achtung Baustelle</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Kontakt</h2>
+    <p>Haben Sie Fragen oder ein neues Projekt? Kontaktieren Sie mich direkt über einen der folgenden Kanäle:</p>
+
+    <div class="contact-buttons-container">
+      <a href="https://wa.me/212602927707" class="btn-contact whatsapp" target="_blank" rel="noopener noreferrer">
+        💬 WhatsApp
+      </a>
+      <a href="mailto:yassir.telgua@lexmark.com" class="btn-contact email">
+        ✉️ E-Mail senden
+      </a>
+      <a href="tel:+212602927707" class="btn-contact call">
+        📞 Anrufen
+      </a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
-</html>
+</html>    
