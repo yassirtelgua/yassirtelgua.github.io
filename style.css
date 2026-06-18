@@ -421,7 +421,7 @@ body.dark-mode .project-image-placeholder {
   line-height: 1.5;
   color: var(--text-muted);
   margin: 0 0 20px 0 !important;
-  flex-grow: 1; /* Schiebt den Link einheitlich nach unten */
+  flex-grow: 1;
 }
 
 .gallery-link {
