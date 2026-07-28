@@ -9,5 +9,3 @@ I build functional web applications and tools by leveraging AI-driven workflows 
 - 🌱 **I’m currently learning** advanced AI-assisted workflows, prompt techniques, and brushing up on Python.
 - 📫 **How to reach me:** [yassirtelgua.github.io](https://yassirtelgua.github.io)
 - ⚡ **Fun fact:** I built a browser-based Notepad tool purely through AI-guided development and local storage!
-
-My personal site built using [React](https://reactjs.org/)
