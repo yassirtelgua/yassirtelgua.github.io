@@ -8,123 +8,107 @@
 </head>
 <body>
 
-    <!-- Background Canvas Animation -->
+    <!-- Fixed Background Canvas Engine -->
     <canvas id="animCanvas"></canvas>
 
-    <!-- Foreground Content -->
-    <div class="content-overlay">
+    <div class="content-wrapper">
         
-        <header>
-            <div class="logo">Yassir Telgua</div>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="mailto:yassirtel1@gmail.com" class="btn-touch">Get in touch &rarr;</a>
+        <!-- Hero Card (Styled to match design layout) -->
+        <header class="hero-card" id="about">
+            <nav class="navbar">
+                <div class="logo">Yassir Telgua</div>
+                <div class="nav-right">
+                    <a href="#about">Home</a>
+                    <a href="#experience">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="mailto:yassirtel1@gmail.com" class="btn-pill btn-white">Get in touch &rarr;</a>
+                </div>
             </nav>
-        </header>
 
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <div class="hero-main">
+            <div class="hero-content">
                 <div class="hero-left">
-                    <div class="subtitle">IT Support Specialist & Developer</div>
-                    <h1>Incident Support<br>& Web Engineering</h1>
+                    <span class="greeting">Hey, I'm a</span>
+                    <h1 class="hero-title">IT Support<br>Specialist</h1>
                 </div>
                 <div class="hero-right">
-                    <h3>Solving complex B2B IT issues & building clean digital experiences.</h3>
-                    <p>Experienced in 1st-level incident management, Azure administration, remote troubleshooting, Python scripting, and front-end development.</p>
+                    <h2>Technical support should feel effortless.</h2>
+                    <p>From enterprise B2B incident management to custom Python and web development, I resolve system issues and build responsive interfaces.</p>
                 </div>
             </div>
 
-            <div class="pillars" id="skills">
-                <div class="pillar-item">
-                    <div class="num">#01</div>
-                    <div class="title">B2B Incident Management</div>
+            <div class="hero-pillars">
+                <div class="pillar">
+                    <span class="pillar-num">#01</span>
+                    <span class="pillar-label">B2B Support & Dynamics 365</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#02</div>
-                    <div class="title">Python & Web Development</div>
+                <div class="pillar">
+                    <span class="pillar-num">#02</span>
+                    <span class="pillar-label">Python & Web Engineering</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#03</div>
-                    <div class="title">Network & Hardware Diagnostics</div>
+                <div class="pillar">
+                    <span class="pillar-num">#03</span>
+                    <span class="pillar-label">Hardware & Micro-Soldering</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#04</div>
-                    <div class="title">Azure & Remote Support</div>
+                <div class="pillar">
+                    <span class="pillar-num">#04</span>
+                    <span class="pillar-label">Azure & Active Directory</span>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- Tech Stack Banner -->
-        <div class="brand-bar">
-            <span>Core Systems & Technologies</span>
-            <div class="brand-logos">
+        <!-- Ecosystems & Brand Bar -->
+        <section class="brand-bar">
+            <span class="brand-title">Ecosystems & Technologies</span>
+            <div class="brand-list">
                 <div class="brand-item">❖ Microsoft Azure</div>
-                <div class="brand-item">⚡ Python (Certified)</div>
                 <div class="brand-item">⚙ Dynamics 365</div>
+                <div class="brand-item">⚡ Python (Certified)</div>
                 <div class="brand-item">🌐 HTML5 / CSS3 / JS</div>
                 <div class="brand-item">🔌 TCP/IP & VPN</div>
             </div>
-        </div>
+        </section>
 
-        <!-- Experience & Work Section -->
-        <section class="section-designs" id="experience">
-            <div class="designs-header">
-                <div>
-                    <div class="tag">Professional Background</div>
-                    <h2>Reliable Enterprise Support Meets Modern Code</h2>
+        <!-- Main Content Section ("Behind the Designs" Layout) -->
+        <section class="body-section" id="experience">
+            <div class="section-header">
+                <div class="header-left">
+                    <span class="section-tag">Behind the Tech</span>
+                    <h2>Solving Complex Issues & Building Modern Interfaces</h2>
                 </div>
-                <div class="designs-right">
-                    <p>Bringing hands-on technical support expertise from enterprise environments alongside independent web development skills using Python, JavaScript, and GitHub workflows.</p>
-                    <div class="designs-right-bottom">
-                        <span>Based in Salé, Morocco<br>Languages: Arabic (Native) • English (C1) • German (B2) • French (B2)</span>
-                        <a href="mailto:yassirtel1@gmail.com" class="btn-touch btn-touch-orange">Contact Me &rarr;</a>
-                    </div>
+                <div class="header-right">
+                    <p>Experienced technical support agent specializing in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.</p>
+                    <a href="mailto:yassirtel1@gmail.com" class="btn-pill btn-orange">Get in touch &rarr;</a>
                 </div>
             </div>
 
-            <!-- Main Work Cards -->
+            <!-- 3 Showcase Cards Grid -->
             <div class="cards-grid" id="projects">
                 <div class="card">
-                    <div>
-                        <div class="card-tag">Active Web Project</div>
-                        <div class="card-title">Notepad Web App</div>
-                        <div class="card-desc">An active client-side note application hosted on GitHub Pages, emphasizing fast load performance, clean layout, and smooth local state handling.</div>
+                    <div class="card-content">
+                        <span class="card-tag">Active Web Project</span>
+                        <h3>Notepad App</h3>
+                        <p>A fast, browser-based note application engineered with clean JavaScript and hosted on GitHub Pages.</p>
                     </div>
                     <a href="https://yassirtelgua.github.io/Notepad/" target="_blank" class="card-link">View Live Project &rarr;</a>
                 </div>
 
                 <div class="card">
-                    <div>
-                        <div class="card-tag">Foundever / Lexmark (2024–Present)</div>
-                        <div class="card-title">Technical Support Agent</div>
-                        <div class="card-desc">Providing 1st-level B2B support via Microsoft Dynamics 365. Handling network diagnostics (TCP/IP, DHCP, DNS), VPN authentication, and Azure user access management.</div>
+                    <div class="card-content">
+                        <span class="card-tag">Foundever / Lexmark</span>
+                        <h3>Technical Support Agent</h3>
+                        <p>1st-Level B2B incident resolution using Dynamics 365, Azure user permissions, VPN authentication, and network diagnostics.</p>
                     </div>
-                    <span class="card-link" style="color: #888;">B2B Enterprise Support</span>
+                    <span class="card-date">2024 – Present</span>
                 </div>
 
                 <div class="card">
-                    <div>
-                        <div class="card-tag">Technischer Service (2021)</div>
-                        <div class="card-title">Hardware & OS Repair</div>
-                        <div class="card-desc">Board-level diagnostics, micro-soldering, flashing operating systems, fixing bootloop failures, and executing mobile data recovery (Android/iOS).</div>
+                    <div class="card-content">
+                        <span class="card-tag">Technical Service</span>
+                        <h3>Hardware & OS Repair</h3>
+                        <p>Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.</p>
                     </div>
-                    <span class="card-link" style="color: #888;">Hardware Diagnostics</span>
+                    <span class="card-date">Hardware Certified</span>
                 </div>
-            </div>
-
-            <!-- Certifications & Qualifications -->
-            <div class="info-block">
-                <h3>Education & Certifications</h3>
-                <ul class="info-list">
-                    <li><strong>Python Programming Certificate</strong> — Lkhibra Academy (2025)</li>
-                    <li><strong>Smartphone Maintenance Series (3 Certs)</strong> — Hardware & Board Repair (2021)</li>
-                    <li><strong>Diploma in Construction Management</strong> — OFPPT Institute (2015 – 2017)</li>
-                    <li><strong>State Baccalaureate in Physics</strong> — Lycée Charif Idrissi, Rabat (2014)</li>
-                </ul>
             </div>
         </section>
 
