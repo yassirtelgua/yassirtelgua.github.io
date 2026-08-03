@@ -1,66 +1,61 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".section");
-  const logo = document.querySelector(".logo-text");
-  const hero = document.querySelector(".hero");
+const canvas = document.getElementById('animCanvas');
+const context = canvas.getContext('2d');
 
-  // Theme-Umschalter Logik
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  const themeIcon = document.getElementById("theme-icon");
+// Total frame count in your repository's ./frames folder
+const frameCount = 33; 
 
-  // Prüfen, ob bereits ein Theme im Speicher hinterlegt ist
-  const currentTheme = localStorage.getItem("theme");
-  if (currentTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    if (themeIcon) themeIcon.textContent = "☀️";
-  }
+const currentFrame = index => (
+    `./frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
+);
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      
-      // Icon wechseln und Zustand speichern
-      if (document.body.classList.contains("dark-mode")) {
-        if (themeIcon) themeIcon.textContent = "☀️";
-        localStorage.setItem("theme", "dark");
-      } else {
-        if (themeIcon) themeIcon.textContent = "🌙";
-        localStorage.setItem("theme", "light");
-      }
-    });
-  }
+const images = [];
 
-  function handleScroll() {
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
+// Preload frame images
+for (let i = 1; i <= frameCount; i++) {
+    const img = new Image();
+    img.src = currentFrame(i);
+    images.push(img);
+}
 
-      // Fügt .show hinzu, wenn die Sektion im Viewport auftaucht
-      if (rect.top < window.innerHeight - 100) {
-        section.classList.add("show");
-      }
-    });
-
-    if (logo && hero) {
-      const heroRect = hero.getBoundingClientRect();
-
-      if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
-        logo.classList.add("active");
-      } else {
-        logo.classList.remove("active");
-      }
+function renderFrame(index) {
+    if (images[index] && images[index].complete) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(images[index], 0, 0, canvas.width, canvas.height);
     }
-  }
+}
 
-  handleScroll();
+// Initialize display on initial load
+images[0].onload = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    renderFrame(0);
+};
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+// Window resize handler
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+    );
+    renderFrame(frameIndex);
+});
 
-  if (logo) {
-    setInterval(() => {
-      logo.classList.add("impact");
-
-      setTimeout(() => {
-        logo.classList.remove("impact");
-      } , 300);
-    }, 5000);
-  }
+// Frame rendering bound to scroll position
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+    
+    const frameIndex = Math.min(
+        frameCount - 1,
+        Math.floor(scrollFraction * frameCount)
+    );
+    
+    requestAnimationFrame(() => renderFrame(frameIndex));
 });
