@@ -1,7 +1,7 @@
 const canvas = document.getElementById('animCanvas');
 const context = canvas.getContext('2d');
 
-// Total frame count in your repository's ./frames folder
+// Frame sequence configuration
 const frameCount = 33; 
 
 const currentFrame = index => (
@@ -10,7 +10,7 @@ const currentFrame = index => (
 
 const images = [];
 
-// Preload frame images
+// Preload sequence frames
 for (let i = 1; i <= frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
@@ -24,14 +24,14 @@ function renderFrame(index) {
     }
 }
 
-// Initialize display on initial load
+// Initial canvas draw
 images[0].onload = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     renderFrame(0);
 };
 
-// Window resize handler
+// Handle window resizing
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -46,7 +46,7 @@ window.addEventListener('resize', () => {
     renderFrame(frameIndex);
 });
 
-// Frame rendering bound to scroll position
+// Update animation state on scroll
 window.addEventListener('scroll', () => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
