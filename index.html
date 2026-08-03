@@ -3,46 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Scroll Animation</title>
+    <title>Folioblox — Portfolio</title>
     <style>
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
             overflow-x: hidden;
         }
-        body {
-            height: 500vh; /* Adjust scroll distance speed */
-        }
-        canvas {
+
+        /* Fixed background canvas */
+        canvas#animCanvas {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 100vw;
-            max-height: 100vh;
-            object-fit: contain;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Foreground Content Overlay */
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .btn-touch {
+            background: #ffffff;
+            color: #000;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-touch-orange {
+            background: #ff5500;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-main {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: flex-end;
+        }
+
+        .hero-left .subtitle {
+            color: #d1d1d1;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-left h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-right {
+            max-width: 320px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-right h3 {
+            font-size: 1.35rem;
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hero-right p {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Service Pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+            padding-top: 2rem;
+        }
+
+        .pillar-item .num {
+            color: #ff5500;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .pillar-item .title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #eaeaea;
+        }
+
+        /* Brand Logos Bar */
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 0;
+            margin: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .brand-bar span {
+            color: #888;
+            font-size: 0.85rem;
+            max-width: 140px;
+            line-height: 1.3;
+        }
+
+        .brand-logos {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .brand-item {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        /* Behind the Designs Section */
+        .section-designs {
+            padding: 6rem 0;
+        }
+
+        .designs-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .designs-header .tag {
+            color: #ff5500;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .designs-header h2 {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .designs-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .designs-right p {
+            font-size: 1.4rem;
+            line-height: 1.35;
+            color: #d1d1d1;
+            font-weight: 500;
+        }
+
+        .designs-right-bottom {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .designs-right-bottom span {
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* Showcase Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card {
+            width: 100%;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
+
+    <!-- Background Scroll Canvas -->
     <canvas id="animCanvas"></canvas>
-    
+
+    <!-- Foreground Content -->
+    <div class="content-overlay">
+        
+        <header>
+            <div class="logo">Folioblox</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" class="btn-touch">Get in touch &rarr;</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-main">
+                <div class="hero-left">
+                    <div class="subtitle">Hey, I'm a</div>
+                    <h1>Creative<br>Director</h1>
+                </div>
+                <div class="hero-right">
+                    <h3>Great design should feel invisible.</h3>
+                    <p>From logo to language, I build brands that connect and convert.</p>
+                </div>
+            </div>
+
+            <div class="pillars">
+                <div class="pillar-item">
+                    <div class="num">#01</div>
+                    <div class="title">Brand Strategy</div>
+                </div>
+                <div class="pillar-item">
+                    <div class="num">#02</div>
+                    <div class="title">Brand Identity Design</div>
+                </div>
+                <div class="pillar-item">
+                    <div class="num">#03</div>
+                    <div class="title">Packaging Design</div>
+                </div>
+                <div class="pillar-item">
+                    <div class="num">#04</div>
+                    <div class="title">Creative Direction</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="brand-bar">
+            <span>Trusted by Brands I've Helped Shape</span>
+            <div class="brand-logos">
+                <div class="brand-item">◯ Supa Blox</div>
+                <div class="brand-item">⧖ Hype Blox</div>
+                <div class="brand-item">◐ Frame Blox</div>
+                <div class="brand-item">◒ Ultra Blox</div>
+            </div>
+        </div>
+
+        <section class="section-designs">
+            <div class="designs-header">
+                <div>
+                    <div class="tag">Behind the Designs</div>
+                    <h2>Shaping Experiences That Make Life Simpler</h2>
+                </div>
+                <div class="designs-right">
+                    <p>I'm a product designer focused on building clean, intuitive interfaces that solve real-world problems.</p>
+                    <div class="designs-right-bottom">
+                        <span>Let's Build Something<br>Meaningful Together</span>
+                        <a href="#contact" class="btn-touch btn-touch-orange">Get in touch &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Jacket Design">
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1608248597261-12c8b820a4be?auto=format&fit=crop&w=600&q=80" alt="Bottle Packaging">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
     <script>
         const canvas = document.getElementById('animCanvas');
         const context = canvas.getContext('2d');
         
-        // Update to match the exact number of uploaded frame images
+        // Total frame count in your ./frames folder
         const frameCount = 33; 
         
-        // Match the directory path inside your GitHub repository
         const currentFrame = index => (
             `./frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
         );
 
         const images = [];
 
-        // Preload image sequence
+        // Preload frame sequence
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
             img.src = currentFrame(i);
@@ -52,17 +381,32 @@
         function renderFrame(index) {
             if (images[index] && images[index].complete) {
                 context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(images[index], 0, 0);
+                context.drawImage(images[index], 0, 0, canvas.width, canvas.height);
             }
         }
 
-        // Initialize canvas resolution on initial load
+        // Initialize responsive resolution on first frame load
         images[0].onload = () => {
-            canvas.width = images[0].naturalWidth;
-            canvas.height = images[0].naturalHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             renderFrame(0);
         };
 
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+            const frameIndex = Math.min(
+                frameCount - 1,
+                Math.floor(scrollFraction * frameCount)
+            );
+            renderFrame(frameIndex);
+        });
+
+        // Frame rendering synchronized to scroll position
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
