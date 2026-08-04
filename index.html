@@ -45,12 +45,14 @@
             padding: 1.5rem;
         }
 
-        /* Hero Card Header */
+        /* Hero Card Header with Glassmorphism Blur */
         .hero-card {
-            background: radial-gradient(circle at 50% -20%, #ff4500 0%, #b32400 35%, #180905 75%, #120806 100%);
+            background: radial-gradient(circle at 50% -20%, rgba(255, 69, 0, 0.75) 0%, rgba(179, 36, 0, 0.65) 35%, rgba(24, 9, 5, 0.75) 75%, rgba(18, 8, 6, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 36px;
             padding: 2.5rem 3rem 3rem 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             margin-bottom: 2rem;
         }
@@ -256,7 +258,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Showcase Grid */
+        /* Showcase Cards with Glassmorphism Blur */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -264,19 +266,22 @@
         }
 
         .card {
-            background: #121212;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 24px;
             padding: 2.2rem;
             min-height: 340px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-6px);
+            background: rgba(25, 25, 25, 0.75);
             border-color: rgba(255, 69, 0, 0.5);
         }
 
@@ -315,13 +320,15 @@
             font-weight: 600;
         }
 
-        /* Contact Footer Section */
+        /* Contact Footer Section with Glassmorphism Blur */
         footer.contact-section {
             margin-top: 5rem;
             padding: 4rem 3rem;
-            background: #121212;
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
@@ -343,8 +350,10 @@
         }
 
         .contact-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 1.8rem;
             text-decoration: none;
@@ -353,7 +362,7 @@
         }
 
         .contact-card:hover {
-            background: rgba(255, 69, 0, 0.1);
+            background: rgba(255, 69, 0, 0.15);
             border-color: #ff4500;
             transform: translateY(-3px);
         }
@@ -409,10 +418,9 @@
 
     <div class="content-wrapper">
         
-        <!-- Top Hero Card (ID: #top for Logo link target) -->
+        <!-- Top Hero Card (ID: #top) -->
         <header class="hero-card" id="top">
             <nav class="navbar">
-                <!-- TELGUA YASSIR Logo links directly to top of page -->
                 <a href="#top" class="logo">TELGUA YASSIR</a>
                 
                 <div class="nav-right">
