@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TELGUA YASSIR — Portfolio</title>
+    <title>TELGUA YASSIR — IT Support Specialist & Developer</title>
     <style>
         * {
             margin: 0;
@@ -12,13 +12,17 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #0d0d0d;
+            background-color: #080808;
             color: #ffffff;
             overflow-x: hidden;
         }
 
-        /* Fixed background canvas */
+        /* Fixed Background Scroll Canvas */
         canvas#animCanvas {
             position: fixed;
             top: 50%;
@@ -28,220 +32,228 @@
             height: 100vh;
             object-fit: cover;
             z-index: 1;
+            opacity: 0.35;
             pointer-events: none;
         }
 
-        /* Foreground Content Overlay */
-        .content-overlay {
+        /* Main Container Overlay */
+        .content-wrapper {
             position: relative;
             z-index: 2;
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 1.5rem;
         }
 
-        /* Navigation */
-        header {
+        /* Hero Card Header */
+        .hero-card {
+            background: radial-gradient(circle at 50% -20%, #ff4500 0%, #b32400 35%, #180905 75%, #120806 100%);
+            border-radius: 36px;
+            padding: 2.5rem 3rem 3rem 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        /* Navbar */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2.5rem 0;
+            margin-bottom: 4rem;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: opacity 0.2s;
         }
 
-        nav {
+        .logo:hover {
+            opacity: 0.85;
+        }
+
+        .nav-right {
             display: flex;
             align-items: center;
             gap: 2.5rem;
         }
 
-        nav a {
-            color: #ccc;
+        .nav-right a {
+            color: #eeeeee;
             text-decoration: none;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #fff;
+        .nav-right a:hover {
+            color: #ffffff;
         }
 
-        .btn-touch {
-            background: #ffffff;
-            color: #000;
-            padding: 0.6rem 1.4rem;
+        .btn-pill {
+            padding: 0.65rem 1.4rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        .btn-touch-orange {
-            background: #ff5500;
-            color: #fff;
+        .btn-pill:hover {
+            transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 6rem 0 4rem 0;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .btn-white {
+            background: #ffffff;
+            color: #000000 !important;
         }
 
-        .hero-main {
+        .btn-orange {
+            background: #ff4500;
+            color: #ffffff !important;
+        }
+
+        /* Hero Main Layout */
+        .hero-content {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 2rem;
+            gap: 3rem;
             align-items: flex-end;
+            margin-bottom: 4rem;
         }
 
-        .hero-left .subtitle {
-            color: #d1d1d1;
+        .greeting {
+            color: #ffffff;
             font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
             margin-bottom: 0.5rem;
+            opacity: 0.9;
         }
 
-        .hero-left h1 {
-            font-size: 4.5rem;
-            line-height: 1.05;
+        .hero-title {
+            font-size: 4.2rem;
+            line-height: 1.02;
             font-weight: 800;
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
         }
 
-        .hero-right {
-            max-width: 320px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-right h3 {
-            font-size: 1.35rem;
+        .hero-right h2 {
+            font-size: 1.5rem;
             line-height: 1.3;
-            margin-bottom: 0.8rem;
             font-weight: 600;
+            margin-bottom: 0.8rem;
         }
 
         .hero-right p {
-            color: #a0a0a0;
-            font-size: 0.85rem;
-            line-height: 1.5;
+            color: #d0d0d0;
+            font-size: 0.92rem;
+            line-height: 1.55;
         }
 
-        /* Service Pillars */
-        .pillars {
+        /* Hero Pillars */
+        .hero-pillars {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 5rem;
+            gap: 1.5rem;
             padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .pillar-item .num {
-            color: #ff5500;
+        .pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .pillar-num {
+            color: #ff7744;
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
         }
 
-        .pillar-item .title {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #eaeaea;
+        .pillar-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f0f0f0;
         }
 
-        /* Brand Logos Bar */
+        /* Brand & Skill Bar */
         .brand-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 3rem 0;
-            margin: 4rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 1rem;
+            margin-bottom: 3rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .brand-bar span {
-            color: #888;
+        .brand-title {
+            color: #888888;
             font-size: 0.85rem;
-            max-width: 140px;
+            max-width: 150px;
             line-height: 1.3;
         }
 
-        .brand-logos {
+        .brand-list {
             display: flex;
-            gap: 3rem;
-            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .brand-item {
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #e0e0e0;
-        }
-
-        /* Behind the Designs Section */
-        .section-designs {
-            padding: 6rem 0;
-        }
-
-        .designs-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .designs-header .tag {
-            color: #ff5500;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            color: #cccccc;
         }
 
-        .designs-header h2 {
-            font-size: 3.2rem;
+        /* Section Styling */
+        .body-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            color: #ff4500;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-left h2 {
+            font-size: 3rem;
             line-height: 1.1;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -1px;
         }
 
-        .designs-right {
+        .header-right {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
         }
 
-        .designs-right p {
-            font-size: 1.4rem;
-            line-height: 1.35;
-            color: #d1d1d1;
-            font-weight: 500;
-        }
-
-        .designs-right-bottom {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .designs-right-bottom span {
-            color: #777;
-            font-size: 0.85rem;
+        .header-right p {
+            font-size: 1.15rem;
+            line-height: 1.5;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
         }
 
         /* Showcase Grid */
@@ -252,126 +264,299 @@
         }
 
         .card {
-            width: 100%;
-            height: 420px;
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #121212;
+            border-radius: 24px;
+            padding: 2.2rem;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 69, 0, 0.5);
+        }
+
+        .card-tag {
+            color: #ff4500;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-date {
+            color: #666666;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact Footer Section */
+        footer.contact-section {
+            margin-top: 5rem;
+            padding: 4rem 3rem;
+            background: #121212;
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 0.4rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 1.8rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background 0.3s, border-color 0.3s, transform 0.2s;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 69, 0, 0.1);
+            border-color: #ff4500;
+            transform: translateY(-3px);
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff4500;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            color: #666666;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-content, .section-header, .hero-pillars, .cards-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-card, footer.contact-section {
+                padding: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Scroll Canvas -->
+    <!-- Scroll Frame Canvas -->
     <canvas id="animCanvas"></canvas>
 
-    <!-- Foreground Content -->
-    <div class="content-overlay">
+    <div class="content-wrapper">
         
-        <header>
-            <div class="logo">TELGUA YASSIR</div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact" class="btn-touch">Get in touch &rarr;</a>
+        <!-- Top Hero Card (ID: #top for Logo link target) -->
+        <header class="hero-card" id="top">
+            <nav class="navbar">
+                <!-- TELGUA YASSIR Logo links directly to top of page -->
+                <a href="#top" class="logo">TELGUA YASSIR</a>
+                
+                <div class="nav-right">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact" class="btn-pill btn-white">Get in touch &rarr;</a>
+                </div>
             </nav>
-        </header>
 
-        <section class="hero">
-            <div class="hero-main">
+            <div class="hero-content">
                 <div class="hero-left">
-                    <div class="subtitle">Hey, I'm a</div>
-                    <h1>Creative<br>Director</h1>
+                    <span class="greeting">Hey, I'm an</span>
+                    <h1 class="hero-title">IT Support<br>Specialist</h1>
                 </div>
                 <div class="hero-right">
-                    <h3>Great design should feel invisible.</h3>
-                    <p>From logo to language, I build brands that connect and convert.</p>
+                    <h2>Technical support should feel effortless.</h2>
+                    <p>From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.</p>
                 </div>
             </div>
 
-            <div class="pillars">
-                <div class="pillar-item">
-                    <div class="num">#01</div>
-                    <div class="title">Brand Strategy</div>
+            <div class="hero-pillars">
+                <div class="pillar">
+                    <span class="pillar-num">#01</span>
+                    <span class="pillar-label">B2B Support & Dynamics 365</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#02</div>
-                    <div class="title">Brand Identity Design</div>
+                <div class="pillar">
+                    <span class="pillar-num">#02</span>
+                    <span class="pillar-label">Python & Web Engineering</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#03</div>
-                    <div class="title">Packaging Design</div>
+                <div class="pillar">
+                    <span class="pillar-num">#03</span>
+                    <span class="pillar-label">Hardware & Micro-Soldering</span>
                 </div>
-                <div class="pillar-item">
-                    <div class="num">#04</div>
-                    <div class="title">Creative Direction</div>
+                <div class="pillar">
+                    <span class="pillar-num">#04</span>
+                    <span class="pillar-label">Azure & Active Directory</span>
                 </div>
+            </div>
+        </header>
+
+        <!-- Skill & Technology Bar -->
+        <section class="brand-bar">
+            <span class="brand-title">Ecosystems & Technologies</span>
+            <div class="brand-list">
+                <div class="brand-item">❖ Microsoft Azure</div>
+                <div class="brand-item">⚙ Dynamics 365</div>
+                <div class="brand-item">⚡ Python (Certified)</div>
+                <div class="brand-item">🌐 HTML5 / CSS3 / JS</div>
+                <div class="brand-item">🔌 TCP/IP & VPN</div>
             </div>
         </section>
 
-        <div class="brand-bar">
-            <span>Trusted by Brands I've Helped Shape</span>
-            <div class="brand-logos">
-                <div class="brand-item">◯ Supa Blox</div>
-                <div class="brand-item">⧖ Hype Blox</div>
-                <div class="brand-item">◐ Frame Blox</div>
-                <div class="brand-item">◒ Ultra Blox</div>
-            </div>
-        </div>
-
-        <section class="section-designs">
-            <div class="designs-header">
-                <div>
-                    <div class="tag">Behind the Designs</div>
-                    <h2>Shaping Experiences That Make Life Simpler</h2>
+        <!-- About Me Section -->
+        <section class="body-section" id="about">
+            <div class="section-header">
+                <div class="header-left">
+                    <span class="section-tag">About Me</span>
+                    <h2>Behind the Tech: Solving Issues & Building Solutions</h2>
                 </div>
-                <div class="designs-right">
-                    <p>I'm a product designer focused on building clean, intuitive interfaces that solve real-world problems.</p>
-                    <div class="designs-right-bottom">
-                        <span>Let's Build Something<br>Meaningful Together</span>
-                        <a href="#contact" class="btn-touch btn-touch-orange">Get in touch &rarr;</a>
+                <div class="header-right">
+                    <p>I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.</p>
+                    <a href="#contact" class="btn-pill btn-orange">Get in touch &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Projects & Experience Section -->
+            <div class="cards-grid" id="projects">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-tag">Active Web Project</span>
+                        <h3>Notepad App</h3>
+                        <p>A fast, browser-based notepad application engineered with clean JavaScript and hosted on GitHub Pages.</p>
                     </div>
+                    <a href="https://yassirtelgua.github.io/Notepad/" target="_blank" class="card-link">View Live Project &rarr;</a>
                 </div>
-            </div>
 
-            <div class="cards-grid">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" alt="Jacket Design">
+                    <div class="card-content">
+                        <span class="card-tag">Foundever / Lexmark</span>
+                        <h3>Technical Support Agent</h3>
+                        <p>1st-Level B2B incident resolution using Dynamics 365, Azure permissions, VPN authentication, and network diagnostics.</p>
+                    </div>
+                    <span class="card-date">2024 – Present</span>
                 </div>
+
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1608248597261-12c8b820a4be?auto=format&fit=crop&w=600&q=80" alt="Bottle Packaging">
+                    <div class="card-content">
+                        <span class="card-tag">Technical Service</span>
+                        <h3>Hardware & OS Repair</h3>
+                        <p>Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.</p>
+                    </div>
+                    <span class="card-date">Hardware Certified</span>
                 </div>
             </div>
         </section>
+
+        <!-- Get In Touch / Contact Footer Section -->
+        <footer class="contact-section" id="contact">
+            <div class="footer-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2>Let's Connect & Build Something Great</h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- WhatsApp Link -->
+                <a href="https://wa.me/212602927707" target="_blank" class="contact-card">
+                    <span class="contact-label">WhatsApp</span>
+                    <span class="contact-value">+212 602 927 707</span>
+                </a>
+
+                <!-- Direct Call Link -->
+                <a href="tel:+212602927707" class="contact-card">
+                    <span class="contact-label">Direct Call</span>
+                    <span class="contact-value">+212 602 927 707</span>
+                </a>
+
+                <!-- Email Link -->
+                <a href="mailto:yassirtel1@gmail.com" class="contact-card">
+                    <span class="contact-label">E-Mail</span>
+                    <span class="contact-value">yassirtel1@gmail.com</span>
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 TELGUA YASSIR. All rights reserved.</span>
+                <span>Salé, Morocco</span>
+            </div>
+        </footer>
 
     </div>
 
+    <!-- Background Frame Scroll Script -->
     <script>
         const canvas = document.getElementById('animCanvas');
         const context = canvas.getContext('2d');
-        
-        // Total frame count in your ./frames folder
+
         const frameCount = 33; 
-        
+
         const currentFrame = index => (
             `./frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
         );
 
         const images = [];
 
-        // Preload frame sequence
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
             img.src = currentFrame(i);
@@ -385,7 +570,6 @@
             }
         }
 
-        // Initialize responsive resolution on first frame load
         images[0].onload = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -406,7 +590,6 @@
             renderFrame(frameIndex);
         });
 
-        // Frame rendering synchronized to scroll position
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
