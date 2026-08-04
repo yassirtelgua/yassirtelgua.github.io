@@ -145,48 +145,26 @@
             letter-spacing: -1px;
         }
 
-        /* --- Split Avatar Container & Layering --- */
+        /* --- Static Avatar Styling --- */
         .avatar-container {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            height: 380px;
         }
 
-        .avatar-wrapper {
-            position: relative;
-            width: 260px;
-            height: 380px;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Static Body Layer */
-        .avatar-body {
-            position: absolute;
-            bottom: 0;
+        .avatar-img {
             width: 100%;
+            max-width: 260px;
             height: auto;
-            z-index: 1;
-            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.35));
-            pointer-events: none;
+            max-height: 380px;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.4));
+            transition: transform 0.3s ease;
         }
 
-        /* Interactive Head Layer */
-        .avatar-head {
-            position: absolute;
-            top: 10px; /* Fine-tune vertically to sit flush on neck */
-            width: 115px; /* Fine-tune width relative to body size */
-            height: auto;
-            z-index: 2;
-            
-            /* Sets neck base as rotation pivot */
-            transform-origin: 50% 88%;
-            
-            transition: transform 0.08s ease-out;
-            will-change: transform;
-            pointer-events: none;
+        .avatar-img:hover {
+            transform: scale(1.03);
         }
 
         .hero-right h2 {
@@ -477,15 +455,9 @@
                     <h1 class="hero-title">IT Support<br>Specialist</h1>
                 </div>
 
-                <!-- Center Column: Layered Avatar (Static Body + Head Tracker) -->
+                <!-- Center Column: Static Avatar Portrait -->
                 <div class="avatar-container">
-                    <div class="avatar-wrapper">
-                        <!-- Layer 1: Static Body -->
-                        <img src="body.png" alt="Yassir Body" class="avatar-body">
-                        
-                        <!-- Layer 2: Interactive Rotating Head -->
-                        <img src="head.png" id="interactiveHead" alt="Yassir Head" class="avatar-head">
-                    </div>
+                    <img src="avatar.png" alt="Telgua Yassir Avatar" class="avatar-img">
                 </div>
 
                 <!-- Right Text Column -->
@@ -603,42 +575,6 @@
         </footer>
 
     </div>
-
-    <!-- Mouse Tracking Head Script -->
-    <script>
-        const head = document.getElementById('interactiveHead');
-
-        window.addEventListener('mousemove', (e) => {
-            if (!head) return;
-
-            // Compute neck base point on screen
-            const rect = head.getBoundingClientRect();
-            const neckX = rect.left + (rect.width / 2);
-            const neckY = rect.top + (rect.height * 0.88);
-
-            // Compute rotation angle towards cursor
-            const radians = Math.atan2(e.clientX - neckX, -(e.clientY - neckY));
-            let degrees = radians * (180 / Math.PI);
-
-            // Limit maximum neck rotation arc (Max +/- 22 degrees)
-            const maxRotation = 22;
-            degrees = Math.max(-maxRotation, Math.min(maxRotation, degrees));
-
-            // Subtle vertical translation relative to mouse height
-            const deltaY = (e.clientY - neckY) / window.innerHeight;
-            const translateY = Math.max(-4, Math.min(6, deltaY * 12));
-
-            // Apply rotation around the neck pivot
-            head.style.transform = `rotate(${degrees}deg) translateY(${translateY}px)`;
-        });
-
-        // Reset head angle when cursor exits window
-        window.addEventListener('mouseleave', () => {
-            if (head) {
-                head.style.transform = `rotate(0deg) translateY(0px)`;
-            }
-        });
-    </script>
 
     <!-- Background Frame Scroll Script -->
     <script>
