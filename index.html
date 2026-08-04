@@ -67,7 +67,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
         }
 
         .logo {
@@ -77,11 +77,6 @@
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            transition: opacity 0.2s;
-        }
-
-        .logo:hover {
-            opacity: 0.85;
         }
 
         .nav-right {
@@ -96,10 +91,6 @@
             font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.3s;
-        }
-
-        .nav-right a:hover {
-            color: #ffffff;
         }
 
         .btn-pill {
@@ -129,13 +120,13 @@
             color: #ffffff !important;
         }
 
-        /* Hero Main Layout */
+        /* 3-Column Hero Grid with Center Avatar */
         .hero-content {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            align-items: flex-end;
-            margin-bottom: 4rem;
+            grid-template-columns: 1fr 280px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3.5rem;
         }
 
         .greeting {
@@ -148,14 +139,37 @@
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -1px;
         }
 
+        /* Avatar Container & Interactive 3D Styling */
+        .avatar-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px; /* Gives realistic 3D depth */
+        }
+
+        .avatar-img {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            /* Orange glow reflecting background */
+            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.4));
+            transform-style: preserve-3d;
+            transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+            cursor: pointer;
+        }
+
         .hero-right h2 {
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            font-size: clamp(1.2rem, 2.5vw, 1.45rem);
             line-height: 1.3;
             font-weight: 600;
             margin-bottom: 0.8rem;
@@ -194,7 +208,7 @@
             color: #f0f0f0;
         }
 
-        /* Brand & Skill Bar */
+        /* Ecosystem Bar */
         .brand-bar {
             display: flex;
             align-items: center;
@@ -223,7 +237,7 @@
             color: #cccccc;
         }
 
-        /* Section Styling */
+        /* Section Layouts */
         .body-section {
             padding: 3rem 0;
         }
@@ -250,13 +264,6 @@
             letter-spacing: -1px;
         }
 
-        .header-right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
         .header-right p {
             font-size: 1.15rem;
             line-height: 1.5;
@@ -264,7 +271,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Showcase Cards with Glassmorphism Blur */
+        /* Cards Grid */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -282,12 +289,11 @@
             flex-direction: column;
             justify-content: space-between;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-6px);
-            background: rgba(25, 25, 25, 0.75);
             border-color: rgba(255, 69, 0, 0.5);
         }
 
@@ -296,7 +302,6 @@
             font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             display: block;
             margin-bottom: 0.8rem;
         }
@@ -326,7 +331,7 @@
             font-weight: 600;
         }
 
-        /* Contact Footer Section with Glassmorphism Blur */
+        /* Footer Contact Section */
         footer.contact-section {
             margin-top: 5rem;
             padding: 4rem 3rem;
@@ -335,11 +340,6 @@
             -webkit-backdrop-filter: blur(20px);
             border-radius: 32px;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .footer-header {
-            margin-bottom: 2.5rem;
         }
 
         .footer-header h2 {
@@ -358,25 +358,22 @@
         .contact-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 1.8rem;
             text-decoration: none;
             color: #ffffff;
-            transition: background 0.3s, border-color 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .contact-card:hover {
             background: rgba(255, 69, 0, 0.15);
-            border-color: #ff4500;
             transform: translateY(-3px);
         }
 
         .contact-label {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: #ff4500;
             font-weight: 700;
             display: block;
@@ -399,113 +396,48 @@
             font-size: 0.85rem;
         }
 
-        /* --- Tablet Breakpoint (Max-Width: 900px) --- */
-        @media (max-width: 900px) {
-            .hero-content, .section-header, .cards-grid, .contact-grid {
+        /* Tablet Breakpoint */
+        @media (max-width: 950px) {
+            .hero-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .avatar-container {
+                order: -1; /* Avatar on top for tablets */
+            }
+            .section-header, .cards-grid, .contact-grid {
+                grid-template-columns: 1fr;
             }
             .hero-pillars {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .hero-card {
-                padding: 2.2rem 2rem 2.5rem 2rem;
-            }
-            footer.contact-section {
-                padding: 3rem 2rem;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
         }
 
-        /* --- Phone Breakpoint (Max-Width: 600px) --- */
+        /* Mobile Breakpoint */
         @media (max-width: 600px) {
-            .content-wrapper {
-                padding: 0.85rem;
-            }
-
-            .hero-card {
-                padding: 1.5rem 1.25rem 2rem 1.25rem;
-                border-radius: 24px;
-            }
-
-            /* Responsive Navbar for Mobile */
+            .content-wrapper { padding: 0.85rem; }
+            .hero-card { padding: 1.5rem 1.25rem 2rem 1.25rem; }
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1.2rem;
-                margin-bottom: 2.5rem;
             }
-
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-                gap: 0.8rem;
-            }
-
-            .nav-right a {
-                font-size: 0.88rem;
-            }
-
-            .btn-pill {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            /* Hero Content Spacing */
-            .hero-content {
-                margin-bottom: 2.5rem;
-            }
-
-            .hero-pillars {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            /* Stacked Brand Bar */
-            .brand-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.2rem;
-                padding: 1.5rem 0.5rem;
-            }
-
-            .brand-title {
-                max-width: 100%;
-            }
-
-            .brand-list {
-                gap: 0.8rem 1.2rem;
-            }
-
-            /* Cards & Footer */
-            .card {
-                padding: 1.6rem;
-                min-height: auto;
-            }
-
-            footer.contact-section {
-                padding: 2.2rem 1.25rem;
-                border-radius: 24px;
-                margin-top: 3rem;
-            }
-
-            .contact-card {
-                padding: 1.4rem;
-            }
+            .nav-right { width: 100%; justify-content: space-between; }
+            .hero-pillars { grid-template-columns: 1fr; }
+            .brand-bar { flex-direction: column; gap: 1.2rem; }
+            footer.contact-section { padding: 2rem 1.25rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Scroll Frame Canvas -->
+    <!-- Scroll Canvas Background -->
     <canvas id="animCanvas"></canvas>
 
     <div class="content-wrapper">
         
-        <!-- Top Hero Card (ID: #top) -->
+        <!-- Hero Header Card -->
         <header class="hero-card" id="top">
             <nav class="navbar">
                 <a href="#top" class="logo">TELGUA YASSIR</a>
@@ -518,16 +450,25 @@
             </nav>
 
             <div class="hero-content">
+                <!-- Left Column -->
                 <div class="hero-left">
                     <span class="greeting">Hey, I'm an</span>
                     <h1 class="hero-title">IT Support<br>Specialist</h1>
                 </div>
+
+                <!-- Middle Column: Interactive Gaze-Tracking Avatar -->
+                <div class="avatar-container">
+                    <img src="avatar.png" id="interactiveAvatar" alt="Telgua Yassir Avatar" class="avatar-img">
+                </div>
+
+                <!-- Right Column -->
                 <div class="hero-right">
                     <h2>Technical support should feel effortless.</h2>
                     <p>From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.</p>
                 </div>
             </div>
 
+            <!-- Pillars Bar -->
             <div class="hero-pillars">
                 <div class="pillar">
                     <span class="pillar-num">#01</span>
@@ -560,7 +501,7 @@
             </div>
         </section>
 
-        <!-- About Me Section -->
+        <!-- About Section -->
         <section class="body-section" id="about">
             <div class="section-header">
                 <div class="header-left">
@@ -573,7 +514,7 @@
                 </div>
             </div>
 
-            <!-- Projects & Experience Section -->
+            <!-- Projects Grid -->
             <div class="cards-grid" id="projects">
                 <div class="card">
                     <div class="card-content">
@@ -604,7 +545,7 @@
             </div>
         </section>
 
-        <!-- Get In Touch / Contact Footer Section -->
+        <!-- Contact Section -->
         <footer class="contact-section" id="contact">
             <div class="footer-header">
                 <span class="section-tag">Get In Touch</span>
@@ -612,19 +553,16 @@
             </div>
 
             <div class="contact-grid">
-                <!-- WhatsApp Link -->
                 <a href="https://wa.me/212602927707" target="_blank" class="contact-card">
                     <span class="contact-label">WhatsApp</span>
                     <span class="contact-value">+212 602 927 707</span>
                 </a>
 
-                <!-- Direct Call Link -->
                 <a href="tel:+212602927707" class="contact-card">
                     <span class="contact-label">Direct Call</span>
                     <span class="contact-value">+212 602 927 707</span>
                 </a>
 
-                <!-- Email Link -->
                 <a href="mailto:yassirtel1@gmail.com" class="contact-card">
                     <span class="contact-label">E-Mail</span>
                     <span class="contact-value">yassirtel1@gmail.com</span>
@@ -639,11 +577,42 @@
 
     </div>
 
+    <!-- Mouse Tracking Avatar Script -->
+    <script>
+        const avatar = document.getElementById('interactiveAvatar');
+
+        window.addEventListener('mousemove', (e) => {
+            if (!avatar) return;
+
+            // Calculate avatar center on screen
+            const rect = avatar.getBoundingClientRect();
+            const avatarCenterX = rect.left + rect.width / 2;
+            const avatarCenterY = rect.top + rect.height / 2;
+
+            // Distance between cursor and avatar center
+            const deltaX = (e.clientX - avatarCenterX) / (window.innerWidth / 2);
+            const deltaY = (e.clientY - avatarCenterY) / (window.innerHeight / 2);
+
+            // Set rotation bounds (Max 25 deg horizontal, Max 20 deg vertical)
+            const rotateY = deltaX * 25; 
+            const rotateX = -deltaY * 20; 
+
+            // Apply smooth 3D tilt tracking
+            avatar.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+        });
+
+        // Reset posture smoothly when mouse leaves browser window
+        window.addEventListener('mouseleave', () => {
+            if (avatar) {
+                avatar.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            }
+        });
+    </script>
+
     <!-- Background Frame Scroll Script -->
     <script>
         const canvas = document.getElementById('animCanvas');
         const context = canvas.getContext('2d');
-
         const frameCount = 33; 
 
         const currentFrame = index => (
@@ -651,7 +620,6 @@
         );
 
         const images = [];
-
         for (let i = 1; i <= frameCount; i++) {
             const img = new Image();
             img.src = currentFrame(i);
@@ -670,20 +638,6 @@
             canvas.height = window.innerHeight;
             renderFrame(0);
         };
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
-            const frameIndex = Math.min(
-                frameCount - 1,
-                Math.floor(scrollFraction * frameCount)
-            );
-            renderFrame(frameIndex);
-        });
 
         window.addEventListener('scroll', () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
