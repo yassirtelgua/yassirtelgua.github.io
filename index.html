@@ -6,8 +6,8 @@
     <title>TELGUA YASSIR — IT Support Specialist & Developer</title>
 
     <!-- Browser Tab Logo / Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 
     <style>
         * {
@@ -34,7 +34,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             object-fit: cover;
             z-index: 1;
             opacity: 0.35;
@@ -112,6 +112,7 @@
             align-items: center;
             gap: 0.5rem;
             transition: transform 0.2s ease, background-color 0.2s ease;
+            white-space: nowrap;
         }
 
         .btn-pill:hover {
@@ -147,14 +148,14 @@
         }
 
         .hero-title {
-            font-size: 4.2rem;
-            line-height: 1.02;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            line-height: 1.05;
             font-weight: 800;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
         }
 
         .hero-right h2 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
             line-height: 1.3;
             font-weight: 600;
             margin-bottom: 0.8rem;
@@ -243,7 +244,7 @@
         }
 
         .header-left h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             line-height: 1.1;
             font-weight: 800;
             letter-spacing: -1px;
@@ -342,7 +343,7 @@
         }
 
         .footer-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             margin-top: 0.4rem;
         }
@@ -398,20 +399,101 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive Breakpoints */
+        /* --- Tablet Breakpoint (Max-Width: 900px) --- */
         @media (max-width: 900px) {
-            .hero-content, .section-header, .hero-pillars, .cards-grid, .contact-grid {
+            .hero-content, .section-header, .cards-grid, .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            .hero-title {
-                font-size: 3rem;
+            .hero-pillars {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .hero-card, footer.contact-section {
-                padding: 2rem;
+            .hero-card {
+                padding: 2.2rem 2rem 2.5rem 2rem;
+            }
+            footer.contact-section {
+                padding: 3rem 2rem;
             }
             .footer-bottom {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+        }
+
+        /* --- Phone Breakpoint (Max-Width: 600px) --- */
+        @media (max-width: 600px) {
+            .content-wrapper {
+                padding: 0.85rem;
+            }
+
+            .hero-card {
+                padding: 1.5rem 1.25rem 2rem 1.25rem;
+                border-radius: 24px;
+            }
+
+            /* Responsive Navbar for Mobile */
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.8rem;
+            }
+
+            .nav-right a {
+                font-size: 0.88rem;
+            }
+
+            .btn-pill {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            /* Hero Content Spacing */
+            .hero-content {
+                margin-bottom: 2.5rem;
+            }
+
+            .hero-pillars {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Stacked Brand Bar */
+            .brand-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+                padding: 1.5rem 0.5rem;
+            }
+
+            .brand-title {
+                max-width: 100%;
+            }
+
+            .brand-list {
+                gap: 0.8rem 1.2rem;
+            }
+
+            /* Cards & Footer */
+            .card {
+                padding: 1.6rem;
+                min-height: auto;
+            }
+
+            footer.contact-section {
+                padding: 2.2rem 1.25rem;
+                border-radius: 24px;
+                margin-top: 3rem;
+            }
+
+            .contact-card {
+                padding: 1.4rem;
             }
         }
     </style>
