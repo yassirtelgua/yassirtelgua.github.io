@@ -145,27 +145,48 @@
             letter-spacing: -1px;
         }
 
-        /* Avatar Container & Interactive 3D Styling */
+        /* --- Split Avatar Container & Layering --- */
         .avatar-container {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px; /* Gives realistic 3D depth */
+            position: relative;
+            height: 380px;
         }
 
-        .avatar-img {
+        .avatar-wrapper {
+            position: relative;
+            width: 260px;
+            height: 380px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Static Body Layer */
+        .avatar-body {
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            max-width: 260px;
             height: auto;
-            max-height: 380px;
-            object-fit: contain;
-            /* Orange glow reflecting background */
-            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.4));
-            transform-style: preserve-3d;
-            transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 1;
+            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.35));
+            pointer-events: none;
+        }
+
+        /* Interactive Head Layer */
+        .avatar-head {
+            position: absolute;
+            top: 10px; /* Fine-tune vertically to sit flush on neck */
+            width: 115px; /* Fine-tune width relative to body size */
+            height: auto;
+            z-index: 2;
+            
+            /* Sets neck base as rotation pivot */
+            transform-origin: 50% 88%;
+            
+            transition: transform 0.08s ease-out;
             will-change: transform;
-            cursor: pointer;
+            pointer-events: none;
         }
 
         .hero-right h2 {
@@ -208,7 +229,7 @@
             color: #f0f0f0;
         }
 
-        /* Ecosystem Bar */
+        /* Skill / Tech Ecosystem Bar */
         .brand-bar {
             display: flex;
             align-items: center;
@@ -237,7 +258,7 @@
             color: #cccccc;
         }
 
-        /* Section Layouts */
+        /* Sections */
         .body-section {
             padding: 3rem 0;
         }
@@ -331,7 +352,7 @@
             font-weight: 600;
         }
 
-        /* Footer Contact Section */
+        /* Contact Footer */
         footer.contact-section {
             margin-top: 5rem;
             padding: 4rem 3rem;
@@ -404,7 +425,7 @@
                 gap: 2.5rem;
             }
             .avatar-container {
-                order: -1; /* Avatar on top for tablets */
+                order: -1;
             }
             .section-header, .cards-grid, .contact-grid {
                 grid-template-columns: 1fr;
@@ -432,7 +453,7 @@
 </head>
 <body>
 
-    <!-- Scroll Canvas Background -->
+    <!-- Fixed Background Canvas -->
     <canvas id="animCanvas"></canvas>
 
     <div class="content-wrapper">
@@ -450,18 +471,24 @@
             </nav>
 
             <div class="hero-content">
-                <!-- Left Column -->
+                <!-- Left Text Column -->
                 <div class="hero-left">
                     <span class="greeting">Hey, I'm an</span>
                     <h1 class="hero-title">IT Support<br>Specialist</h1>
                 </div>
 
-                <!-- Middle Column: Interactive Gaze-Tracking Avatar -->
+                <!-- Center Column: Layered Avatar (Static Body + Head Tracker) -->
                 <div class="avatar-container">
-                    <img src="avatar.png" id="interactiveAvatar" alt="Telgua Yassir Avatar" class="avatar-img">
+                    <div class="avatar-wrapper">
+                        <!-- Layer 1: Static Body -->
+                        <img src="body.png" alt="Yassir Body" class="avatar-body">
+                        
+                        <!-- Layer 2: Interactive Rotating Head -->
+                        <img src="head.png" id="interactiveHead" alt="Yassir Head" class="avatar-head">
+                    </div>
                 </div>
 
-                <!-- Right Column -->
+                <!-- Right Text Column -->
                 <div class="hero-right">
                     <h2>Technical support should feel effortless.</h2>
                     <p>From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.</p>
@@ -577,34 +604,38 @@
 
     </div>
 
-    <!-- Mouse Tracking Avatar Script -->
+    <!-- Mouse Tracking Head Script -->
     <script>
-        const avatar = document.getElementById('interactiveAvatar');
+        const head = document.getElementById('interactiveHead');
 
         window.addEventListener('mousemove', (e) => {
-            if (!avatar) return;
+            if (!head) return;
 
-            // Calculate avatar center on screen
-            const rect = avatar.getBoundingClientRect();
-            const avatarCenterX = rect.left + rect.width / 2;
-            const avatarCenterY = rect.top + rect.height / 2;
+            // Compute neck base point on screen
+            const rect = head.getBoundingClientRect();
+            const neckX = rect.left + (rect.width / 2);
+            const neckY = rect.top + (rect.height * 0.88);
 
-            // Distance between cursor and avatar center
-            const deltaX = (e.clientX - avatarCenterX) / (window.innerWidth / 2);
-            const deltaY = (e.clientY - avatarCenterY) / (window.innerHeight / 2);
+            // Compute rotation angle towards cursor
+            const radians = Math.atan2(e.clientX - neckX, -(e.clientY - neckY));
+            let degrees = radians * (180 / Math.PI);
 
-            // Set rotation bounds (Max 25 deg horizontal, Max 20 deg vertical)
-            const rotateY = deltaX * 25; 
-            const rotateX = -deltaY * 20; 
+            // Limit maximum neck rotation arc (Max +/- 22 degrees)
+            const maxRotation = 22;
+            degrees = Math.max(-maxRotation, Math.min(maxRotation, degrees));
 
-            // Apply smooth 3D tilt tracking
-            avatar.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+            // Subtle vertical translation relative to mouse height
+            const deltaY = (e.clientY - neckY) / window.innerHeight;
+            const translateY = Math.max(-4, Math.min(6, deltaY * 12));
+
+            // Apply rotation around the neck pivot
+            head.style.transform = `rotate(${degrees}deg) translateY(${translateY}px)`;
         });
 
-        // Reset posture smoothly when mouse leaves browser window
+        // Reset head angle when cursor exits window
         window.addEventListener('mouseleave', () => {
-            if (avatar) {
-                avatar.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            if (head) {
+                head.style.transform = `rotate(0deg) translateY(0px)`;
             }
         });
     </script>
