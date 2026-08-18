@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TELGUA YASSIR — IT Support Specialist & Developer</title>
+    <title data-i18n="pageTitle">TELGUA YASSIR — IT Support Specialist & Developer</title>
 
     <!-- Browser Tab Logo / Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -442,17 +442,22 @@
                 <a href="#top" class="logo">TELGUA YASSIR</a>
                 
                 <div class="nav-right">
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact" class="btn-pill btn-white">Get in touch &rarr;</a>
+                    <a href="#about" data-i18n="navAbout">About</a>
+                    <a href="#projects" data-i18n="navProjects">Projects</a>
+                    <div class="language-switcher" aria-label="Language selector">
+                        <button type="button" class="language-btn active" data-lang="en">EN</button>
+                        <span>/</span>
+                        <button type="button" class="language-btn" data-lang="de">DE</button>
+                    </div>
+                    <a href="#contact" class="btn-pill btn-white" data-i18n="navContact">Get in touch &rarr;</a>
                 </div>
             </nav>
 
             <div class="hero-content">
                 <!-- Left Text Column -->
                 <div class="hero-left">
-                    <span class="greeting">Hey, I'm an</span>
-                    <h1 class="hero-title">IT Support<br>Specialist</h1>
+                    <span class="greeting" data-i18n="heroGreeting">Hey, I'm an</span>
+                    <h1 class="hero-title" data-i18n="heroTitle">IT Support<br>Specialist</h1>
                 </div>
 
                 <!-- Center Column: Static Avatar Portrait -->
@@ -462,8 +467,8 @@
 
                 <!-- Right Text Column -->
                 <div class="hero-right">
-                    <h2>Technical support should feel effortless.</h2>
-                    <p>From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.</p>
+                    <h2 data-i18n="heroHeading">Technical support should feel effortless.</h2>
+                    <p data-i18n="heroText">From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.</p>
                 </div>
             </div>
 
@@ -471,26 +476,26 @@
             <div class="hero-pillars">
                 <div class="pillar">
                     <span class="pillar-num">#01</span>
-                    <span class="pillar-label">B2B Support & Dynamics 365</span>
+                    <span class="pillar-label" data-i18n="pillar1">B2B Support & Dynamics 365</span>
                 </div>
                 <div class="pillar">
                     <span class="pillar-num">#02</span>
-                    <span class="pillar-label">Python & Web Engineering</span>
+                    <span class="pillar-label" data-i18n="pillar2">Python & Web Engineering</span>
                 </div>
                 <div class="pillar">
                     <span class="pillar-num">#03</span>
-                    <span class="pillar-label">Hardware & Micro-Soldering</span>
+                    <span class="pillar-label" data-i18n="pillar3">Hardware & Micro-Soldering</span>
                 </div>
                 <div class="pillar">
                     <span class="pillar-num">#04</span>
-                    <span class="pillar-label">Azure & Active Directory</span>
+                    <span class="pillar-label" data-i18n="pillar4">Azure & Active Directory</span>
                 </div>
             </div>
         </header>
 
         <!-- Skill & Technology Bar -->
         <section class="brand-bar">
-            <span class="brand-title">Ecosystems & Technologies</span>
+            <span class="brand-title" data-i18n="brandTitle">Ecosystems & Technologies</span>
             <div class="brand-list">
                 <div class="brand-item">❖ Microsoft Azure</div>
                 <div class="brand-item">⚙ Dynamics 365</div>
@@ -504,12 +509,12 @@
         <section class="body-section" id="about">
             <div class="section-header">
                 <div class="header-left">
-                    <span class="section-tag">About Me</span>
-                    <h2>Behind the Tech: Solving Issues & Building Solutions</h2>
+                    <span class="section-tag" data-i18n="aboutTag">About Me</span>
+                    <h2 data-i18n="aboutHeading">Behind the Tech: Solving Issues & Building Solutions</h2>
                 </div>
                 <div class="header-right">
-                    <p>I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.</p>
-                    <a href="#contact" class="btn-pill btn-orange">Get in touch &rarr;</a>
+                    <p data-i18n="aboutText">I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.</p>
+                    <a href="#contact" class="btn-pill btn-orange" data-i18n="aboutContact">Get in touch &rarr;</a>
                 </div>
             </div>
 
@@ -517,29 +522,38 @@
             <div class="cards-grid" id="projects">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-tag">Active Web Project</span>
-                        <h3>Notepad App</h3>
-                        <p>A fast, browser-based notepad application engineered with clean JavaScript and hosted on GitHub Pages.</p>
+                        <span class="card-tag" data-i18n="notepadTag">Active Web Project</span>
+                        <h3 data-i18n="notepadTitle">Notepad App</h3>
+                        <p data-i18n="notepadText">A fast, browser-based notepad application engineered with clean JavaScript and hosted on GitHub Pages.</p>
                     </div>
-                    <a href="https://yassirtelgua.github.io/Notepad/" target="_blank" class="card-link">View Live Project &rarr;</a>
+                    <a href="https://yassirtelgua.github.io/Notepad/" target="_blank" rel="noopener noreferrer" class="card-link" data-i18n="viewProject">View Live Project &rarr;</a>
                 </div>
 
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-tag">Foundever / Lexmark</span>
-                        <h3>Technical Support Agent</h3>
-                        <p>1st-Level B2B incident resolution using Dynamics 365, Azure permissions, VPN authentication, and network diagnostics.</p>
+                        <span class="card-tag" data-i18n="telmailTag">Web Project</span>
+                        <h3 data-i18n="telmailTitle">Telmail – Temporary Email</h3>
+                        <p data-i18n="telmailText">A temporary email project focused on simple access, privacy, and a convenient temporary inbox experience.</p>
+                    </div>
+                    <a href="https://telmail.blogspot.com/" target="_blank" rel="noopener noreferrer" class="card-link" data-i18n="telmailLink">View Telmail &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-tag" data-i18n="supportTag">Foundever / Lexmark</span>
+                        <h3 data-i18n="supportTitle">Technical Support Agent</h3>
+                        <p data-i18n="supportText">1st-Level B2B incident resolution using Dynamics 365, Azure permissions, VPN authentication, and network diagnostics.</p>
                     </div>
                     <span class="card-date">2024 – Present</span>
                 </div>
 
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-tag">Technical Service</span>
-                        <h3>Hardware & OS Repair</h3>
-                        <p>Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.</p>
+                        <span class="card-tag" data-i18n="repairTag">Technical Service</span>
+                        <h3 data-i18n="repairTitle">Hardware & OS Repair</h3>
+                        <p data-i18n="repairText">Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.</p>
                     </div>
-                    <span class="card-date">Hardware Certified</span>
+                    <span class="card-date" data-i18n="repairDate">Hardware Certified</span>
                 </div>
             </div>
         </section>
@@ -547,29 +561,29 @@
         <!-- Contact Section -->
         <footer class="contact-section" id="contact">
             <div class="footer-header">
-                <span class="section-tag">Get In Touch</span>
-                <h2>Let's Connect & Build Something Great</h2>
+                <span class="section-tag" data-i18n="contactTag">Get In Touch</span>
+                <h2 data-i18n="contactHeading">Let's Connect & Build Something Great</h2>
             </div>
 
             <div class="contact-grid">
                 <a href="https://wa.me/212602927707" target="_blank" class="contact-card">
-                    <span class="contact-label">WhatsApp</span>
+                    <span class="contact-label" data-i18n="whatsappLabel">WhatsApp</span>
                     <span class="contact-value">+212 602 927 707</span>
                 </a>
 
                 <a href="tel:+212602927707" class="contact-card">
-                    <span class="contact-label">Direct Call</span>
+                    <span class="contact-label" data-i18n="callLabel">Direct Call</span>
                     <span class="contact-value">+212 602 927 707</span>
                 </a>
 
                 <a href="mailto:yassirtel1@gmail.com" class="contact-card">
-                    <span class="contact-label">E-Mail</span>
+                    <span class="contact-label" data-i18n="emailLabel">E-Mail</span>
                     <span class="contact-value">yassirtel1@gmail.com</span>
                 </a>
             </div>
 
             <div class="footer-bottom">
-                <span>&copy; 2026 TELGUA YASSIR. All rights reserved.</span>
+                <span data-i18n="copyright">&copy; 2026 TELGUA YASSIR. All rights reserved.</span>
                 <span>Salé, Morocco</span>
             </div>
         </footer>
