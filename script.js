@@ -41,7 +41,7 @@ const translations = {
         certificatesText: "Selected qualifications and certificates relevant to my professional profile.",
         b2Title: "telc Deutsch B2 – Zertifikat",
         b2Text: "German language certificate at level B2. Issued on 11 August 2026.",
-        bacTitle: "Baccalauréat",
+        bacTitle: "Baccalaureate Certificate",
         bacText: "Secondary school qualification and academic foundation.",
         viewCertificate: "View Certificate →",
 
@@ -87,7 +87,7 @@ const translations = {
         certificatesText: "Ausgewählte Qualifikationen und Zertifikate, die für mein berufliches Profil relevant sind.",
         b2Title: "telc Deutsch B2 – Zertifikat",
         b2Text: "Deutsch-Zertifikat auf dem Niveau B2. Ausgestellt am 11. August 2026.",
-        bacTitle: "Baccalauréat",
+        bacTitle: "Baccalaureate Certificate",
         bacText: "Schulabschluss und akademische Grundlage.",
         viewCertificate: "Zertifikat ansehen →",
 
