@@ -5,7 +5,8 @@
 const translations = {
     en: {
         navAbout: "About",
-        navProjects: "Projects",
+        navProjects: "Projects",        navCertificates: "Certificates",
+
         navContact: "Get in touch →",
         heroGreeting: "Hey, I'm an",
         heroTitle: "IT Support<br>Specialist",
@@ -35,13 +36,23 @@ const translations = {
         repairTitle: "Hardware & OS Repair",
         repairText: "Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.",
         repairDate: "Hardware Certified",
+        certificatesTag: "Certificates",
+        certificatesHeading: "Qualifications & Certificates",
+        certificatesText: "Selected qualifications and certificates relevant to my professional profile.",
+        b2Title: "telc Deutsch B2 – Zertifikat",
+        b2Text: "German language certificate at level B2. Issued on 11 August 2026.",
+        bacTitle: "Baccalauréat",
+        bacText: "Secondary school qualification and academic foundation.",
+        viewCertificate: "View Certificate →",
+
         contactTag: "Get In Touch",
         contactHeading: "Let's Connect & Build Something Great",
         copyright: "© 2026 TELGUA YASSIR. All rights reserved."
     },
     de: {
         navAbout: "Über mich",
-        navProjects: "Projekte",
+        navProjects: "Projekte",        navCertificates: "Zertifikate",
+
         navContact: "Kontakt aufnehmen →",
         heroGreeting: "Hey, ich bin",
         heroTitle: "IT Support<br>Spezialist",
@@ -71,6 +82,15 @@ const translations = {
         repairTitle: "Hardware- & OS-Reparatur",
         repairText: "Micro-Soldering auf Board-Ebene, Betriebssystem-Flashen, Bootloop-Wiederherstellung und mobile Datenrettung für Android und iOS.",
         repairDate: "Hardware-zertifiziert",
+        certificatesTag: "Zertifikate",
+        certificatesHeading: "Qualifikationen & Zertifikate",
+        certificatesText: "Ausgewählte Qualifikationen und Zertifikate, die für mein berufliches Profil relevant sind.",
+        b2Title: "telc Deutsch B2 – Zertifikat",
+        b2Text: "Deutsch-Zertifikat auf dem Niveau B2. Ausgestellt am 11. August 2026.",
+        bacTitle: "Baccalauréat",
+        bacText: "Schulabschluss und akademische Grundlage.",
+        viewCertificate: "Zertifikat ansehen →",
+
         contactTag: "Kontakt",
         contactHeading: "Lassen Sie uns verbinden & etwas Großartiges entwickeln",
         copyright: "© 2026 TELGUA YASSIR. Alle Rechte vorbehalten."
