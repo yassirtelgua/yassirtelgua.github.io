@@ -6,6 +6,7 @@ const translations = {
     en: {
         navAbout: "About",
         navProjects: "Projects",        navCertificates: "Certificates",
+        navCV: "CV",
 
         navContact: "Get in touch →",
         heroGreeting: "Hey, I'm an",
@@ -21,6 +22,7 @@ const translations = {
         aboutHeading: "Behind the Tech: Solving Issues & Building Solutions",
         aboutText: "I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.",
         aboutContact: "Get in touch →",
+        aboutCV: "View CV →",
         notepadTag: "Active Web Project",
         notepadTitle: "Notepad App",
         notepadText: "A fast, browser-based notepad application engineered with clean JavaScript and hosted on GitHub Pages.",
@@ -56,6 +58,7 @@ const translations = {
     de: {
         navAbout: "Über mich",
         navProjects: "Projekte",        navCertificates: "Zertifikate",
+        navCV: "Lebenslauf",
 
         navContact: "Kontakt aufnehmen →",
         heroGreeting: "Hey, ich bin",
@@ -71,6 +74,7 @@ const translations = {
         aboutHeading: "Hinter der Technik: Probleme lösen & Lösungen entwickeln",
         aboutText: "Ich bin IT Support Specialist und Entwickler aus Salé, Marokko. Ich verfüge über Erfahrung im B2B-Ticketmanagement, Remote-Troubleshooting, in der Netzwerkdiagnose und Frontend-Entwicklung.",
         aboutContact: "Kontakt aufnehmen →",
+        aboutCV: "Lebenslauf ansehen →",
         notepadTag: "Aktives Webprojekt",
         notepadTitle: "Notepad App",
         notepadText: "Eine schnelle, browserbasierte Notiz-Anwendung mit sauberem JavaScript, gehostet auf GitHub Pages.",
