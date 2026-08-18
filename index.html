@@ -514,6 +514,87 @@
             outline: 2px solid #ff4500;
             outline-offset: 3px;
         }
+
+        /* Certificates */
+        .certificates-section {
+            margin-top: 7rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .certificate-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            background: rgba(17, 17, 17, 0.82);
+            padding: 1rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 69, 0, 0.5);
+        }
+
+        .certificate-preview {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #0b0b0b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .certificate-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .certificate-preview:hover img {
+            transform: scale(1.025);
+        }
+
+        .certificate-info {
+            padding: 1.25rem 0.35rem 0.35rem;
+        }
+
+        .certificate-info h3 {
+            margin: 0 0 0.45rem;
+            font-size: 1.2rem;
+        }
+
+        .certificate-info p {
+            margin: 0 0 1rem;
+            color: rgba(255, 255, 255, 0.62);
+            line-height: 1.6;
+        }
+
+        .certificate-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .certificate-link:hover {
+            color: #ff4500;
+        }
+
+        @media (max-width: 800px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 </style>
 </head>
 <body>
@@ -533,6 +614,7 @@
                 <div class="nav-right">
                     <a href="#about" data-i18n="navAbout">About</a>
                     <a href="#projects" data-i18n="navProjects">Projects</a>
+                    <a href="#certificates" data-i18n="navCertificates">Certificates</a>
 
                     <div class="language-switcher" aria-label="Language selector">
                         <button type="button" class="language-btn active" data-lang="en" aria-pressed="true">EN</button>
@@ -651,6 +733,44 @@
                     </div>
                     <span class="card-date" data-i18n="repairDate">Hardware Certified</span>
                 </div>
+            </div>
+        </section>
+
+
+        <!-- Certificates Section -->
+        <section class="certificates-section" id="certificates">
+            <div class="section-header">
+                <div class="header-left">
+                    <span class="section-tag" data-i18n="certificatesTag">Certificates</span>
+                    <h2 data-i18n="certificatesHeading">Qualifications & Certificates</h2>
+                </div>
+                <div class="header-right">
+                    <p data-i18n="certificatesText">Selected qualifications and certificates relevant to my professional profile.</p>
+                </div>
+            </div>
+
+            <div class="certificates-grid">
+                <article class="certificate-card">
+                    <a class="certificate-preview" href="deutsch_b2.pdf" target="_blank" rel="noopener noreferrer">
+                        <img src="deutsch_b2.png" alt="telc Deutsch B2 certificate" loading="lazy">
+                    </a>
+                    <div class="certificate-info">
+                        <h3 data-i18n="b2Title">telc Deutsch B2 – Zertifikat</h3>
+                        <p data-i18n="b2Text">German language certificate at level B2. Issued on 11 August 2026.</p>
+                        <a class="certificate-link" href="deutsch_b2.pdf" target="_blank" rel="noopener noreferrer" data-i18n="viewCertificate">View Certificate →</a>
+                    </div>
+                </article>
+
+                <article class="certificate-card">
+                    <a class="certificate-preview" href="abiturzeugnis.pdf" target="_blank" rel="noopener noreferrer">
+                        <img src="abiturzeugnis.png" alt="Baccalaureate certificate" loading="lazy">
+                    </a>
+                    <div class="certificate-info">
+                        <h3 data-i18n="bacTitle">Baccalauréat</h3>
+                        <p data-i18n="bacText">Secondary school qualification and academic foundation.</p>
+                        <a class="certificate-link" href="abiturzeugnis.pdf" target="_blank" rel="noopener noreferrer" data-i18n="viewCertificate">View Certificate →</a>
+                    </div>
+                </article>
             </div>
         </section>
 
