@@ -25,26 +25,39 @@
             background-color: #080808;
             color: #ffffff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Fixed Background Scroll Canvas */
-        canvas#animCanvas {
+        /* Fixed Video Background */
+        #backgroundVideo {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            inset: 0;
             width: 100vw;
             height: 100dvh;
             object-fit: cover;
+            z-index: 0;
+            opacity: 0.38;
+            pointer-events: none;
+        }
+
+        /* Subtle dark overlay for readability */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(8, 8, 8, 0.22) 0%,
+                rgba(8, 8, 8, 0.48) 100%
+            );
             z-index: 1;
-            opacity: 0.35;
             pointer-events: none;
         }
 
         /* Main Container Overlay */
         .content-wrapper {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 1140px;
             margin: 0 auto;
             padding: 1.5rem;
