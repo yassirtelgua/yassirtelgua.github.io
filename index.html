@@ -8,8 +8,470 @@
     <!-- Browser Tab Logo / Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080808;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Background Scroll Canvas */
+        canvas#animCanvas {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100dvh;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        /* Main Container Overlay */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Hero Card Header with Glassmorphism Blur */
+        .hero-card {
+            background: radial-gradient(circle at 50% -20%, rgba(255, 69, 0, 0.75) 0%, rgba(179, 36, 0, 0.65) 35%, rgba(24, 9, 5, 0.75) 75%, rgba(18, 8, 6, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 36px;
+            padding: 2.5rem 3rem 3rem 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-right a {
+            color: #eeeeee;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .btn-pill {
+            padding: 0.65rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-pill:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: #ffffff;
+            color: #000000 !important;
+        }
+
+        .btn-orange {
+            background: #ff4500;
+            color: #ffffff !important;
+        }
+
+        /* 3-Column Hero Grid with Center Avatar */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 280px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .greeting {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* --- Static Avatar Styling --- */
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .avatar-img {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 30px rgba(255, 69, 0, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-img:hover {
+            transform: scale(1.03);
+        }
+
+        .hero-right h2 {
+            font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+            line-height: 1.3;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-right p {
+            color: #d0d0d0;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        /* Hero Pillars */
+        .hero-pillars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .pillar {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .pillar-num {
+            color: #ff7744;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .pillar-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f0f0f0;
+        }
+
+        /* Skill / Tech Ecosystem Bar */
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2.5rem 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .brand-title {
+            color: #888888;
+            font-size: 0.85rem;
+            max-width: 150px;
+            line-height: 1.3;
+        }
+
+        .brand-list {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-item {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #cccccc;
+        }
+
+        /* Sections */
+        .body-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            color: #ff4500;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .header-left h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header-right p {
+            font-size: 1.15rem;
+            line-height: 1.5;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 2.2rem;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 69, 0, 0.5);
+        }
+
+        .card-tag {
+            color: #ff4500;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: #a0a0a0;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-date {
+            color: #666666;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact Footer */
+        footer.contact-section {
+            margin-top: 5rem;
+            padding: 4rem 3rem;
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .footer-header h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-top: 0.4rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 1.8rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 69, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #ff4500;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            color: #666666;
+            font-size: 0.85rem;
+        }
+
+        /* Tablet Breakpoint */
+        @media (max-width: 950px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .avatar-container {
+                order: -1;
+            }
+            .section-header, .cards-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-pillars {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile Breakpoint */
+        @media (max-width: 600px) {
+            .content-wrapper { padding: 0.85rem; }
+            .hero-card { padding: 1.5rem 1.25rem 2rem 1.25rem; }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+            }
+            .nav-right { width: 100%; justify-content: space-between; }
+            .hero-pillars { grid-template-columns: 1fr; }
+            .brand-bar { flex-direction: column; gap: 1.2rem; }
+            footer.contact-section { padding: 2rem 1.25rem; }
+        }
+    
+
+        /* Modern EN / DE language switcher */
+        .language-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 3px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 999px;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 6px 18px rgba(0,0,0,0.18);
+        }
+
+        .language-btn {
+            min-width: 40px;
+            height: 32px;
+            padding: 0 10px;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: rgba(255,255,255,0.68);
+            font: inherit;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background-color .25s ease, color .25s ease, transform .2s ease, box-shadow .25s ease;
+        }
+
+        .language-btn:hover { color: #fff; transform: translateY(-1px); }
+
+        .language-btn.active {
+            background: #fff;
+            color: #111;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 600px) {
+            .nav-right { gap: 0.8rem; flex-wrap: wrap; }
+            .language-switcher { order: 2; }
+        }
+</style>
 </head>
 <body>
 
@@ -173,6 +635,123 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <!-- Background Frame Scroll Script -->
+    <script>
+        const canvas = document.getElementById('animCanvas');
+        const context = canvas.getContext('2d');
+        const frameCount = 33; 
+
+        const currentFrame = index => (
+            `./frames/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
+        );
+
+        const images = [];
+        for (let i = 1; i <= frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            images.push(img);
+        }
+
+        function renderFrame(index) {
+            if (images[index] && images[index].complete) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(images[index], 0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        images[0].onload = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            renderFrame(0);
+        };
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+            
+            const frameIndex = Math.min(
+                frameCount - 1,
+                Math.floor(scrollFraction * frameCount)
+            );
+            
+            requestAnimationFrame(() => renderFrame(frameIndex));
+        });
+    
+
+        /* =========================
+           English / Deutsch switcher
+           ========================= */
+        const translations = {
+            en: {
+                navAbout: "About", navProjects: "Projects", navContact: "Get in touch →",
+                heroGreeting: "Hey, I'm an", heroTitle: "IT Support<br>Specialist",
+                heroHeading: "Technical support should feel effortless.",
+                heroText: "From enterprise B2B incident management to Python and web engineering, I resolve system issues and build responsive interfaces.",
+                pillar1: "B2B Support & Dynamics 365", pillar2: "Python & Web Engineering",
+                pillar3: "Hardware & Micro-Soldering", pillar4: "Azure & Active Directory",
+                brandTitle: "Ecosystems & Technologies", aboutTag: "About Me",
+                aboutHeading: "Behind the Tech: Solving Issues & Building Solutions",
+                aboutText: "I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.",
+                aboutContact: "Get in touch →", notepadTag: "Active Web Project", notepadTitle: "Notepad App",
+                notepadText: "A fast, browser-based notepad application engineered with clean JavaScript and hosted on GitHub Pages.",
+                viewProject: "View Live Project →", telmailTag: "Web Project", telmailTitle: "Telmail – Temporary Email",
+                telmailText: "A temporary email project focused on simple access, privacy, and a convenient temporary inbox experience.",
+                telmailLink: "View Telmail →", supportTag: "Foundever / Lexmark", supportTitle: "Technical Support Agent",
+                supportText: "1st-Level B2B incident resolution using Dynamics 365, Azure permissions, VPN authentication, and network diagnostics.",
+                repairTag: "Technical Service", repairTitle: "Hardware & OS Repair",
+                repairText: "Board-level micro-soldering, OS flashing, bootloop recovery, and mobile data recovery across Android and iOS.",
+                repairDate: "Hardware Certified", contactTag: "Get In Touch",
+                contactHeading: "Let's Connect & Build Something Great", copyright: "© 2026 TELGUA YASSIR. All rights reserved."
+            },
+            de: {
+                navAbout: "Über mich", navProjects: "Projekte", navContact: "Kontakt aufnehmen →",
+                heroGreeting: "Hey, ich bin", heroTitle: "IT Support<br>Spezialist",
+                heroHeading: "Technischer Support sollte sich mühelos anfühlen.",
+                heroText: "Von B2B-Incident-Management im Unternehmensumfeld bis hin zu Python und Webentwicklung löse ich Systemprobleme und entwickle responsive Benutzeroberflächen.",
+                pillar1: "B2B Support & Dynamics 365", pillar2: "Python & Webentwicklung",
+                pillar3: "Hardware & Micro-Soldering", pillar4: "Azure & Active Directory",
+                brandTitle: "Technologien & Ökosysteme", aboutTag: "Über mich",
+                aboutHeading: "Hinter der Technik: Probleme lösen & Lösungen entwickeln",
+                aboutText: "Ich bin IT Support Specialist und Entwickler aus Salé, Marokko. Ich verfüge über Erfahrung im B2B-Ticketmanagement, Remote-Troubleshooting, in der Netzwerkdiagnose und Frontend-Entwicklung.",
+                aboutContact: "Kontakt aufnehmen →", notepadTag: "Aktives Webprojekt", notepadTitle: "Notepad App",
+                notepadText: "Eine schnelle, browserbasierte Notiz-Anwendung mit sauberem JavaScript, gehostet auf GitHub Pages.",
+                viewProject: "Live-Projekt ansehen →", telmailTag: "Webprojekt", telmailTitle: "Telmail – Temporäre E-Mail",
+                telmailText: "Ein Projekt für temporäre E-Mail-Adressen mit Fokus auf einfache Nutzung, Privatsphäre und einen praktischen temporären Posteingang.",
+                telmailLink: "Telmail öffnen →", supportTag: "Foundever / Lexmark", supportTitle: "Technical Support Agent",
+                supportText: "1st-Level-B2B-Incident-Management mit Dynamics 365, Azure-Berechtigungen, VPN-Authentifizierung und Netzwerkdiagnose.",
+                repairTag: "Technischer Service", repairTitle: "Hardware- & OS-Reparatur",
+                repairText: "Micro-Soldering auf Board-Ebene, Betriebssystem-Flashen, Bootloop-Wiederherstellung und mobile Datenrettung für Android und iOS.",
+                repairDate: "Hardware-zertifiziert", contactTag: "Kontakt",
+                contactHeading: "Lassen Sie uns verbinden & etwas Großartiges entwickeln", copyright: "© 2026 TELGUA YASSIR. Alle Rechte vorbehalten."
+            }
+        };
+
+        const languageButtons = document.querySelectorAll('.language-btn');
+
+        function applyLanguage(lang) {
+            const dictionary = translations[lang] || translations.en;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (dictionary[key] !== undefined) element.innerHTML = dictionary[key];
+            });
+
+            languageButtons.forEach(button => {
+                const active = button.dataset.lang === lang;
+                button.classList.toggle('active', active);
+                button.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+
+            localStorage.setItem('portfolioLanguage', lang);
+        }
+
+        languageButtons.forEach(button => {
+            button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+        });
+
+        applyLanguage(localStorage.getItem('portfolioLanguage') || 'en');
+</script>
 </body>
 </html>
