@@ -484,6 +484,36 @@
             .nav-right { gap: 0.8rem; flex-wrap: wrap; }
             .language-switcher { order: 2; }
         }
+
+        /* Project thumbnails */
+        .project-thumb {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 14px;
+            margin: -0.25rem 0 1.4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #0b0b0b;
+        }
+
+        .project-thumb img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease, filter 0.45s ease;
+        }
+
+        .project-thumb:hover img {
+            transform: scale(1.035);
+            filter: brightness(1.08);
+        }
+
+        .project-thumb:focus-visible {
+            outline: 2px solid #ff4500;
+            outline-offset: 3px;
+        }
 </style>
 </head>
 <body>
@@ -581,6 +611,9 @@
             <!-- Projects Grid -->
             <div class="cards-grid" id="projects">
                 <div class="card">
+                    <a class="project-thumb" href="https://yassirtelgua.github.io/Notepad/" target="_blank" rel="noopener noreferrer" aria-label="Open Notepad App">
+                        <img src="images/notepad-thumbnail.png" alt="Notepad App interface" loading="lazy">
+                    </a>
                     <div class="card-content">
                         <span class="card-tag" data-i18n="notepadTag">Active Web Project</span>
                         <h3 data-i18n="notepadTitle">Notepad App</h3>
@@ -590,6 +623,9 @@
                 </div>
 
                 <div class="card">
+                    <a class="project-thumb" href="https://telmail.blogspot.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Telmail">
+                        <img src="images/telmail-thumbnail.png" alt="Telmail temporary email interface" loading="lazy">
+                    </a>
                     <div class="card-content">
                         <span class="card-tag" data-i18n="telmailTag">Web Project</span>
                         <h3 data-i18n="telmailTitle">Telmail – Temporary Email</h3>
