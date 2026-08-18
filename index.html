@@ -428,6 +428,7 @@
 
         /* Mobile Breakpoint */
         @media (max-width: 600px) {
+            .about-actions { justify-content: flex-start; }
             .content-wrapper { padding: 0.85rem; }
             .hero-card { padding: 1.5rem 1.25rem 2rem 1.25rem; }
             .navbar {
@@ -513,6 +514,25 @@
         .project-thumb:focus-visible {
             outline: 2px solid #ff4500;
             outline-offset: 3px;
+        }
+
+        /* About actions / CV */
+        .about-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn-cv {
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .btn-cv:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 69, 0, 0.55);
         }
 
         /* Certificates */
@@ -650,6 +670,7 @@
                     <a href="#about" data-i18n="navAbout">About</a>
                     <a href="#projects" data-i18n="navProjects">Projects</a>
                     <a href="#certificates" data-i18n="navCertificates">Certificates</a>
+                    <a href="CV_IT_Support_Yassir_Telgua.pdf" target="_blank" rel="noopener noreferrer" data-i18n="navCV">CV</a>
 
                     <div class="language-switcher" aria-label="Language selector">
                         <button type="button" class="language-btn active" data-lang="en" aria-pressed="true">EN</button>
@@ -721,7 +742,10 @@
                 </div>
                 <div class="header-right">
                     <p data-i18n="aboutText">I am an IT Support Specialist and Developer based in Salé, Morocco. Experienced in B2B ticket management, remote troubleshooting, network diagnostics, and front-end development.</p>
-                    <a href="#contact" class="btn-pill btn-orange" data-i18n="aboutContact">Get in touch &rarr;</a>
+                    <div class="about-actions">
+                        <a href="#contact" class="btn-pill btn-orange" data-i18n="aboutContact">Get in touch &rarr;</a>
+                        <a href="CV_IT_Support_Yassir_Telgua.pdf" target="_blank" rel="noopener noreferrer" class="btn-pill btn-cv" data-i18n="aboutCV">View CV &rarr;</a>
+                    </div>
                 </div>
             </div>
 
