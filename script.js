@@ -44,6 +44,10 @@ const translations = {
         bacTitle: "Baccalaureate Certificate",
         bacText: "Secondary school qualification and academic foundation.",
         viewCertificate: "View Certificate →",
+        pythonTitle: "Python Programming & Agile Project Management",
+        pythonText: "Training completed from May to July, totaling 27 hours.",
+        verifyCertificate: "Verify Online →",
+
 
         contactTag: "Get In Touch",
         contactHeading: "Let's Connect & Build Something Great",
@@ -90,6 +94,10 @@ const translations = {
         bacTitle: "Baccalaureate Certificate",
         bacText: "Schulabschluss und akademische Grundlage.",
         viewCertificate: "Zertifikat ansehen →",
+        pythonTitle: "Python Programming & Agile Project Management",
+        pythonText: "Weiterbildung von Mai bis Juli, insgesamt 27 Stunden.",
+        verifyCertificate: "Online verifizieren →",
+
 
         contactTag: "Kontakt",
         contactHeading: "Lassen Sie uns verbinden & etwas Großartiges entwickeln",
