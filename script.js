@@ -49,6 +49,12 @@ const translations = {
         pythonTitle: "Python Programming & Agile Project Management",
         pythonText: "Training completed from May to July, totaling 27 hours.",
         verifyCertificate: "Verify Online →",
+        masterSmartphoneTitle: "Professional Master in Smartphone Technologies",
+        masterSmartphoneText: "Professional qualification in smartphone technologies, awarded after theoretical and practical examinations.",
+        phoneGenieTitle: "Smartphone Repair & Programming",
+        phoneGenieText: "Professional training in smartphone repair and programming, completed in 2021.",
+        technicianTrainingTitle: "Technician Training — Smartphone Repair & Programming",
+        technicianTrainingText: "Technical training focused on smartphone repair and programming.",
 
 
         contactTag: "Get In Touch",
@@ -101,6 +107,12 @@ const translations = {
         pythonTitle: "Python Programming & Agile Project Management",
         pythonText: "Weiterbildung von Mai bis Juli, insgesamt 27 Stunden.",
         verifyCertificate: "Online verifizieren →",
+        masterSmartphoneTitle: "Professional Master in Smartphone-Technologien",
+        masterSmartphoneText: "Berufliche Qualifikation im Bereich Smartphone-Technologien, erworben nach theoretischen und praktischen Prüfungen.",
+        phoneGenieTitle: "Smartphone-Reparatur & Programmierung",
+        phoneGenieText: "Berufliche Weiterbildung in Smartphone-Reparatur und Programmierung, abgeschlossen im Jahr 2021.",
+        technicianTrainingTitle: "Technikertraining — Smartphone-Reparatur & Programmierung",
+        technicianTrainingText: "Technische Weiterbildung mit Schwerpunkt auf Smartphone-Reparatur und Programmierung.",
 
 
         contactTag: "Kontakt",
