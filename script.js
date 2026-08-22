@@ -82,7 +82,7 @@ const translations = {
         aboutContact: "Kontakt aufnehmen →",
         aboutCV: "Lebenslauf ansehen →",
         notepadTag: "Aktives Webprojekt",
-        notepadTitle: "TelNoto — Schreibbereich",
+        notepadTitle: "TelNoto — Writing Workspace",
         notepadText: "Ein schneller, browserbasierter Schreibbereich mit sauberem JavaScript, gehostet auf GitHub Pages.",
         viewProject: "Live-Projekt ansehen →",
         telmailTag: "Webprojekt",
